@@ -13,7 +13,6 @@ import java.util.List;
 public class CountSmallerOnRightSide {
         // BST Node
         static class TreeNode {
-                
                 TreeNode left, right;
                 int data, count, dup = 1;
                 public TreeNode(int d, int c) {
@@ -21,7 +20,6 @@ public class CountSmallerOnRightSide {
                         count = c;
                 }
         }
-        
         private static TreeNode insertNode(int element, TreeNode root, Integer[] result, int i, int prevSum) {
                 // base case
                 if(root == null) {
@@ -44,22 +42,18 @@ public class CountSmallerOnRightSide {
                 }
                 return root;
         }
-        
         private static List<Integer> countSmaller(int[] arr) {
-                
                 int n = arr.length;
                 // store result
                 Integer[] result = new Integer[n];
                 TreeNode root = null;
                 // iterate from back
-                for(int i = n - 1; i >= 0; --i) {
+                for (int i = n - 1; i >= 0; --i) {
                         root = insertNode(arr[i], root, result, i, 0);
                 }
                 return Arrays.asList(result);
         }
-        
         public static void main(String[] args) {
-                
                 int[] arr = { 5, 2, 6, 1};
                 System.out.println(countSmaller(arr));
         }
