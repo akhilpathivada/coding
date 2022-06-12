@@ -6,7 +6,6 @@
 package advanced.segmenttree;
 
 public class SegmentTree {
-        
         int[] st; // This array stores Segment Tree nodes
         int maxSize; // Size of Segment Tree
         public SegmentTree(int[] arr, int n) {
