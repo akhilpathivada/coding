@@ -9,47 +9,51 @@
  * */
 package tree;
 
-import javafx.util.Pair;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class MaximumWidthOfBinaryTree {
-        
+        private class Pair {
+                TreeNode node;
+                int index;
+                Pair(TreeNode node, int index) {
+                        this.node = node;
+                        this.index = index;
+                }
+        }
         private int getMaxWidthOfBinaryTree(TreeNode root) {
                 // assign to smallest value
                 int maxWidth = Integer.MIN_VALUE;
                 /** Queue contains pairs, where each pair contains node and its position
                  for a node at position i, left child is at (2*i + 1) and right child is at (2*i + 2) position */
-                Queue<Pair<TreeNode, Integer>> queue =  new LinkedList<>();
+                Queue<Pair> queue =  new LinkedList<>();
                 // assuming root is at position 0
-                queue.offer(new Pair<>(root, 0));
+                queue.offer(new Pair(root, 0));
                 // do level order traversal
-                while(!queue.isEmpty()) {
+                while (!queue.isEmpty()) {
                         // get first node of the current level
-                        Pair<TreeNode, Integer> head = queue.peek();
+                        Pair head = queue.peek();
                         // no. of elements in current level is equal to size of the queue
                         int currLevelSize = queue.size();
-                        Pair<TreeNode, Integer> element = null;
+                        Pair element = null;
                         // iterate over all elements in current level
-                        while(currLevelSize-- > 0) {
+                        while (currLevelSize-- > 0) {
                                 // Dequeue
                                 element = queue.remove();
-                                TreeNode node = element.getKey();
+                                TreeNode node = element.node;
                                 // put left and right children and their positions into queue
-                                if(node.left != null) {
-                                        queue.offer(new Pair<>(node.left, 2 * element.getValue() + 1));
+                                if (node.left != null) {
+                                        queue.offer(new Pair(node.left, 2 * element.index + 1));
                                 }
-                                if(node.right != null) {
-                                        queue.offer(new Pair<>(node.right, 2 * element.getValue() + 2));
+                                if (node.right != null) {
+                                        queue.offer(new Pair(node.right, 2 * element.index + 2));
                                 }
                         }
-                        maxWidth = Math.max(maxWidth, element.getValue() - head.getValue() + 1);
+                        maxWidth = Math.max(maxWidth, element.index - head.index + 1);
                 }
                 return maxWidth;
         }
-        
         public static void main(String[] args) {
-                
                 TreeNode root = new TreeNode(1);
                 root.left = new TreeNode(2);
                 root.right = new TreeNode(3);
@@ -57,7 +61,6 @@ public class MaximumWidthOfBinaryTree {
                 root.left.right = new TreeNode(5);
                 root.right.right = new TreeNode(7);
                 root.right.right.right = new TreeNode(8);
-                
                 System.out.println("Max. Width of Binary Tree = " + new MaximumWidthOfBinaryTree().getMaxWidthOfBinaryTree(root));
         }
 }
