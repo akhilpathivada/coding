@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 public class GroupAnagrams {
-        
         private List<List<String>> groupAnagrams(String[] strs) {
                 // base case
                 if (strs == null || strs.length == 0) {
@@ -40,7 +39,6 @@ public class GroupAnagrams {
                 }
                 return new ArrayList<>(map.values());
         }
-        
         public static void main(String[] args) {
                 String[] strs = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
                 System.out.println("Grouped Anagrams : " + new GroupAnagrams().groupAnagrams(strs));

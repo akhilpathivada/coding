@@ -13,14 +13,13 @@ package strings;
 import java.util.Stack;
 
 public class DecodeString {
-        
         private String decodeString(String s) {
                 Stack<Integer> counts = new Stack<>(); // stores numbers
                 Stack<String> result = new Stack<>(); // stores chars
                 String output = ""; // the required output
                 int i = 0;
                 while (i < s.length()) {
-                        if(Character.isDigit(s.charAt(i))) { // a digit
+                        if (Character.isDigit(s.charAt(i))) { // a digit
                                 int number = 0;
                                 // if it's a number
                                 while (Character.isDigit(s.charAt(i))) {
@@ -48,7 +47,6 @@ public class DecodeString {
                 }
                 return output;
         }
-        
         public static void main(String[] args) {
                 String s = "3[a2[c]]";
                 System.out.println(new DecodeString().decodeString(s));
