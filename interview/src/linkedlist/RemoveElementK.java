@@ -14,7 +14,7 @@ public class RemoveElementK {
         
         private LinkedListNode removeElement(LinkedListNode head, int k) {
                 // base case
-                if(head == null) {
+                if (head == null) {
                         return head;
                 }
                 LinkedListNode curr = new LinkedListNode(0);
