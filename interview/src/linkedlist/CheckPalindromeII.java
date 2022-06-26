@@ -7,7 +7,6 @@
 package linkedlist;
 
 public class CheckPalindromeII {
-        
         private LinkedListNode reverseList(LinkedListNode head) {
                 LinkedListNode prev, curr, nextPtr;
                 prev = null;
@@ -20,7 +19,6 @@ public class CheckPalindromeII {
                 }
                 return prev;
         }
-        
         private boolean isPalindrome(LinkedListNode head) {
                 LinkedListNode slow, fast;
                 slow = fast = head;
@@ -45,7 +43,6 @@ public class CheckPalindromeII {
                 }
                 return true;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

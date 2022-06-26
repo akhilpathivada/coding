@@ -10,7 +10,6 @@ package linkedlist;
 import java.util.Stack;
 
 public class ReverseLinkedListInGroupsOfSizeKII {
-        
         private LinkedListNode reverseKNodes(LinkedListNode head, int k) {
                 // base case
                 if (head == null) {
@@ -41,7 +40,6 @@ public class ReverseLinkedListInGroupsOfSizeKII {
                 prev.next = null;
                 return head;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

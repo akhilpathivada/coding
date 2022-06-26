@@ -9,7 +9,6 @@
 package linkedlist;
 
 public class KthNodeFromEndOfList {
-        
         private int findNode(LinkedListNode head, int k) {
                 // base case
                 if (head == null || k <= 0) {
@@ -31,7 +30,6 @@ public class KthNodeFromEndOfList {
                 }
                 return slow.data;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(3);
                 head.next = new LinkedListNode(2);

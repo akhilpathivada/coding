@@ -31,7 +31,6 @@ public class ReorderList {
                 }
                 return slow;
         }
-        
         private void reorderList(LinkedListNode head) {
                 if (head == null) {
                         return;
@@ -52,7 +51,6 @@ public class ReorderList {
                         curr2 = temp2;
                 }
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next =  new LinkedListNode(2);

@@ -11,7 +11,6 @@
 package linkedlist;
 
 public class AddTwoNumbers extends LinkedListNode {
-        
         private LinkedListNode addNumbers(LinkedListNode l1, LinkedListNode l2) {
                 LinkedListNode dummy = new LinkedListNode(0); // creating an dummy list
                 LinkedListNode current = dummy;
@@ -37,7 +36,6 @@ public class AddTwoNumbers extends LinkedListNode {
                 }
                 return dummy.next;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode list1 = new LinkedListNode(9);
                 list1.next = new LinkedListNode(9);

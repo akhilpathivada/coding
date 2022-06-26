@@ -2,7 +2,6 @@
 package linkedlist;
 
 public class ReverseLinkedList {
-        
         private LinkedListNode reverseList(LinkedListNode head) {
                 LinkedListNode prev, curr, nextPtr;
                 prev = null;
@@ -15,7 +14,6 @@ public class ReverseLinkedList {
                 }
                 return prev;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(3);
                 head.next = new LinkedListNode(1);

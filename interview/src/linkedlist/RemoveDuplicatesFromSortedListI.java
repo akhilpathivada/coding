@@ -11,7 +11,6 @@
 package linkedlist;
 
 public class RemoveDuplicatesFromSortedListI {
-        
         private LinkedListNode removeDuplicates(LinkedListNode head) {
                 LinkedListNode curr = head;
                 while (curr != null) {
@@ -23,7 +22,6 @@ public class RemoveDuplicatesFromSortedListI {
                 }
                 return head;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(1);

@@ -11,7 +11,6 @@
 package linkedlist;
 
 public class RemoveElementK {
-        
         private LinkedListNode removeElement(LinkedListNode head, int k) {
                 // base case
                 if (head == null) {
@@ -29,7 +28,6 @@ public class RemoveElementK {
                 }
                 return dummy.next;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

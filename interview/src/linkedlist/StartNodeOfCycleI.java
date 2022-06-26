@@ -7,7 +7,6 @@
 package linkedlist;
 
 public class StartNodeOfCycleI {
-        
         private int getStartNodeOfCycle(LinkedListNode head, LinkedListNode nodeInCycle) {
                 // point both pointers to the node in cycle
                 LinkedListNode ptr1, ptr2;
@@ -30,7 +29,6 @@ public class StartNodeOfCycleI {
                 }
                 return ptr1.data;
         }
-        
         private LinkedListNode getNodeInCycle(LinkedListNode head) {
                 // point both slow, fast pointers to head
                 LinkedListNode slowPtr, fastPtr;
@@ -46,7 +44,6 @@ public class StartNodeOfCycleI {
                 }
                 return null;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

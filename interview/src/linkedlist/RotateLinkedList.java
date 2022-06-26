@@ -8,7 +8,6 @@
 package linkedlist;
 
 public class RotateLinkedList {
-        
         private LinkedListNode rotateRight(LinkedListNode head, int k) {
                 // base case
                 if (head == null) {
@@ -40,7 +39,6 @@ public class RotateLinkedList {
                 tail.next = head;
                 return newHead;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

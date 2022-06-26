@@ -11,7 +11,6 @@
 package linkedlist;
 
 public class AddOneToNumber {
-        
         private LinkedListNode reverse(LinkedListNode head) {
                 LinkedListNode curr = head, prev = null, next;
                 while (curr != null) {
@@ -22,7 +21,6 @@ public class AddOneToNumber {
                 }
                 return prev;
         }
-        
         private LinkedListNode addOne(LinkedListNode head) {
                 head = reverse(head);
                 LinkedListNode curr = head, prev = null;
@@ -42,7 +40,6 @@ public class AddOneToNumber {
                 }
                 return reverse(head);
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(9);
                 head.next = new LinkedListNode(9);

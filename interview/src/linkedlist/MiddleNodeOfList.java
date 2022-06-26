@@ -8,7 +8,6 @@
 package linkedlist;
 
 public class MiddleNodeOfList {
-        
         private int getMiddleNodeOfList(LinkedListNode head) {
                 LinkedListNode slow, fast;
                 slow = fast = head;
@@ -18,7 +17,6 @@ public class MiddleNodeOfList {
                 }
                 return slow.data;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(3);
                 head.next = new LinkedListNode(2);

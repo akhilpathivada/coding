@@ -8,7 +8,6 @@
 package linkedlist;
 
 public class IntersectionOfTwoListsII {
-        
         private int getIntersectionNode(LinkedListNode headA, LinkedListNode headB) {
                 LinkedListNode a = headA, b = headB;
                 //if a & b have different len, then we will stop the loop after second iteration
@@ -19,7 +18,6 @@ public class IntersectionOfTwoListsII {
                 }
                 return a.data;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode headA = new LinkedListNode(10);
                 headA.next = new LinkedListNode(20);

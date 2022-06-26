@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class NextGreaterNodeInList {
-        
         private int[] nextGreaterNodes(LinkedListNode head) {
                 List<Integer> A = new ArrayList<>();
                 // store elements into list
@@ -33,7 +32,6 @@ public class NextGreaterNodeInList {
                 }
                 return result;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(3);
                 head.next = new LinkedListNode(2);

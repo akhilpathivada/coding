@@ -9,7 +9,6 @@
 package linkedlist;
 
 public class OddEvenLinkedList {
-        
         private LinkedListNode getOddEvenList(LinkedListNode head) {
                 // base case
                 if (head == null) {
@@ -26,7 +25,6 @@ public class OddEvenLinkedList {
                 odd.next = evenHead;
                 return head;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

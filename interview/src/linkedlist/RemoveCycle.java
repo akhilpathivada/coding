@@ -7,20 +7,18 @@
 package linkedlist;
 
 public class RemoveCycle {
-        
         private void removeCycle(LinkedListNode head, LinkedListNode nodeInCycle) {
                 // point slow pointer to head and fastPtr to node in cycle
                 LinkedListNode slowPtr, fastPtr;
                 slowPtr = head;
                 fastPtr = nodeInCycle;
                 // intersection point of both next pointers should be the start node of cycle
-                while(slowPtr.next != fastPtr.next) {
+                while (slowPtr.next != fastPtr.next) {
                         slowPtr = slowPtr.next;
                         fastPtr = fastPtr.next;
                 }
                 fastPtr.next = null;
         }
-        
         private LinkedListNode getNodeInCycle(LinkedListNode head) {
                 // point both slow, fast pointers to head
                 LinkedListNode slowPtr, fastPtr;
@@ -36,7 +34,6 @@ public class RemoveCycle {
                 }
                 return null;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

@@ -8,7 +8,6 @@
 package linkedlist;
 
 public class RemoveKthNodeFromEndOfList {
-        
         private LinkedListNode removeKthNodeFromEnd(LinkedListNode head, int K) {
                 // create dummy pointer and maintain it before head
                 LinkedListNode start = new LinkedListNode(0);
@@ -27,7 +26,6 @@ public class RemoveKthNodeFromEndOfList {
                 slow.next = slow.next.next;
                 return start.next;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

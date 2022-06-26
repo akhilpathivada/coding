@@ -8,7 +8,6 @@
 package linkedlist;
 
 public class ReverseLinkedListInGroupsOfSizeKI {
-        
         private LinkedListNode reverseKNodes(LinkedListNode head, int k) {
                 // base case
                 if (head == null) {
@@ -33,7 +32,6 @@ public class ReverseLinkedListInGroupsOfSizeKI {
                 // prev is now head of input list
                 return prev;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

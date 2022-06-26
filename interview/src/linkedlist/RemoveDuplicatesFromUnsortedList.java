@@ -13,7 +13,6 @@ package linkedlist;
 import java.util.HashSet;
 
 public class RemoveDuplicatesFromUnsortedList {
-        
         private LinkedListNode removeDuplicates(LinkedListNode head) {
                 LinkedListNode prev, curr;
                 prev = curr = head;
@@ -31,7 +30,6 @@ public class RemoveDuplicatesFromUnsortedList {
                 }
                 return head;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(10);
                 head.next = new LinkedListNode(12);

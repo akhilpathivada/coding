@@ -7,7 +7,6 @@
 package linkedlist;
 
 public class CloneListWithRandomPointerII {
-        
         static class LinkedListNode {
                 int data;
                 LinkedListNode next, random;
@@ -22,7 +21,6 @@ public class CloneListWithRandomPointerII {
                         }
                 }
         }
-        
         private static LinkedListNode alternateSplitList(LinkedListNode head) {
                 LinkedListNode clonedListHead = head.next;
                 while (head != null) {
@@ -32,7 +30,6 @@ public class CloneListWithRandomPointerII {
                 }
                 return clonedListHead;
         }
-        
         private static void setRandomPointers(LinkedListNode current) {
                 // set cloned list's node random pointer
                 while (current != null) {
@@ -40,7 +37,6 @@ public class CloneListWithRandomPointerII {
                         current = current.next.next;
                 }
         }
-        
         private static LinkedListNode cloneList(LinkedListNode head) {
                 LinkedListNode originalCurr;
                 originalCurr = head;
@@ -57,7 +53,6 @@ public class CloneListWithRandomPointerII {
                 LinkedListNode clonedListHead = alternateSplitList(head);
                 return clonedListHead;
         }
-        
         public static void main(String[] args) {
                 CloneListWithRandomPointerII obj = new CloneListWithRandomPointerII();
                 LinkedListNode head = new LinkedListNode(1);

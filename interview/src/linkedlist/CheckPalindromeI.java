@@ -9,7 +9,6 @@ package linkedlist;
 import java.util.Stack;
 
 public class CheckPalindromeI {
-        
         private boolean isPalindrome(LinkedListNode head) {
                 LinkedListNode curr = head;
                 Stack<Integer> stack = new Stack<>();
@@ -20,13 +19,12 @@ public class CheckPalindromeI {
                 }
                 // if it is palindrome, always the poppped element is equal to current element
                 for (curr = head; curr != null; curr = curr.next) {
-                        if(stack.pop() != curr.data) {
+                        if (stack.pop() != curr.data) {
                                 return false;
                         }
                 }
                 return true;
         }
-        
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

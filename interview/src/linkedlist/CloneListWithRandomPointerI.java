@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CloneListWithRandomPointerI {
-        
         static class LinkedListNode {
                 int data;
                 LinkedListNode next, random;
@@ -25,7 +24,6 @@ public class CloneListWithRandomPointerI {
                         }
                 }
         }
-        
         private static LinkedListNode cloneList(LinkedListNode head) {
                 // maintain two pointers, one of them should point to original list
                 LinkedListNode originalCurr, clonedCurr;
@@ -48,7 +46,6 @@ public class CloneListWithRandomPointerI {
                 }
                 return hashMap.get(head);
         }
-        
         public static void main(String[] args) {
                 CloneListWithRandomPointerI obj = new CloneListWithRandomPointerI();
                 LinkedListNode head = new LinkedListNode(1);
