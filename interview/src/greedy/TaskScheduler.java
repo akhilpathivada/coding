@@ -17,6 +17,7 @@ public class TaskScheduler {
 		}
 		Arrays.sort(frequencies);
 		int maxFrequency = frequencies[25];
+		// max idle time possible
 		int idleTime = (maxFrequency - 1) * n;
 		for (int i = frequencies.length - 2; i >= 0 && idleTime > 0; --i) {
 			idleTime -= Math.min(maxFrequency - 1, frequencies[i]);
