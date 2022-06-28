@@ -24,7 +24,6 @@ public class MinMovesToMakeArrayEqualII {
                 }
                 return moves;
         }
-        
         public static void main(String[] args) {
                 int[] nums = { 1, 10, 2, 9 };
                 System.out.println("Min. moves = " + new MinMovesToMakeArrayEqualII().minMoves(nums));
