@@ -7,7 +7,7 @@
 package tree;
 
 public class LowestCommonAncestorInBinaryTree {
-        
+
         private TreeNode getLCA(TreeNode root, TreeNode n1, TreeNode n2) {
                 //  base case
                 if (root == null) {

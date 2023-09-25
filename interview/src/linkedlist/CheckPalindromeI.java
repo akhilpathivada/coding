@@ -25,6 +25,7 @@ public class CheckPalindromeI {
                 }
                 return true;
         }
+
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

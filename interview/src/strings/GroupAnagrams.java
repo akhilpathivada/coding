@@ -39,8 +39,9 @@ public class GroupAnagrams {
                 }
                 return new ArrayList<>(map.values());
         }
+
         public static void main(String[] args) {
-                String[] strs = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
+                String[] strs = new String[] { "eat", "tea", "tan", "ate", "nat", "bat" };
                 System.out.println("Grouped Anagrams : " + new GroupAnagrams().groupAnagrams(strs));
         }
 }

@@ -16,18 +16,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class LevelOrderBottom {
+public class LevelOrderTraversalBottom {
         
         private List<List<Integer>> levelOrderBottom(TreeNode root) {
-                List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+                List<List<Integer>> result = new ArrayList<>();
+
                 if (root == null) {
                         return result;
                 }
+
                 Queue<TreeNode> queue = new LinkedList<>();
                 queue.offer(root);
+
                 while (!queue.isEmpty()) {
                         List<Integer> list = new ArrayList<>();
                         int n = queue.size();
+
                         while (n-- > 0) {
                                 TreeNode node = queue.poll();
                                 list.add(node.data);
@@ -49,6 +54,6 @@ public class LevelOrderBottom {
                 root.right = new TreeNode(20);
                 root.right.left = new TreeNode(15);
                 root.right.right = new TreeNode(7);
-                System.out.println(new LevelOrderBottom().levelOrderBottom(root));
+                System.out.println(new LevelOrderTraversalBottom().levelOrderBottom(root));
         }
 }

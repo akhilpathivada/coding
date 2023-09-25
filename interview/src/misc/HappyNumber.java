@@ -4,6 +4,11 @@
  * */
 package misc;
 
+import java.time.Duration;
+import java.util.Queue;
+import java.util.function.Function;
+
+
 public class HappyNumber {
     int digitSquareSum(int n) {
         int sum = 0;
@@ -30,5 +35,15 @@ public class HappyNumber {
     public static void main(String[] args) {
         int n = 19;
         System.out.println(new HappyNumber().isHappy(n));
+        for (int i = 0; i < 10; ++i) {
+            try {
+                if (i % 2 == 1) {
+                    System.out.println("EVEN");
+                    throw new Exception(String.valueOf(i));
+                }
+            } catch (Exception e) {
+                System.out.println("Caught ODD exception : " + e);
+            }
+        }
     }
 }

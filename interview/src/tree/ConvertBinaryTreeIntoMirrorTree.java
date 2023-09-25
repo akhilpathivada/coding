@@ -11,10 +11,10 @@
 package tree;
 
 public class ConvertBinaryTreeIntoMirrorTree {
-        
+
         private static TreeNode mirror(TreeNode root) {
                 // base case
-                if(root == null) {
+                if (root == null) {
                         return null;
                 }
                 // recur to get mirror of left and right subtrees
@@ -25,15 +25,15 @@ public class ConvertBinaryTreeIntoMirrorTree {
                 root.right = left;
                 return root;
         }
-        
+
         public static void main(String[] args) {
-                
+
                 TreeNode root = new TreeNode(1);
                 root.left = new TreeNode(2);
                 root.right = new TreeNode(3);
                 root.left.left = new TreeNode(4);
                 root.left.right = new TreeNode(5);
-                
+
                 root.inOrder(mirror(root));
         }
 }

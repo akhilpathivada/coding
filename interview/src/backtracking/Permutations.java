@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Permutations {
-        
+
         private void backtrack(int[] nums, List<List<Integer>> result, List<Integer> ds) {
                 // base case
                 if (ds.size() == nums.length) {
@@ -30,13 +30,13 @@ public class Permutations {
                         }
                 }
         }
-        
+
         private List<List<Integer>> permute(int[] nums) {
                 List<List<Integer>> result = new ArrayList<>();
                 backtrack(nums, result, new ArrayList<>());
                 return result;
         }
-        
+
         public static void main(String[] args) {
                 int[] nums = { 1, 2, 3 };
                 System.out.println(new Permutations().permute(nums));

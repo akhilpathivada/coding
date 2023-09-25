@@ -19,6 +19,7 @@ public class CheckPalindromeII {
                 }
                 return prev;
         }
+
         private boolean isPalindrome(LinkedListNode head) {
                 LinkedListNode slow, fast;
                 slow = fast = head;
@@ -27,7 +28,7 @@ public class CheckPalindromeII {
                         slow = slow.next;
                         fast = fast.next.next;
                 }
-                // odd nodes: let right half smaller
+                // odd nodes: let right half be smaller
                 if (fast != null) {
                         slow = slow.next;
                 }
@@ -43,6 +44,7 @@ public class CheckPalindromeII {
                 }
                 return true;
         }
+
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);
