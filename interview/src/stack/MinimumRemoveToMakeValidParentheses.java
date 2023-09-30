@@ -13,7 +13,7 @@ package stack;
 import java.util.Stack;
 
 public class MinimumRemoveToMakeValidParentheses {
-        
+
         private String minRemove(String s) {
                 StringBuilder sb = new StringBuilder(s);
                 Stack<Integer> stack = new Stack<>();
@@ -21,7 +21,7 @@ public class MinimumRemoveToMakeValidParentheses {
                         // push index of '('
                         if (sb.charAt(i) == '(') {
                                 stack.push(i);
-                        } else if (sb.charAt(i) == ')'){
+                        } else if (sb.charAt(i) == ')') {
                                 // balanced
                                 if (!stack.isEmpty()) {
                                         stack.pop();
@@ -37,9 +37,10 @@ public class MinimumRemoveToMakeValidParentheses {
                 // replace '*' with ''
                 return sb.toString().replaceAll("\\*", "");
         }
-        
+
         public static void main(String[] args) {
                 String s = "lee(t(c)o)de)";
-                System.out.println("Valid string after removal = " + new MinimumRemoveToMakeValidParentheses().minRemove(s));
+                System.out.println("Valid string after removal = "
+                        + new MinimumRemoveToMakeValidParentheses().minRemove(s));
         }
 }

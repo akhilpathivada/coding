@@ -6,7 +6,7 @@
  * */
 package tree;
 
-public class ValidateBST {
+public class ValidateBinarySearchTree {
         
         private TreeNode prev = null;
         private boolean isValidBST(TreeNode root) {
@@ -18,7 +18,7 @@ public class ValidateBST {
                 if (!isValidBST(root.left)) {
                         return false;
                 }
-                if (prev != null && root.data < prev.data) {
+                if (prev != null && root.data <= prev.data) {
                         return false;
                 }
                 prev = root;
@@ -33,6 +33,6 @@ public class ValidateBST {
                 root.left.right = new TreeNode(12);
                 root.left.right.left = new TreeNode(10);
                 root.left.right.right = new TreeNode(14);
-                System.out.println(new ValidateBST().isValidBST(root));
+                System.out.println(new ValidateBinarySearchTree().isValidBST(root));
         }
 }

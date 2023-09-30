@@ -6,7 +6,7 @@
  * */
 package tree;
 
-public class SortedArrayToBST extends TreeNode {
+public class ConvertSortedArrayToBinarySearchTree extends TreeNode {
         
         private TreeNode sortedArrayToBSTUtil(int[] nums, int start, int end) {
                 // base case
@@ -32,7 +32,7 @@ public class SortedArrayToBST extends TreeNode {
         
         public static void main(String[] args) {
                 int nums[] = {-10, -3, 0, 5, 9};
-                SortedArrayToBST obj = new SortedArrayToBST();
+                ConvertSortedArrayToBinarySearchTree obj = new ConvertSortedArrayToBinarySearchTree();
                 obj.preOrder(obj.sortedArrayToBST(nums));
         }
 }

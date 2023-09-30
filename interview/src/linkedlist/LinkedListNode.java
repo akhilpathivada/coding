@@ -1,8 +1,8 @@
 package linkedlist;
 
 public class LinkedListNode {
-        int data; // value of node
-        LinkedListNode next; // next pointer
+        public int data; // value of node
+        public LinkedListNode next; // next pointer
         // default constructor
         public LinkedListNode() {
         

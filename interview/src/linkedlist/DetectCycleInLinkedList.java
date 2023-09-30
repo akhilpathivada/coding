@@ -9,19 +9,20 @@ package linkedlist;
 public class DetectCycleInLinkedList {
         private boolean hasCycle(LinkedListNode head) {
                 // point both slow, fast pointers to head
-                LinkedListNode slowPtr, fastPtr;
-                slowPtr = fastPtr = head;
-                // slowPtr is a walker, whereas fastPtr is a runner
-                while (fastPtr != null && fastPtr.next != null) {
-                        slowPtr = slowPtr.next;
-                        fastPtr = fastPtr.next.next;
+                LinkedListNode slow, fast;
+                slow = fast = head;
+                // slow is a walker, whereas fast is a runner
+                while (fast != null && fast.next != null) {
+                        slow = slow.next;
+                        fast = fast.next.next;
                         // cycle is found
-                        if (slowPtr == fastPtr) {
+                        if (slow == fast) {
                                 return true;
                         }
                 }
                 return false;
         }
+
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);

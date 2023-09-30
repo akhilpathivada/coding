@@ -11,7 +11,7 @@
 package dp;
 
 public class LongestIncreasingSubsequence {
-        private static int LIS(int[] nums, int n) {
+        private static int lengthOfLIS(int[] nums, int n) {
                 // store longest increasing sequence till that point
                 int lis[] = new int[n];
                 lis[0] = 1;
@@ -34,8 +34,9 @@ public class LongestIncreasingSubsequence {
                 }
                 return maxLength;
         }
+
         public static void main(String[] args) {
                 int[] nums = { 10, 22, 9, 33, 21, 50, 41, 60 };
-                System.out.printf("Longest Increasing Subsequence : %d ", LIS(nums, nums.length));
+                System.out.printf("Longest Increasing Subsequence : %d ", lengthOfLIS(nums, nums.length));
         }
 }

@@ -7,7 +7,7 @@
 package linkedlist;
 
 public class MergeTwoSortedLists {
-        
+
         private LinkedListNode mergeTwoSortedLists(LinkedListNode list1, LinkedListNode list2) {
                 // create a dummy variable, point to beginning of result
                 LinkedListNode dummy = new LinkedListNode();
@@ -27,7 +27,7 @@ public class MergeTwoSortedLists {
                 curr.next = list1 != null ? list1 : list2;
                 return dummy.next;
         }
-        
+
         public static void main(String[] args) {
                 LinkedListNode head1 = new LinkedListNode(1);
                 head1.next = new LinkedListNode(2);

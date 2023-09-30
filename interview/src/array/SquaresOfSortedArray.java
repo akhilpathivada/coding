@@ -28,6 +28,7 @@ public class SquaresOfSortedArray {
                 }
                 return result;
         }
+
         public static void main(String[] args) {
                 int[] nums = { -4, -1, 0, 3, 10 };
                 System.out.println(Arrays.toString(new SquaresOfSortedArray().sortedSquares(nums)));

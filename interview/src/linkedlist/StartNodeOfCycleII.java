@@ -8,32 +8,38 @@ package linkedlist;
 
 public class StartNodeOfCycleII {
         private static int getStartNodeOfCycle(LinkedListNode head, LinkedListNode nodeInCycle) {
-                // point slow pointer to head and fastPtr to node in cycle
-                LinkedListNode slowPtr, fastPtr;
-                slowPtr = head;
-                fastPtr = nodeInCycle;
-                // intersection point of both pointers should be the start node of cycle
-                while(slowPtr != fastPtr) {
-                        slowPtr = slowPtr.next;
-                        fastPtr = fastPtr.next;
+                // if there is no cycle
+                if (nodeInCycle == null) {
+                        return -1;
                 }
-                return slowPtr.data;
+                // point slow pointer to head and fast to node in cycle
+                LinkedListNode slow, fast;
+                slow = head;
+                fast = nodeInCycle;
+                // intersection point of both pointers should be the start node of cycle
+                while (slow != fast) {
+                        slow = slow.next;
+                        fast = fast.next;
+                }
+                return slow.data;
         }
+
         private static LinkedListNode getNodeInCycle(LinkedListNode head) {
                 // point both slow, fast pointers to head
-                LinkedListNode slowPtr, fastPtr;
-                slowPtr = fastPtr = head;
-                // slowPtr is a walker, whereas fastPtr is a runner
-                while (fastPtr != null && fastPtr.next != null) {
-                        slowPtr = slowPtr.next;
-                        fastPtr = fastPtr.next.next;
+                LinkedListNode slow, fast;
+                slow = fast = head;
+                // slow is a walker, whereas fast is a runner
+                while (fast != null && fast.next != null) {
+                        slow = slow.next;
+                        fast = fast.next.next;
                         // cycle is found
-                        if(slowPtr == fastPtr) {
-                                return slowPtr;
+                        if (slow == fast) {
+                                return slow;
                         }
                 }
                 return null;
         }
+
         public static void main(String[] args) {
                 LinkedListNode head = new LinkedListNode(1);
                 head.next = new LinkedListNode(2);
@@ -42,6 +48,7 @@ public class StartNodeOfCycleII {
                 head.next.next.next.next = new LinkedListNode(5);
                 head.next.next.next.next.next = new LinkedListNode(6);
                 head.next.next.next.next.next.next = head.next;
-                System.out.println(new StartNodeOfCycleII().getStartNodeOfCycle(head, new StartNodeOfCycleII().getNodeInCycle(head)));
+                System.out.println(new StartNodeOfCycleII().getStartNodeOfCycle(head,
+                        new StartNodeOfCycleII().getNodeInCycle(head)));
         }
 }

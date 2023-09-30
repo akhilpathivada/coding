@@ -17,6 +17,7 @@ public class HeightOfBinaryTreeI {
                 int rightTreeDepth = heightOfBinaryTree(root.right);
                 return Math.max(leftTreeDepth, rightTreeDepth) + 1;
         }
+
         public static void main(String[] args) {
                 TreeNode root = new TreeNode(1);
                 root.left = new TreeNode(2);

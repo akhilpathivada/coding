@@ -10,6 +10,10 @@ package dp;
 
 public class ClimbingStairsII {
         private static int climbStairs(int n) {
+                // base case
+                if (n == 0 || n == 1) {
+                        return n;
+                }
                 int[] temp = new int[n + 1];
                 temp[1] = 1;
                 temp[2] = 2;

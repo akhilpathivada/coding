@@ -10,7 +10,7 @@ import java.util.*;
 
 public class TopKFrequentElementsI {
         
-        private static List<Integer> topKFrequentElements(int[] nums, int K) {
+        private static int[] topKFrequentElements(int[] nums, int K) {
                 // store <element, frequency> in a map
                 Map<Integer, Integer> frequencyMap = new HashMap<>();
                 for(int num : nums) {
@@ -28,13 +28,13 @@ public class TopKFrequentElementsI {
                         Map.Entry<Integer, Integer> entry = maxHeap.poll();
                         result.add(entry.getKey());
                 }
-                return result;
+                return result.stream().mapToInt(i -> i).toArray();
         }
         
         public static void main(String[] args) {
         
                 int nums[] = {1, 1, 1, 2, 2, 3};
                 int K = 2;
-                System.out.println(topKFrequentElements(nums, K));
+                System.out.println(Arrays.toString(topKFrequentElements(nums, K)));
         }
 }
