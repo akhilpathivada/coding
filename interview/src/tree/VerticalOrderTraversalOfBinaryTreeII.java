@@ -9,40 +9,47 @@
  */
 package tree;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
 public class VerticalOrderTraversalOfBinaryTreeII {
-        
-        private void getVerticalOrder(TreeNode root, int hd, TreeMap<Integer, Vector<Integer>> map) {
+
+        private void verticalTraversal(TreeNode root, int hd, TreeMap<Integer, List<Integer>> map) {
                 // base case
                 if (root == null) {
                         return;
                 }
-                Vector<Integer> nodes = map.get(hd);
+                List<Integer> nodes = map.get(hd);
                 // if there is no entry for this hd
                 if (nodes == null) {
-                        nodes = new Vector<>();
+                        nodes = new ArrayList<>();
                 }
                 // add root data into list
                 nodes.add(root.data);
                 // insert back the <k, v>
                 map.put(hd, nodes);
                 // Recur for left and right subtrees
-                getVerticalOrder(root.left, hd - 1, map);
-                getVerticalOrder(root.right, hd + 1, map);
+                verticalTraversal(root.left, hd - 1, map);
+                verticalTraversal(root.right, hd + 1, map);
         }
-        
-        private void printVerticalOrder(TreeNode root) {
+
+        private List<List<Integer>> verticalTraversal(TreeNode root) {
                 // stores horizontal distance and nodes having that distance
-                TreeMap<Integer, Vector<Integer>> map = new TreeMap<>();
+                TreeMap<Integer, List<Integer>> map = new TreeMap<>();
                 int hd = 0; // horizontal distance
-                getVerticalOrder(root, hd, map);
-                // printing the values of TreeMap
-                for (Map.Entry<Integer, Vector<Integer>> entry : map.entrySet()) {
-                        System.out.println(entry.getValue());
+                verticalTraversal(root, hd, map);
+                List<List<Integer>> result = new ArrayList<>();
+                // moving the values of TreeMap into result
+                int index = 0;
+                for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
+                        result.add(new ArrayList<>(entry.getValue()));
+                        ++index;
                 }
+                return result;
         }
         
         public static void main(String[] args) {
@@ -55,6 +62,6 @@ public class VerticalOrderTraversalOfBinaryTreeII {
                 root.right.right = new TreeNode(7);
                 root.right.left.right = new TreeNode(8);
                 root.right.right.right = new TreeNode(9);
-                new VerticalOrderTraversalOfBinaryTreeII().printVerticalOrder(root);
+                System.out.println(new VerticalOrderTraversalOfBinaryTreeII().verticalTraversal(root));
         }
 }

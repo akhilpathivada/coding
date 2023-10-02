@@ -7,7 +7,6 @@
  * */
 package heap;
 
-import java.io.PrintStream;
 import java.util.PriorityQueue;
 
 public class KthLargestElementInStream {

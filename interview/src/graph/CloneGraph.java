@@ -5,10 +5,11 @@
 package graph;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CloneGraph extends GraphNode {
         // tracks whether node is already cloned
-        private HashMap<Integer, GraphNode> map = new HashMap<>();
+        private Map<Integer, GraphNode> map = new HashMap<>();
         private GraphNode cloneGraph(GraphNode node) {
                 if (node == null) {
                         return null;

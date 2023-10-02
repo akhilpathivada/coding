@@ -6,7 +6,7 @@
  * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
  *
  * Time Complexity : O(V + E)
- * Space Complexity : O(V)
+ * Space Complexity : O(V + E)
  */
 package graph;
 
@@ -30,6 +30,7 @@ public class DetectCycleInDirectedGraph {
                 recStack[node.label] = false;
                 return false;
         }
+
         private boolean isCycle(GraphNode[] graph) {
                 // Mark all the vertices as not visited and
                 // not part of recursion stack
@@ -42,6 +43,7 @@ public class DetectCycleInDirectedGraph {
                 }
                 return false;
         }
+
         public static void main(String[] args) {
                 GraphNode[] graph = new GraphNode[4];
                 graph[0] = new GraphNode(0);

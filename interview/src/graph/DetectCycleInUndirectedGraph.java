@@ -6,7 +6,7 @@
  * https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
  *
  * Time Complexity : O(V + E)
- * Space Complexity : O(V)
+ * Space Complexity : O(V + E)
  */
 package graph;
 
@@ -18,13 +18,13 @@ public class DetectCycleInUndirectedGraph {
                                 if (isCycleUtil(neighbour, visited, node)) {
                                         return true;
                                 }
-                        }
-                        else if (neighbour != parent){
+                        } else if (neighbour != parent) {
                                 return true;
                         }
                 }
                 return false;
         }
+
         private boolean isCycle(GraphNode[] graph) {
                 boolean[] visited = new boolean[graph.length];
                 for (GraphNode node : graph) {
@@ -36,6 +36,7 @@ public class DetectCycleInUndirectedGraph {
                 }
                 return false;
         }
+
         public static void main(String[] args) {
                 GraphNode[] graph = new GraphNode[5];
                 graph[0] = new GraphNode(0);
