@@ -13,7 +13,7 @@ package greedy;
 import java.util.PriorityQueue;
 
 public class ConnectNRopesMinimumCost {
-        
+
         private int minCost(int[] arr, int n) {
                 // create a min heap
                 PriorityQueue<Integer> minHeap = new PriorityQueue<>();

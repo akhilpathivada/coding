@@ -30,7 +30,8 @@ public class SearchInRotatedSortedArray {
                 }
                 // left is the pivot index
                 int start = left;
-                right = n - 1; left = 0;
+                right = n - 1;
+                left = 0;
                 // check in which sorted array our target exists
                 if (target >= nums[start] && target <= nums[right]) {
                         left = start;
@@ -43,7 +44,7 @@ public class SearchInRotatedSortedArray {
                         // target found
                         if (nums[mid] == target) {
                                 return mid;
-                        } else if(nums[mid] < target) {
+                        } else if (nums[mid] < target) {
                                 left = mid + 1;
                         } else {
                                 right = mid - 1;
@@ -51,9 +52,10 @@ public class SearchInRotatedSortedArray {
                 }
                 return -1;
         }
+
         public static void main(String[] args) {
-                int nums[] = { 4, 5, 6, 7, 0, 1, 2}, target = 1;
-                System.out.printf("Target : %d is found at index : %d ", target, new SearchInRotatedSortedArray().searchElement(nums, target));
-        
+                int nums[] = { 4, 5, 6, 7, 0, 1, 2 }, target = 1;
+                System.out.printf("Target : %d is found at index : %d ", target,
+                        new SearchInRotatedSortedArray().searchElement(nums, target));
         }
 }

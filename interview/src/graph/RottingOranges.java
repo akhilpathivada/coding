@@ -15,16 +15,17 @@ public class RottingOranges {
                 // anchor condition
                 if (i < 0 || i >= m || j < 0 || j >= n // out of bounds
                         || grid[i][j] == 0 // empty cell
-                        || (grid[i][j] > 1 && grid[i][j] < minutes) // this orange is already rotten by another rotten orange
-                ) {
+                        || (grid[i][j] > 1
+                        && grid[i][j] < minutes)) { // this orange is already rotten by another rotten orange
                         return;
                 }
                 grid[i][j] = minutes;
                 DFS(grid, i + 1, j, m, n, minutes + 1);
                 DFS(grid, i - 1, j, m, n, minutes + 1);
                 DFS(grid, i, j + 1, m, n, minutes + 1);
-                DFS(grid, i , j - 1, m, n, minutes + 1);
+                DFS(grid, i, j - 1, m, n, minutes + 1);
         }
+
         private int orangesRotting(int[][] grid) {
                 int m = grid.length, n = grid[0].length;
                 for (int i = 0; i < m; ++i) {
@@ -46,6 +47,7 @@ public class RottingOranges {
                 }
                 return minutes - 2;
         }
+
         public static void main(String[] args) {
                 int[][] grid = {
                         { 2, 1, 1 },

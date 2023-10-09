@@ -11,7 +11,7 @@ public class BinarySearch {
                         int mid = low + ((high - low) / 2);
                         if (arr[mid] == target) {
                                 return mid;
-                        } else if (arr[mid]  < target) {
+                        } else if (arr[mid] < target) {
                                 low = mid + 1;
                         } else {
                                 high = mid - 1;

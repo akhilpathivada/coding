@@ -37,8 +37,9 @@ public class TrappingRainWaterProblemIII {
                 }
                 return water;
         }
+
         public static void main(String[] args) {
-                int heights[] = {1, 0, 2, 0, 1, 0, 3, 1, 0, 2};
+                int heights[] = { 1, 0, 2, 0, 1, 0, 3, 1, 0, 2 };
                 System.out.println(trap(heights));
         }
 }

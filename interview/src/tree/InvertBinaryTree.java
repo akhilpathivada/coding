@@ -9,10 +9,10 @@
 package tree;
 
 public class InvertBinaryTree {
-        
+
         private TreeNode invertBinaryTree(TreeNode root) {
                 // base case
-                if(root == null) {
+                if (root == null) {
                         return null;
                 }
                 // store left child into temp

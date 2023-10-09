@@ -4,6 +4,7 @@
  * @author akhilpathivada
  *
  * https://leetcode.com/problems/max-area-of-island/
+ * 
  * Time Complexity : O(M * N)
  * Space Complexity : O(M * N)
  *
@@ -22,7 +23,7 @@ public class MaxAreaOfIsland {
                 // recur on its neighbours
                 return 1 + DFS(grid, i + 1, j) + DFS(grid, i - 1, j) + DFS(grid, i, j + 1) + DFS(grid, i, j - 1);
         }
-        private int maxArea(int[][] grid) {
+        private int maxAreaOfIsland(int[][] grid) {
                 m = grid.length;
                 if (m == 0) {
                         return 0;
@@ -49,7 +50,7 @@ public class MaxAreaOfIsland {
                         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
                         { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
                         { 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
-                System.out.printf("Max Area of Island = %d", new MaxAreaOfIsland().maxArea(grid));
+                System.out.printf("Max Area of Island = %d", new MaxAreaOfIsland().maxAreaOfIsland(grid));
         }
         
 }

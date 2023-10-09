@@ -41,6 +41,7 @@ public class MergeSort {
                         }
                 }
         }
+
         private void sort(int[] arr, int p, int r) {
                 if (p < r) {
                         int q = (p + r) / 2;
@@ -51,10 +52,11 @@ public class MergeSort {
                         merge(arr, p, q, r);
                 }
         }
+
         public static void main(String args[]) {
                 int arr[] = { 12, 11, 13, 5, 6, 7 };
                 System.out.println("Given Array" + Arrays.toString(arr));
                 new MergeSort().sort(arr, 0, arr.length - 1);
-                System.out.println("Sorted array" +  Arrays.toString(arr));
+                System.out.println("Sorted array" + Arrays.toString(arr));
         }
 }

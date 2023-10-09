@@ -38,8 +38,7 @@ public class CloneListWithRandomPointerII {
                 }
         }
         private static LinkedListNode cloneList(LinkedListNode head) {
-                LinkedListNode originalCurr;
-                originalCurr = head;
+                LinkedListNode originalCurr = head;
                 // create new node and copy contents of current node into that and make it as it's next
                 while (originalCurr != null) {
                         LinkedListNode temp = new LinkedListNode(originalCurr.data);

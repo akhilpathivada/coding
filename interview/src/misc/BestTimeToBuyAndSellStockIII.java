@@ -17,9 +17,9 @@ public class BestTimeToBuyAndSellStockIII {
                 if (n == 0) {
                         return 0;
                 }
-                // captures max profit we can get till this point
+                // captures max profit we can get if we sell at this particular point
                 int[] left = new int[n];
-                // captures max profit we can get if we sell on this day in future
+                // captures max profit we can get if we buy at this particular point
                 int[] right = new int[n];
                 // compute left array
                 int min = prices[0];
