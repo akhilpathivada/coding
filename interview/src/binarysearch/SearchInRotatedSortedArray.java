@@ -7,7 +7,7 @@
  * Time Complexity : O(log(N))
  * Space Complexity : O(1)
  */
-package dac.binarysearch;
+package binarysearch;
 
 public class SearchInRotatedSortedArray {
         private int searchElement(int[] nums, int target) {

@@ -8,7 +8,7 @@
  * Time Complexity : O(log(N))
  * Space Complexity : O(1)
  */
-package dac.binarysearch;
+package binarysearch;
 
 public class MaximumElementFirstIncreasingAndThenDecreasing {
         private int maxInBitonic(int[] arr) {

@@ -3,7 +3,7 @@
  * Time Complexity : O(log(N))
  * Space Complexity : O(1)
  */
-package dac.binarysearch;
+package binarysearch;
 public class BinarySearch {
         private int search(final int[] arr, int target) {
                 int low = 0, high = arr.length - 1;

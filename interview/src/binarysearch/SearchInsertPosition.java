@@ -8,7 +8,7 @@
  * Time Complexity : O(log(N))
  * Space Complexity : O(1)
  */
-package dac.binarysearch;
+package binarysearch;
 
 public class SearchInsertPosition {
         private static int searchInsert(int[] nums, int target) {

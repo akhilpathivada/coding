@@ -11,7 +11,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(1)
  */
-package dac.binarysearch;
+package binarysearch;
 
 public class FloorAndCeilingSortedArrayI {
         private static int ceil(int[] arr, int x) {
