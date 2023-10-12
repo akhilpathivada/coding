@@ -12,8 +12,8 @@ package greedy;
 
 import java.util.Arrays;
 public class TrainsAndPlatforms {
-        
-        private int minTrains(int[]arr, int[] dep) {
+
+        private int minTrains(int[] arr, int[] dep) {
                 // Sort arrival and departure arrays
                 Arrays.sort(arr);
                 Arrays.sort(dep);

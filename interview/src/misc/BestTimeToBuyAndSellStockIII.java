@@ -11,6 +11,30 @@
 package misc;
 
 public class BestTimeToBuyAndSellStockIII {
+
+        private int maxProfit2(int[] prices) {
+                int n = prices.length;
+                if (n == 0) {
+                        return 0;
+                }
+                // capture min price to buy for 1st transaction
+                int minPrice1 = Integer.MAX_VALUE;
+                // capture max profit to sell for 1st transaction
+                int profit1 = Integer.MIN_VALUE;
+
+                // capture min price to buy for 2nd transaction
+                int minPrice2 = Integer.MAX_VALUE;
+                // capture max profit to sell for 2nd transaction
+                int profit2 = Integer.MIN_VALUE;
+
+                for (int price : prices) {
+                        minPrice1 = Math.min(minPrice1, price);
+                        profit1 = Math.max(profit1, price - minPrice1);
+                        minPrice2 = Math.min(profit1, price);
+                        profit2 = Math.max(profit2, price - minPrice2);
+                }
+                return profit2;
+        }
         
         private int maxProfit(int[] prices) {
                 int n = prices.length;
@@ -44,6 +68,6 @@ public class BestTimeToBuyAndSellStockIII {
         
         public static void main(String[] args) {
                 int[] prices = { 7, 1, 5, 3, 6, 4 };
-                System.out.println(new BestTimeToBuyAndSellStockIII().maxProfit(prices));
+                System.out.println(new BestTimeToBuyAndSellStockIII().maxProfit2(prices));
         }
 }
