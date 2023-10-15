@@ -2,6 +2,9 @@
  * Date 05/04/2022
  *
  * @author akhilpathivada
+ *
+ * https://leetcode.com/problems/online-stock-span/description/
+ *
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
@@ -21,8 +24,9 @@ public class StockSpanProblemII {
                         stack.push(i);
                 }
         }
+
         public static void main(String[] args) {
-                int price[] = {100, 80, 60, 70, 60, 75, 85};
+                int price[] = { 100, 80, 60, 70, 60, 75, 85 };
                 int n = price.length;
                 int stock[] = new int[n];
                 new StockSpanProblemII().calculateSpan(price, stock, n);
