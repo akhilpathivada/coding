@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class NextGreaterElementI {
-        
+
         private void computeNGE(int[] arr, int[] nge, int n) {
                 Stack<Integer> stack = new Stack<>();
                 for (int i = 0; i < n; ++i) {
@@ -24,9 +24,9 @@ public class NextGreaterElementI {
                         stack.push(i);
                 }
         }
-        
+
         public static void main(String[] args) {
-                int arr[] = { 6, 8, 0, 1, 3};
+                int arr[] = { 6, 8, 0, 1, 3 };
                 int nge[] = new int[arr.length];
                 Arrays.fill(nge, -1);
                 new NextGreaterElementI().computeNGE(arr, nge, arr.length);
