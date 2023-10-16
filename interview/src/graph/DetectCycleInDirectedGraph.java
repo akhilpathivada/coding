@@ -11,8 +11,8 @@
 package graph;
 
 public class DetectCycleInDirectedGraph {
-        private boolean isCycleUtil(GraphNode node, boolean[] visited, boolean[] recStack) {
-                if (recStack[node.label]) {
+        private boolean isCycleUtil(GraphNode node, boolean[] visited, boolean[] pathVisited) {
+                if (pathVisited[node.label]) {
                         return true;
                 }
                 if (visited[node.label]) {
@@ -21,13 +21,13 @@ public class DetectCycleInDirectedGraph {
                 // Mark the current node as visited and
                 // part of recursion stack
                 visited[node.label] = true;
-                recStack[node.label] = true;
+                pathVisited[node.label] = true;
                 for (GraphNode neighbour : node.neighbours) {
-                        if (isCycleUtil(neighbour, visited, recStack)) {
+                        if (isCycleUtil(neighbour, visited, pathVisited)) {
                                 return true;
                         }
                 }
-                recStack[node.label] = false;
+                pathVisited[node.label] = false;
                 return false;
         }
 
@@ -35,9 +35,9 @@ public class DetectCycleInDirectedGraph {
                 // Mark all the vertices as not visited and
                 // not part of recursion stack
                 boolean[] visited = new boolean[graph.length];
-                boolean[] recStack = new boolean[graph.length];
+                boolean[] pathVisited = new boolean[graph.length];
                 for (int i = 0; i < graph.length; ++i) {
-                        if (isCycleUtil(graph[i], visited, recStack)) {
+                        if (isCycleUtil(graph[i], visited, pathVisited)) {
                                 return true;
                         }
                 }
