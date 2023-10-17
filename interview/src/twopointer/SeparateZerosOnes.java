@@ -4,7 +4,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(1)
  * */
-package array;
+package twopointer;
 
 import java.util.Arrays;
 
