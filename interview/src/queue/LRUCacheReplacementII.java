@@ -12,13 +12,13 @@ import java.util.*;
 
 public class LRUCacheReplacementII {
         
-        private final int CACHE_SIZE; // maximum capacity of cache
-        private Set<Integer> cache; // store references of key in cache
+        private final int CACHE_SIZE; // maximum capacity of design.cache
+        private Set<Integer> cache; // store references of key in design.cache
         private LRUCacheReplacementII(int capacity) {
                 CACHE_SIZE = capacity;
                 cache = new LinkedHashSet<>(capacity);
         }
-        /** This function returns false if key is not present in cache. Else it moves the key to
+        /** This function returns false if key is not present in design.cache. Else it moves the key to
           front by first removing it and then adding it, and returns true. */
         private boolean get(int page) {
                 if (!cache.contains(page)) {
@@ -29,8 +29,8 @@ public class LRUCacheReplacementII {
                 return true;
         }
         
-        /** if cache is full, remove first element in cache(which is lru)
-          and insert new page into cache */
+        /** if design.cache is full, remove first element in design.cache(which is lru)
+          and insert new page into design.cache */
         private void put(int page) {
                 if (cache.size() == CACHE_SIZE) {
                         int firstKey = cache.iterator().next();
@@ -39,13 +39,13 @@ public class LRUCacheReplacementII {
                 cache.add(page);
         }
         
-        // Refer the page within the LRU cache && insert if page not found
+        // Refer the page within the LRU design.cache && insert if page not found
         private void refer(int page) {
                 if (!get(page)) {
                         put(page);
                 }
         }
-        // display contents of cache
+        // display contents of design.cache
         private void displayCache() {
                 LinkedList<Integer> list = new LinkedList<>(cache);
                 /** The descendingIterator() method of java.util.LinkedList class is used to return an iterator over the elements

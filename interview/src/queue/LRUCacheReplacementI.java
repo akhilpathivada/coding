@@ -13,17 +13,17 @@ import java.util.LinkedList;
 
 public class LRUCacheReplacementI {
         
-        private final int CACHE_SIZE; // maximum capacity of cache
-        private Deque<Integer> deque; // store keys of cache
-        private HashSet<Integer> hashSet; // store references of key in cache
+        private final int CACHE_SIZE; // maximum capacity of design.cache
+        private Deque<Integer> deque; // store keys of design.cache
+        private HashSet<Integer> hashSet; // store references of key in design.cache
         private LRUCacheReplacementI(int capacity) {
                 CACHE_SIZE = capacity;
                 deque = new LinkedList<>();
                 hashSet = new HashSet<>(capacity);
         }
-        // Refer the page within the LRU cache
+        // Refer the page within the LRU design.cache
         private void refer(int page) {
-                // if page not found && cache is full
+                // if page not found && design.cache is full
                 if (!hashSet.contains(page)) {
                         if (deque.size() == CACHE_SIZE) {
                                 // remove least recently used page: it should be last
@@ -37,7 +37,7 @@ public class LRUCacheReplacementI {
                 deque.addFirst(page);
                 hashSet.add(page);
         }
-        // display contents of cache
+        // display contents of design.cache
         private void displayCache() {
                 Iterator<Integer> itr = deque.iterator();
                 while (itr.hasNext()) {
