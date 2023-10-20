@@ -8,8 +8,9 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package tree;
+package dp;
 
+import tree.TreeNode;
 
 public class HouseRobberIII {
 
