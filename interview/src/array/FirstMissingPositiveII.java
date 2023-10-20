@@ -18,7 +18,7 @@ public class FirstMissingPositiveII {
 
         int n = nums.length;
         // case-1: leave negative elements same
-        // case-2: if element is greater than 'n', leave them same
+        // case-2: if element is greater than 'n-1', leave them same
         // case-3: let's place element at it's index position - means place '2' at index '2'
         for (int i = 0; i < n; ++i) {
             // since because array index starts with 0

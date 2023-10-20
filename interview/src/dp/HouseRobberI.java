@@ -10,9 +10,9 @@
  */
 package dp;
 
-public class HouseRobber {
+public class HouseRobberI {
 
-        private static int rob(int[] nums, int n) {
+        private int rob(int[] nums, int n) {
                 // base case
                 if (n == 0) {
                         return 0;
@@ -31,9 +31,9 @@ public class HouseRobber {
                 }
                 return dp[n - 1];
         }
-        
+
         public static void main(String[] args) {
-                int[] nums = { 2, 7, 9, 3, 1};
-                System.out.println("Max amount you can rob = " + rob(nums, nums.length));
+                int[] nums = { 2, 7, 9, 3, 1 };
+                System.out.println("Max amount you can rob = " + new HouseRobberI().rob(nums, nums.length));
         }
 }
