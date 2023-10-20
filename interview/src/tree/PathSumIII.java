@@ -7,29 +7,31 @@
  * */
 package tree;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PathSumIII {
 
     int count = 0;
-    private void pathSumUtil(TreeNode root, int targetSum, int currentSum) {
+    private void pathSumUtil(TreeNode root, Map<Integer, Integer> prefixSumMap, int targetSum, int currentSum) {
         // base case
         if (root == null) {
             return;
         }
-
+        currentSum += root.data;
         if (currentSum == targetSum) {
             ++count;
         }
-        currentSum -= root.data;
-        pathSumUtil(root.left,  targetSum, currentSum);
-        pathSumUtil(root.right,  targetSum, currentSum);
-        currentSum += root.data;
+        count += prefixSumMap.getOrDefault(currentSum - targetSum, 0);
+        prefixSumMap.put(currentSum, prefixSumMap.getOrDefault(currentSum, 0) + 1);
+        pathSumUtil(root.left, prefixSumMap, targetSum, currentSum);
+        pathSumUtil(root.right, prefixSumMap, targetSum, currentSum);
+        prefixSumMap.put(currentSum, prefixSumMap.get(currentSum) - 1);
     }
 
     private int pathSum(TreeNode root, int targetSum) {
-        pathSumUtil(root,  targetSum, 0);
+        Map<Integer, Integer> prefixSumMap = new HashMap<>();
+        pathSumUtil(root, prefixSumMap, targetSum, 0);
         return count;
     }
 

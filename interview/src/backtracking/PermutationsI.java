@@ -13,7 +13,7 @@ package backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Permutations {
+public class PermutationsI {
 
         private void backtrack(int[] nums, List<List<Integer>> result, List<Integer> ds) {
                 // base case
@@ -39,6 +39,6 @@ public class Permutations {
 
         public static void main(String[] args) {
                 int[] nums = { 1, 2, 3 };
-                System.out.println(new Permutations().permute(nums));
+                System.out.println(new PermutationsI().permute(nums));
         }
 }
