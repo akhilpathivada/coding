@@ -14,24 +14,23 @@ public class TarjansAlgorithm {
 
     private int timer = 1;
 
-    private void dfs(int node, int parent, int[] visited, int[] timeOfInsertion, int[] lowestTimeOfInsertion,
+    private void dfs(int node, int parent, int[] visited, int[] timeOfVisit, int[] lowestTimeOfVisit,
             List<List<Integer>> adj, List<List<Integer>> bridges) {
         visited[node] = 1;
-        timeOfInsertion[node] = lowestTimeOfInsertion[node] = timer;
-        ++timer;
+        timeOfVisit[node] = lowestTimeOfVisit[node] = timer++;
         for (Integer _node : adj.get(node)) {
             if (_node == parent) {
                 continue;
             }
             if (visited[_node] == 0) {
-                dfs(_node, node, visited, timeOfInsertion, lowestTimeOfInsertion, adj, bridges);
-                lowestTimeOfInsertion[node] = Math.min(lowestTimeOfInsertion[node], lowestTimeOfInsertion[_node]);
+                dfs(_node, node, visited, timeOfVisit, lowestTimeOfVisit, adj, bridges);
+                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[_node]);
                 // if this connection is a bridge
-                if (lowestTimeOfInsertion[_node] > timeOfInsertion[node]) {
+                if (lowestTimeOfVisit[_node] > timeOfVisit[node]) {
                     bridges.add(Arrays.asList(_node, node));
                 }
             } else {
-                lowestTimeOfInsertion[node] = Math.min(lowestTimeOfInsertion[node], lowestTimeOfInsertion[_node]);
+                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[_node]);
             }
         }
     }
@@ -49,10 +48,10 @@ public class TarjansAlgorithm {
             adj.get(v).add(u);
         }
         int[] visited = new int[n];
-        int[] timeOfInsertion = new int[n];
-        int[] lowestTimeOfInsertion = new int[n];
+        int[] timeOfVisit = new int[n];
+        int[] lowestTimeOfVisit = new int[n];
         List<List<Integer>> bridges = new ArrayList<>();
-        dfs(0, -1, visited, timeOfInsertion, lowestTimeOfInsertion, adj, bridges);
+        dfs(0, -1, visited, timeOfVisit, lowestTimeOfVisit, adj, bridges);
         return bridges;
     }
 
@@ -64,7 +63,7 @@ public class TarjansAlgorithm {
         };
         List<List<Integer>> connections = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            connections.add(new ArrayList<Integer>());
+            connections.add(new ArrayList<>());
         }
         for (int i = 0; i < n; i++) {
             connections.get(i).add(edges[i][0]);
