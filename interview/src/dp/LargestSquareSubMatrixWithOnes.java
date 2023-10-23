@@ -5,6 +5,8 @@
  *
  * https://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
  *
+ * https://leetcode.com/problems/maximal-square/description/
+ *
  * Time Complexity : O(m * n)
  * Space Complexity : O(m * n)
  */

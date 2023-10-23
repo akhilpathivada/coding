@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class WordBreak {
+public class WordBreakI {
         
         private boolean isWordBreak(String s, List<String> wordDict) {
                 int n = s.length();
@@ -24,6 +24,7 @@ public class WordBreak {
                 for (int i = 1; i <= n; ++i) {
                         for (int j = 0; j < i; ++j) {
                                 if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                                        System.out.println("for i = j " + i + " - " + j);
                                         dp[i] = true;
                                         break;
                                 }
@@ -35,6 +36,6 @@ public class WordBreak {
         public static void main(String[] args) {
                 String s = "applepenapple";
                 List<String> wordDict = new ArrayList<String>(Arrays.asList( "apple", "pen"));
-                System.out.println(new WordBreak().isWordBreak(s, wordDict));
+                System.out.println(new WordBreakI().isWordBreak(s, wordDict));
         }
 }
