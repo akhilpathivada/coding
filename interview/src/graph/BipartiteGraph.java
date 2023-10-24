@@ -6,11 +6,10 @@
  * */
 package graph;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class IsBipartiteGraph {
+public class BipartiteGraph {
 
     private boolean bfs(int[][] graph, int[] color, int node) {
         Queue<Integer> queue = new LinkedList<>();
@@ -49,6 +48,6 @@ public class IsBipartiteGraph {
 
     public static void main(String[] args) {
         int[][] graph = { { 1, 2, 3 }, { 0, 2 }, { 0, 1, 3 }, { 0, 2 } };
-        System.out.println(new IsBipartiteGraph().isBipartite(graph));
+        System.out.println(new BipartiteGraph().isBipartite(graph));
     }
 }
