@@ -8,13 +8,14 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package graph;
+package advanced.disjointset;
 
 import java.util.Arrays;
 
-public class RedundantConnection {
+public class RedundantConnectionI {
         // captures parent of each node
         int[] parent;
+
         private int[] findRedundantConnection(int[][] edges) {
                 int n = edges.length + 1;
                 parent = new int[n + 1];
@@ -30,6 +31,7 @@ public class RedundantConnection {
                 }
                 return null;
         }
+
         // find which set it belongs
         private int find(int node) {
                 while (parent[node] != node) {
@@ -37,6 +39,7 @@ public class RedundantConnection {
                 }
                 return node;
         }
+
         // combine 2 disjoint sets
         private void union(int i, int j) {
                 int iRoot = find(i);
@@ -45,14 +48,9 @@ public class RedundantConnection {
                         parent[jRoot] = iRoot;
                 }
         }
+
         public static void main(String[] args) {
-                int[][] edges = {
-                        { 1, 2 },
-                        { 2, 3 },
-                        { 3, 4 },
-                        { 1, 4 },
-                        { 1, 5 }
-                };
-                System.out.println(Arrays.toString(new RedundantConnection().findRedundantConnection(edges)));
+                int[][] edges = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 1, 4 }, { 1, 5 } };
+                System.out.println(Arrays.toString(new RedundantConnectionI().findRedundantConnection(edges)));
         }
 }

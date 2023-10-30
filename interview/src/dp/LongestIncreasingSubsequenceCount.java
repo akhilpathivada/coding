@@ -20,7 +20,7 @@ public class LongestIncreasingSubsequenceCount {
         }
         int maxLength = Integer.MIN_VALUE;
         // stores the length of longest increasing sequence till ends here
-        int lis[] = new int[n];
+        int[] lis = new int[n];
         // stores the count of longest increasing sequence till ends here
         int[] count = new int[n];
         lis[0] = count[0] = 1;
