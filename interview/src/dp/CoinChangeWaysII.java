@@ -33,7 +33,7 @@ public class CoinChangeWaysII {
         // top-down approach
         private int topDown(int[] coins, int n, int amount, int[][] dp) {
                 if (n == 0) {
-                        dp[n][amount] = (amount % coins[0] == 0) ? 1 : 0;
+                        return (amount % coins[0] == 0) ? 1 : 0;
                 }
                 if (dp[n][amount] != -1) {
                         return dp[n][amount];
