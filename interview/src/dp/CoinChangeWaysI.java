@@ -11,17 +11,17 @@ package dp;
 public class CoinChangeWaysI {
         
         private int coinChange(int[] coins, int n, int amount) {
+                // If there are no coins and amount
+                // is greater than 0, then no solution exist
+                if (n == 0) {
+                        return amount == 0 ? 1 : 0;
+                }
                 // If amount is 0 then there is 1 solution
                 if (amount == 0) {
                       return 1;
                 }
                 // If amount <  0 then no solution exists
                 if (amount < 0) {
-                        return 0;
-                }
-                // If there are no coins and amount
-                // is greater than 0, then no solution exist
-                if (n <= 0 && amount >= 1) {
                         return 0;
                 }
                 return coinChange(coins, n , amount - coins[n - 1])

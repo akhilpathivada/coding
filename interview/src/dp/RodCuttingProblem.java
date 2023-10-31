@@ -10,9 +10,53 @@
  */
 package dp;
 
+import java.util.Arrays;
+
 public class RodCuttingProblem {
 
+        // recursive approach
+        private int f(int[] prices, int n, int index) {
+                // base case
+                if (index == 0) {
+                        return n * prices[0];
+                }
+                int rodLength = index + 1;
+                int taken = Integer.MIN_VALUE;
+                if (rodLength <= n) {
+                        taken = prices[index] + f(prices, n - rodLength, index);
+                }
+                int notTaken = f(prices, n, index - 1);
+                return Math.max(taken, notTaken);
+        }
+
+        // top down
+        private int topDown(int[] prices, int n, int index, int[][] dp) {
+                // base case
+                if (index == 0) {
+                        return n * prices[0];
+                }
+                if (dp[index][n] != -1) {
+                        return dp[index][n];
+                }
+                int rodLength = index + 1;
+                int taken = Integer.MIN_VALUE;
+                if (rodLength <= n) {
+                        taken = prices[index] + topDown(prices, n - rodLength, index, dp);
+                }
+                int notTaken = topDown(prices, n, index - 1, dp);
+                return dp[index][n] = Math.max(taken, notTaken);
+        }
+
         private int cutRod(int[] prices, int n) {
+                // recursive solution
+                System.out.println(f(prices, n, n - 1));
+                // top down solution
+                int[][] dp = new int[n][n + 1];
+                for (int[] row : dp) {
+                        Arrays.fill(row, - 1);
+                }
+                System.out.println(topDown(prices, n, n - 1, dp));
+                // tabulation solution
                 if (n == 0) {
                         return 0;
                 }
