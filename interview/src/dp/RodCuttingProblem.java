@@ -11,7 +11,7 @@
 package dp;
 
 public class RodCuttingProblem {
-        
+
         private int cutRod(int[] prices, int n) {
                 if (n == 0) {
                         return 0;
@@ -32,7 +32,7 @@ public class RodCuttingProblem {
                 }
                 return table[n][n];
         }
-        
+
         public static void main(String[] args) {
                 int[] prices = new int[] { 1, 5, 8, 9, 10, 17, 17, 20 };
                 int n = prices.length;
