@@ -46,6 +46,7 @@ public class DistinctSubsequences {
         int m = s.length();
         int n = t.length();
         System.out.println(f(s, t, m - 1, n - 1));
+
         // memorization
         int[][] dp = new int[m][n];
         for (int[] row : dp) {
@@ -53,6 +54,7 @@ public class DistinctSubsequences {
         }
         memorize(s, t, m - 1, n - 1, dp);
         System.out.println(dp[m - 1][n - 1]);
+
         // tabulation
         dp = new int[m + 1][n + 1];
         for (int i = 0; i <= m; ++i) {

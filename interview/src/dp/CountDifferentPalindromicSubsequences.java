@@ -9,7 +9,7 @@ package dp;
 public class CountDifferentPalindromicSubsequences {
 
     private int countPalindromicSubsequences(String s) {
-
+        return 0;
     }
 
     public static void main(String[] args) {

@@ -47,8 +47,10 @@ public class CountSubsetsWithSumK {
 
     private int findWays(int[] arr, int k) {
         int n = arr.length;
+
         // recursion
         System.out.println(f(arr, k, n - 1));
+
         // memorization
         int[][] dp = new int[n][k + 1];
         for (int[] row : dp) {
@@ -56,6 +58,7 @@ public class CountSubsetsWithSumK {
         }
         memorize(arr, k, n - 1, dp);
         System.out.println(dp[n - 1][k]);
+
         // tabulation
         dp = new int[n][k + 1];
         // if k == 0
