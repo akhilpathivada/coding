@@ -9,7 +9,7 @@
  */
 package binarysearch;
 
-public class SearchInRotatedSortedArray {
+public class SearchInRotatedSortedArrayI {
         private int searchElement(int[] nums, int target) {
                 int n = nums.length;
                 // base cases
@@ -56,6 +56,6 @@ public class SearchInRotatedSortedArray {
         public static void main(String[] args) {
                 int nums[] = { 4, 5, 6, 7, 0, 1, 2 }, target = 1;
                 System.out.printf("Target : %d is found at index : %d ", target,
-                        new SearchInRotatedSortedArray().searchElement(nums, target));
+                        new SearchInRotatedSortedArrayI().searchElement(nums, target));
         }
 }

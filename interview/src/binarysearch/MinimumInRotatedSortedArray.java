@@ -34,8 +34,10 @@ public class MinimumInRotatedSortedArray {
                 }
                 return nums[left % n];
         }
+
         public static void main(String[] args) {
-                int nums[] = { 4, 5, 6, 7, 0, 1, 2};
-                System.out.printf("Minimum in sorted rotated array = %d ", new MinimumInRotatedSortedArray().findMinimum(nums));
+                int nums[] = { 4, 5, 6, 7, 0, 1, 2 };
+                System.out.printf("Minimum in sorted rotated array = %d ",
+                        new MinimumInRotatedSortedArray().findMinimum(nums));
         }
 }
