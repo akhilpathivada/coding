@@ -1,115 +1,150 @@
-///**
-// * https://leetcode.com/problems/lfu-cache/description/
-// * */
-//package design.cache;
-//
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.PriorityQueue;
-//
-//public class LFUCache {
-//    class DoubleLinkedListNode {
-//        int key;
-//        int val;
-//        int freq;
-//        DoubleLinkedListNode prev;
-//        DoubleLinkedListNode next;
-//
-//        DoubleLinkedListNode(int key, int val, int freq) {
-//            this.key = key;
-//            this.val = val;
-//            this.freq = freq;
-//        }
-//    }
-//
-//    // maximum capacity of design.cache
-//    private int maxCapacity;
-//    // store references of key in design.cache
-//    private Map<Integer, DoubleLinkedListNode> frequencyMap;
-//    private Map<Integer, DoubleLinkedListNode> design.cache;
-//    // captures the least frequency key
-//    private PriorityQueue<List<Integer>> minHeap;
-//
-//    DoubleLinkedListNode head = new DoubleLinkedListNode(-1, -1);
-//    DoubleLinkedListNode tail = new DoubleLinkedListNode(-1, -1);
-//
-//    public LFUCache(int capacity) {
-//        maxCapacity = capacity;
-//        design.cache = new HashMap<>();
-//        minHeap = new PriorityQueue<>((a, b) -> (a.get(1) - b.get(1)));
-//        head.next = tail;
-//        tail.prev = head;
-//    }
-//
-//    private void addNode(DoubleLinkedListNode newNode) {
-//        DoubleLinkedListNode temp = head.next;
-//
-//        newNode.prev = head;
-//        newNode.next = temp;
-//
-//        head.next = newNode;
-//        temp.prev = newNode;
-//    }
-//
-//
-//    private void deleteNode(DoubleLinkedListNode node) {
-//        DoubleLinkedListNode prevNode = node.prev;
-//        DoubleLinkedListNode nextNode = node.next;
-//        prevNode.next = nextNode;
-//        nextNode.prev = prevNode;
-//    }
-//
-//    private int get(int key) {
-//        // found the key in the design.cache : so remove it from DLL and add it to last
-//        if (design.cache.containsKey(key)) {
-//            DoubleLinkedListNode result = design.cache.get(key);
-//            // remove it from design.cache
-//            design.cache.remove(key);
-//            // delete node from DLL
-//            deleteNode(result);
-//            // adds node the front of DLL
-//            addNode(result);
-//            // update the references in design.cache
-//            design.cache.put(key, head.next);
-//            return result.val;
-//        }
-//        return -1;
-//    }
-//
-//    private void put(int key, int value) {
-//        // found the key in the design.cache : so remove it from design.cache and DLL
-//        if (design.cache.containsKey(key)) {
-//            DoubleLinkedListNode node = design.cache.get(key);
-//            design.cache.remove(key);
-//            deleteNode(node);
-//        }
-//        // if design.cache exceeds limit : remove the last
-//        if (design.cache.size() == maxCapacity) {
-//            int lfuKey = minHeap.poll().get(0);
-//            DoubleLinkedListNode node = design.cache.get(lfuKey);
-//            design.cache.remove(lfuKey);
-//            deleteNode(node);
-//        }
-//        // adds node the front
-//        addNode(new DoubleLinkedListNode(key, value));
-//        // update the references in design.cache
-//        design.cache.put(key, head.next);
-////        minHeap.add(Arrays.asList(key, minHeap.poll().get(1) + 1));
-//    }
-//
-//    public static void main(String[] args) {
-//        LFUCache lFUCache = new LFUCache(2);
-//        lFUCache.put(1, 1); // design.cache is {1=1}
-//        lFUCache.put(2, 2); // design.cache is {1=1, 2=2}
-//        lFUCache.get(1);    // return 1
-//        lFUCache.put(3, 3); // LRU key was 2, evicts key 2, design.cache is {1=1, 3=3}
-//        lFUCache.get(2);    // returns -1 (not found)
-//        lFUCache.put(4, 4); // LRU key was 1, evicts key 1, design.cache is {4=4, 3=3}
-//        lFUCache.get(1);    // return -1 (not found)
-//        lFUCache.get(3);    // return 3
-//        lFUCache.get(4);    // return 4
-//    }
-//}
+/**
+ * https://leetcode.com/problems/lfu-cache/description/
+ * */
+package design.cache;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LFUCache {
+
+    class DLLNode {
+        int key;
+        int value;
+        int frequency;
+        DLLNode prev;
+        DLLNode next;
+
+        DLLNode(int key, int value, int frequency) {
+            this.key = key;
+            this.value = value;
+            this.frequency = frequency;
+        }
+    }
+    class DoubleLinkedList {
+        int sizeOfList;
+        DLLNode head;
+        DLLNode tail;
+
+        public DoubleLinkedList() {
+            head = new DLLNode(-1, -1, -1);
+            tail = new DLLNode(-1, -1, -1);
+            head.next = tail;
+            tail.prev = head;
+            sizeOfList = 0;
+        }
+
+        // adds to the front of the list
+        public void addNode(DLLNode currentNode) {
+            DLLNode nextNode = head.next;
+            currentNode.next = nextNode;
+            currentNode.prev = head;
+            head.next = currentNode;
+            nextNode.prev = currentNode;
+            ++sizeOfList;
+        }
+
+        // removes at the end of the list
+        public void removeNode(DLLNode current) {
+            DLLNode prevNode = current.prev;
+            DLLNode nextNode = current.next;
+            prevNode.next = nextNode;
+            nextNode.prev = prevNode;
+            --sizeOfList;
+        }
+    }
+
+    // maximum capacity of cache
+    private int maxCapacity;
+    // current capacity
+    private int currentSize;
+    // min. frequency of any key so far
+    private int minFrequencySoFar;
+    // stores (key, node address)
+    private Map<Integer, DLLNode> cache;
+    // stores (frequency, list of nodes with this frequency)
+    private Map<Integer, DoubleLinkedList> frequencyMap;
+
+    public LFUCache(int capacity) {
+        this.maxCapacity = capacity;
+        this.currentSize = 0;
+        this.minFrequencySoFar = 0;
+        this.cache = new HashMap<>();
+        this.frequencyMap = new HashMap<>();
+    }
+
+    private void updateNode(DLLNode currentNode) {
+        int currentFrequency = currentNode.frequency;
+        DoubleLinkedList currentList = frequencyMap.get(currentFrequency);
+        currentList.removeNode(currentNode);
+        // if this the last and final of the list
+        // increase the minFrequencySoFar
+        if (currentFrequency == minFrequencySoFar && currentList.sizeOfList == 0) {
+            ++minFrequencySoFar;
+        }
+        ++currentNode.frequency;
+        // if the list if present with this new frequency, update it
+        // or create a new list
+        DoubleLinkedList newList = frequencyMap.getOrDefault(currentNode.frequency, new DoubleLinkedList());
+        newList.addNode(currentNode);
+        frequencyMap.put(currentNode.frequency, newList);
+    }
+
+    private int get(int key) {
+        // not found in the cache
+        DLLNode currentNode = cache.get(key);
+        if (currentNode == null) {
+            return -1;
+        }
+        updateNode(currentNode);
+        return currentNode.value;
+    }
+
+    private void put(int key, int value) {
+        // corner case
+        if (maxCapacity == 0) {
+            return;
+        }
+        // found the key in the cache : so remove it from cache and DLL
+        if (cache.containsKey(key)) {
+            DLLNode currentNode = cache.get(key);
+            currentNode.value = value;
+            updateNode(currentNode);
+        } else {
+            ++currentSize;
+            // if cache exceeds limit : remove the lfu
+            if (currentSize > maxCapacity) {
+                DoubleLinkedList minFrequencyList = frequencyMap.get(minFrequencySoFar);
+                DLLNode lfuNode = minFrequencyList.tail.prev;
+                cache.remove(lfuNode.key);
+                minFrequencyList.removeNode(lfuNode);
+                --currentSize;
+            }
+            // reset the minFrequencySoFar to 1
+            minFrequencySoFar = 1;
+            // adds node the front
+            DLLNode newNode = new DLLNode(key, value, 1);
+            // now get the list with frequency 1
+            // and add this new node to the list
+            DoubleLinkedList currentList = frequencyMap.getOrDefault(1, new DoubleLinkedList());
+            currentList.addNode(newNode);
+            // putting the frequency list
+            frequencyMap.put(1, currentList);
+            // finally putting the key into the cache
+            cache.put(key, newNode);
+        }
+    }
+
+    public static void main(String[] args) {
+        LFUCache lFUCache = new LFUCache(2);
+        lFUCache.put(1, 1); // cache is {1=1}
+        lFUCache.put(2, 2); // cache is {1=1, 2=2}
+        System.out.println(lFUCache.get(1)); // return 1
+        lFUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+        System.out.println(lFUCache.get(2)); // returns -1 (not found)
+        lFUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+        System.out.println(lFUCache.get(1)); // returns -1 (not found)
+        System.out.println(lFUCache.get(3));    // return 3
+        System.out.println(lFUCache.get(4));    // return 4
+    }
+}

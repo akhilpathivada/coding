@@ -1,12 +1,12 @@
 /**
- * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+ * https://leetcode.com/problems/find-peak-element/
  *
  * Time Complexity: O(log(N))
  * Space Complexity: O(1)
  * */
 package binarysearch;
 
-public class FindPeakElement {
+public class FindPeakElementI {
 
     private int findPeakElement(int[] nums) {
         int start = 0;
@@ -29,6 +29,6 @@ public class FindPeakElement {
 
     public static void main(String[] args) {
         int[] nums = { 1, 2, 1, 3, 5, 6, 4 };
-        System.out.println(new FindPeakElement().findPeakElement(nums));
+        System.out.println(new FindPeakElementI().findPeakElement(nums));
     }
 }
