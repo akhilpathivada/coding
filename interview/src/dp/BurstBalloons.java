@@ -34,8 +34,7 @@ public class BurstBalloons {
         }
         int max = Integer.MIN_VALUE;
         for (int k = i; k <= j; ++k) {
-            int cost =
-                    nums[i - 1] * nums[k] * nums[j + 1] + memoize(nums, i, k - 1, dp) + memoize(nums, k + 1, j, dp);
+            int cost = nums[i - 1] * nums[k] * nums[j + 1] + memoize(nums, i, k - 1, dp) + memoize(nums, k + 1, j, dp);
             max = Math.max(max, cost);
         }
         return dp[i][j] = max;

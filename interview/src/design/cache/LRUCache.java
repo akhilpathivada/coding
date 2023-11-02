@@ -35,23 +35,20 @@ public class LRUCache {
         tail.prev = head;
     }
 
-        private void addNode(DoubleLinkedListNode newNode) {
-            DoubleLinkedListNode temp = head.next;
+    private void addNode(DoubleLinkedListNode newNode) {
+        DoubleLinkedListNode temp = head.next;
+        newNode.prev = head;
+        newNode.next = temp;
+        head.next = newNode;
+        temp.prev = newNode;
+    }
 
-            newNode.prev = head;
-            newNode.next = temp;
-
-            head.next = newNode;
-            temp.prev = newNode;
-        }
-
-
-        private void deleteNode(DoubleLinkedListNode node) {
-            DoubleLinkedListNode prevNode = node.prev;
-            DoubleLinkedListNode nextNode = node.next;
-            prevNode.next = nextNode;
-            nextNode.prev = prevNode;
-        }
+    private void deleteNode(DoubleLinkedListNode node) {
+        DoubleLinkedListNode prevNode = node.prev;
+        DoubleLinkedListNode nextNode = node.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+    }
 
     private int get(int key) {
         // found the key in the cache : so remove it from DLL and add it to last
