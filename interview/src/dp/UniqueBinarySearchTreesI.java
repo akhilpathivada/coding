@@ -3,9 +3,9 @@
  * Time Complexity: O(N ^ 2)
  * Space Complexity: O(N)
  */
-package tree;
+package dp;
 
-public class UniqueBinarySearchTrees {
+public class UniqueBinarySearchTreesI {
 
     private static int numTrees(int n) {
 

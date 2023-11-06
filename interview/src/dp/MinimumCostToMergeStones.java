@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/minimum-cost-to-merge-stones/description/
+ * https://www.codingninjas.com/studio/problems/merging-stones_3210617
+ *
+ * Time Complexity : O(N ^ 3)
+ * Space Complexity : O(N ^ 2)
+ * */
 package dp;
 
 import java.util.Arrays;
@@ -61,6 +68,9 @@ public class MinimumCostToMergeStones {
             Arrays.fill(row, -1);
         }
         memoize(stones, prefixSum, dp, k, 0, n - 1);
+
+        // tabulation - yet to do
+
         return dp[0][n - 1];
     }
 
