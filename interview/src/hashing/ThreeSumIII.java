@@ -21,12 +21,13 @@ public class ThreeSumIII {
                                 // triplet found
                                 if (set.contains(curr_sum - arr[j])) {
                                         System.out.printf("%d, %d, %d", arr[i], arr[j], curr_sum - arr[j]);
-                                        
+
                                 }
                                 set.add(arr[j]);
                         }
                 }
         }
+
         public static void main(String[] args) {
                 int[] arr = { 1, 4, 45, 6, 10, 8 };
                 int sum = 22;
