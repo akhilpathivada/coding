@@ -5,12 +5,12 @@
  * */
 package advanced.disjointset;
 
-public class DisjointSet {
+public class DisjointSetUnionByRank {
 
     int[] rank; // stores rank of a node
     int[] parent; // stores parent of each node
 
-    public DisjointSet(int n) {
+    public DisjointSetUnionByRank(int n) {
         // create with n + 1 size: so that it would be useful for 0-indexed and 1-indexed as well
         rank = new int[n + 1];
         parent = new int[n + 1];
@@ -51,7 +51,7 @@ public class DisjointSet {
 
     public static void main(String[] args) {
         int n = 7;
-        DisjointSet disjointSet = new DisjointSet(n);
+        DisjointSetUnionByRank disjointSet = new DisjointSetUnionByRank(n);
         disjointSet.unionByRank(1, 2);
         disjointSet.unionByRank(2, 3);
         disjointSet.unionByRank(4, 5);
