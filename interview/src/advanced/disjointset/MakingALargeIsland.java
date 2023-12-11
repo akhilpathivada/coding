@@ -1,4 +1,7 @@
-package graph;
+/**
+ * https://leetcode.com/problems/making-a-large-island/
+ * */
+package advanced.disjointset;
 
 public class MakingALargeIsland {
 
