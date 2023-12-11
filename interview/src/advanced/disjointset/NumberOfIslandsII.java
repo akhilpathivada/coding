@@ -2,8 +2,8 @@
  * https://www.codingninjas.com/studio/problems/number-of-islands-ii_1266048
  * https://www.geeksforgeeks.org/problems/number-of-islands/1
  *
- * Time Complexity: O(Q*4α) ~ O(Q) where Q = no. of queries. The term 4α is so small that it can be considered constant.
- * Space Complexity: O(Q) + O(N*M) + O(N*M), where Q = no. of queries, N = total no. of rows, M = total no. of columns.
+ * Time Complexity: O(Q * 4α) ~ O(Q) where Q = no. of queries. The term 4α is so small that it can be considered constant.
+ * Space Complexity: O(Q) + O(N * M) + O(N * M), where Q = no. of queries, N = total no. of rows, M = total no. of columns.
  * */
 package advanced.disjointset;
 
@@ -13,8 +13,8 @@ import java.util.List;
 
 public class NumberOfIslandsII {
 
-    private boolean isValidNeighbour(int x, int y, int n, int m) {
-        return x >= 0 && x < n && y >= 0 && y < m;
+    private boolean isValidNeighbour(int i, int j, int n, int m) {
+        return i >= 0 && i < n && j >= 0 && j < m;
     }
 
     private int[] numOfIslandsII(int n, int m, int[][] queries) {
