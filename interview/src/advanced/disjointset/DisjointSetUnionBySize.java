@@ -10,7 +10,7 @@ public class DisjointSetUnionBySize {
     int[] size; // stores size
     int[] parent; // stores parent of each node
 
-    public DisjointSetUnionBySize(int n) {
+    private DisjointSetUnionBySize(int n) {
         // create with n + 1 size: so that it would be useful for 0-indexed and 1-indexed as well
         size = new int[n + 1];
         parent = new int[n + 1];
@@ -26,7 +26,7 @@ public class DisjointSetUnionBySize {
 
     // to find the ultimate parent of a node
     // and do "path compression"
-    public int findUltimateParent(int node) {
+    private int findUltimateParent(int node) {
         // this the ultimate parent (root)
         if (parent[node] == node) {
             return node;
@@ -35,7 +35,7 @@ public class DisjointSetUnionBySize {
         return parent[node];
     }
 
-    public void unionBySize(int u, int v) {
+    private void unionBySize(int u, int v) {
         int ultimateParentOfU = findUltimateParent(u);
         int ultimateParentOfV = findUltimateParent(v);
         // if both are already in same set
