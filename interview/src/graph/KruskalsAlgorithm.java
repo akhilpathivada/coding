@@ -15,6 +15,7 @@ import java.util.List;
 public class KruskalsAlgorithm {
 
     class Edge implements Comparable<Edge> {
+
         private final int src;
 
         private final int dest;
