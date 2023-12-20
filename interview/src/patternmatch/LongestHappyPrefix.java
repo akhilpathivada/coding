@@ -7,8 +7,6 @@
  * */
 package patternmatch;
 
-import java.util.Arrays;
-
 public class LongestHappyPrefix {
 
     public String longestPrefix(String s) {
