@@ -32,7 +32,7 @@ public class RabinKarpAlgorithm {
         return true;
     }
 
-    private long recalculateHash(char[] str,int oldIndex, int newIndex,long oldHash, int patternLength) {
+    private long recalculateHash(char[] str, int oldIndex, int newIndex, long oldHash, int patternLength) {
         long newHash = oldHash - str[oldIndex];
         newHash = newHash / prime;
         newHash += (long) (str[newIndex] * Math.pow(prime, patternLength - 1));

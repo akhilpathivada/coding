@@ -1,5 +1,6 @@
 /**
  * https://leetcode.com/problems/shortest-palindrome/
+ * https://www.codingninjas.com/studio/problems/shortest-palindrome_3118979
  *
  * Time Complexity: O(2 * N)
  * Space Complexity: O(1)

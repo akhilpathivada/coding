@@ -14,7 +14,7 @@ public class KMPAlgorithm {
     // lps[i] -> size of suffix ending at 'i' which has a matching prefix
     private int[] computeLPS(char[] pattern, int m) {
         int[] lps = new int[m];
-        int len = 0; // length of the previous longest prefix suffix
+        int len = 0; // length of the previous longest prefix substring
         lps[0] = 0; // lps[0] is always 0
         // the loop calculates lps[i] for i = 1 to m - 1
         for (int i = 1; i < m; ) {
