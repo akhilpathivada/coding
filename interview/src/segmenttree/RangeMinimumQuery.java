@@ -2,10 +2,19 @@
  * Date 01/05/2022
  *
  * @author akhilpathivada
+ *
+ * Time Complexity for segment tree construction is O(n).
+ * There are total 2n - 1 nodes, and value of every node is calculated only once in tree construction.
+ *
+ * Time Complexity: to query is O(log(n)).
+ * To query a range minimum, we process at most two nodes at every level and number of levels is O(log(n)).
+ * Space Complexity: O(n), since n extra space has been taken.
+ *
  */
-package advanced.segmenttree;
+package segmenttree;
 
 public class RangeMinimumQuery {
+
         private int rangeMinimumUtil(int[] st, int ss, int se, int qs, int qe, int index) {
                 // base case
                 if (qs <= ss && qe >= se) {
@@ -24,8 +33,9 @@ public class RangeMinimumQuery {
                         return -1;
                 }
                 // create segment tree
-                int[] st = new SegmentTree(arr, n).st;
-                return rangeMinimumUtil(st, 0, n - 1, qs, qe, 0);
+                SegmentTreeForRangeMinimumQuery segmentTree = new SegmentTreeForRangeMinimumQuery(n);
+                segmentTree.constructSegmentTree(arr, 0, n - 1, 0);
+                return rangeMinimumUtil(segmentTree.getNodes(), 0, n - 1, qs, qe, 0);
         }
 
         public static void main(String[] args) {
