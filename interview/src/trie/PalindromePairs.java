@@ -2,7 +2,7 @@
  * https://leetcode.com/problems/palindrome-pairs/
  *
  * */
-package advanced.trie;
+package trie;
 
 import java.util.ArrayList;
 import java.util.Arrays;

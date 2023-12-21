@@ -3,7 +3,7 @@
  *
  * Time Complexity: O(constant) to check two elements belongs to same set
  * */
-package advanced.disjointset;
+package disjointset;
 
 public class DisjointSetUnionBySize {
 

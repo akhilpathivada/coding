@@ -3,7 +3,7 @@
  *
  *
  * */
-package advanced.disjointset;
+package disjointset;
 
 import java.util.HashSet;
 import java.util.Set;

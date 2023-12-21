@@ -6,7 +6,7 @@
  * you need to perform L lookups on the average for each of the W words in the set.
  *
  */
-package advanced.trie;
+package trie;
 
 public class InsertionIntoTrie {
         

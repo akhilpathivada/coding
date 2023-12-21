@@ -8,7 +8,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package advanced.disjointset;
+package disjointset;
 
 import java.util.Arrays;
 

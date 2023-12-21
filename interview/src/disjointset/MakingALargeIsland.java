@@ -6,7 +6,7 @@
  * Time Complexity: O(m * n) * O(Q * 4α) ~ O(Q) where Q = no. of queries. The term 4α is so small that it can be considered constant.
  * Space Complexity: O(Q) + O(N * M) + O(N * M), where Q = no. of queries, N = total no. of rows, M = total no. of columns.
  * */
-package advanced.disjointset;
+package disjointset;
 
 import java.util.HashSet;
 import java.util.Set;

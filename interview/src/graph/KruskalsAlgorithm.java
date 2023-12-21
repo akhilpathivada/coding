@@ -6,7 +6,7 @@
  * */
 package graph;
 
-import advanced.disjointset.DisjointSet;
+import disjointset.DisjointSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

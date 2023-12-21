@@ -4,7 +4,7 @@
  *
  *
  * */
-package advanced.trie;
+package trie;
 
 import java.util.ArrayList;
 import java.util.Arrays;

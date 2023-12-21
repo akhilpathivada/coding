@@ -4,7 +4,7 @@
  * Time Complexity: O(N ^ 3)
  * Space Complexity: O(N ^ 2)
  * */
-package advanced.trie;
+package trie;
 
 public class CountDistinctSubstrings {
 

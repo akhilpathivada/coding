@@ -1,4 +1,4 @@
-package advanced.trie;
+package trie;
 
 import java.util.Arrays;
 import java.util.List;

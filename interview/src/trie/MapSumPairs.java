@@ -4,7 +4,7 @@
  * Time Complexity: O(N * L) + Q(L + N)  where N -> no. of words, L -> length of the word, Q -> no. of queries
  * Space Complexity: O(N * L)
  * */
-package advanced.trie;
+package trie;
 
 public class MapSumPairs {
 

@@ -3,7 +3,7 @@
  *
  * @author akhilpathivada
  */
-package advanced.trie;
+package trie;
 
 public class TrieNode {
         

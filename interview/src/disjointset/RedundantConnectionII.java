@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/redundant-connection-ii/description/
  * */
-package advanced.disjointset;
+package disjointset;
 
 import java.util.Arrays;
 

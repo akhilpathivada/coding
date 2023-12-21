@@ -3,7 +3,7 @@
  * https://www.codingninjas.com/studio/problems/accounts-merge_1089558?leftPanelTabValue=PROBLEM
  * https://practice.geeksforgeeks.org/problems/account-merge/
  * */
-package advanced.disjointset;
+package disjointset;
 
 import java.util.ArrayList;
 import java.util.Arrays;

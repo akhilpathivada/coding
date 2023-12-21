@@ -4,7 +4,7 @@
  * Time Complexity: O(M * N * 4^L) where L is length of the word
  * Space Complexity: O(M * N)
  * */
-package advanced.trie;
+package trie;
 
 import java.util.ArrayList;
 import java.util.List;

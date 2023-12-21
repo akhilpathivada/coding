@@ -6,7 +6,7 @@
  * Space Complexity: O(N * 32)
  *
  * */
-package advanced.trie;
+package trie;
 
 public class MaximumXOROfTwoNumbersInArray {
 
