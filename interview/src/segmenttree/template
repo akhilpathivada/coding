@@ -11,6 +11,10 @@ abstract class SegmentTree {
                 nodes = new int[size];
         }
 
+        public int[] getNodes() {
+               return nodes;
+        }
+
         public abstract int constructSegmentTree(int[] nums, int ss, int se, int index);
 
 }
