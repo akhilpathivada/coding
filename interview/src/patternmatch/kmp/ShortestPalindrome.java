@@ -2,10 +2,12 @@
  * https://leetcode.com/problems/shortest-palindrome/
  * https://www.codingninjas.com/studio/problems/shortest-palindrome_3118979
  *
+ * (KMP Algorithm)
+ *
  * Time Complexity: O(2 * N)
  * Space Complexity: O(1)
  * */
-package patternmatch;
+package patternmatch.kmp;
 
 public class ShortestPalindrome {
 

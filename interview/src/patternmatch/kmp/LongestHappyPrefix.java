@@ -2,10 +2,12 @@
  * https://leetcode.com/problems/longest-happy-prefix/description/
  * https://www.codingninjas.com/studio/problems/longest-prefix-which-is-suffix_3146849
  *
+ * (KMP Algorithm)
+ *
  * Time Complexity: O(N)
  * Space Complexity: O(N)
  * */
-package patternmatch;
+package patternmatch.kmp;
 
 public class LongestHappyPrefix {
 

@@ -11,7 +11,7 @@
  * Space complexity : O(1)
  *
  * */
-package patternmatch;
+package patternmatch.rollinghash;
 
 public class RabinKarpAlgorithm {
 

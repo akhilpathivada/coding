@@ -2,10 +2,12 @@
  * https://leetcode.com/problems/longest-duplicate-substring/description/
  * https://www.codingninjas.com/studio/problems/longest-duplicate-substring_1229794
  *
+ * (Rolling Hash)
+ *
  * Time Complexity: O(log(N) * O(N))
  * Space Complexity: O(N)
  * */
-package patternmatch;
+package patternmatch.rollinghash;
 
 import java.util.HashSet;
 import java.util.Set;

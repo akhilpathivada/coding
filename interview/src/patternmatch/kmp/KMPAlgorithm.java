@@ -5,7 +5,7 @@
  * Time Complexity: O(N + M) where N is the length of the text and M is the length of the pattern to be found.
  * Space Complexity: O(M)
  * */
-package patternmatch;
+package patternmatch.kmp;
 
 public class KMPAlgorithm {
 
