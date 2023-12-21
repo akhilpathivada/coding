@@ -3,7 +3,7 @@
  *
  * @author akhilpathivada
  */
-package advanced.ternarysearchtree;
+package ternarysearchtree;
 
 
 public class TernarySearchTreeNode {

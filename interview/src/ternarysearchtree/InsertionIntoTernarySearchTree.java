@@ -7,7 +7,7 @@
  * i.e. the insertion, deletion, and search operations take time proportional to the height of the ternary search tree.
  * The space is proportional to the length of the string to be stored.
  */
-package advanced.ternarysearchtree;
+package ternarysearchtree;
 
 
 public class InsertionIntoTernarySearchTree {
