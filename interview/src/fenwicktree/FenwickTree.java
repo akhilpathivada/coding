@@ -32,7 +32,7 @@ public class FenwickTree {
      * start from (index + 1) if you're updating index in original array. Keep adding this value
      * for next node till you reach outside range of tree
      */
-    private void updateBinaryIndexedTree(int index, int value) { // O(log(n))
+    public void updateBinaryIndexedTree(int index, int value) { // O(log(n))
         while (index < binaryIndexedTree.length) {
             binaryIndexedTree[index] += value;
             index = getNext(index);
@@ -86,7 +86,7 @@ public class FenwickTree {
     /**
      * constructing tree is like updating Fenwick tree for every value in array
      */
-    private void constructTree(int[] nums) { // O(n) * O(log(n))
+    public void constructTree(int[] nums) { // O(n) * O(log(n))
         int n = nums.length;
         for (int i = 1; i <= n; ++i) {
             // store the actual values in binaryIndexedTree[] using updateBinaryIndexedTree()
