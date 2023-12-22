@@ -46,7 +46,7 @@ public class RangeSumQueryMutable {
         int diff = val - nums[index];
         // Update the value in array
         nums[index] = val;
-        updateUtil(segmentTreeForRangeSumQuery.getNodes(), 0, n - 1, index, diff, 0);
+        updateUtil(segmentTreeForRangeSumQuery.getSegmentTree(), 0, n - 1, index, diff, 0);
     }
 
     private int sumRangeUtil(int[] st, int ss, int se, int qs, int qe, int index) {
@@ -68,7 +68,7 @@ public class RangeSumQueryMutable {
             return -1;
         }
         segmentTreeForRangeSumQuery.constructSegmentTree(nums, 0, n - 1, 0);
-        return sumRangeUtil(segmentTreeForRangeSumQuery.getNodes(), 0, n - 1, left, right, 0);
+        return sumRangeUtil(segmentTreeForRangeSumQuery.getSegmentTree(), 0, n - 1, left, right, 0);
     }
 
     public static void main(String[] args) {

@@ -35,7 +35,7 @@ public class RangeMinimumQuery {
                 // create segment tree
                 SegmentTreeForRangeMinimumQuery segmentTree = new SegmentTreeForRangeMinimumQuery(n);
                 segmentTree.constructSegmentTree(arr, 0, n - 1, 0);
-                return rangeMinimumUtil(segmentTree.getNodes(), 0, n - 1, qs, qe, 0);
+                return rangeMinimumUtil(segmentTree.getSegmentTree(), 0, n - 1, qs, qe, 0);
         }
 
         public static void main(String[] args) {

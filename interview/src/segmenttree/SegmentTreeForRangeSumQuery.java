@@ -17,14 +17,14 @@ public class SegmentTreeForRangeSumQuery extends SegmentTree {
         // If there is one element in array, store it in current
         //  node of segment tree and return
         if (ss == se) {
-            nodes[index] = arr[ss];
+            st[index] = arr[ss];
             return arr[ss];
         }
         int mid = ss + (se - ss) / 2;
         // If there are more than one element, then recur for left and
         // right subtrees and store the minimum of two values in this node
-        nodes[index] = constructSegmentTree(arr, ss, mid, index * 2 + 1) +
+        st[index] = constructSegmentTree(arr, ss, mid, index * 2 + 1) +
                 constructSegmentTree(arr, mid + 1, se, index * 2 + 2);
-        return nodes[index];
+        return st[index];
     }
 }
