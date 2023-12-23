@@ -28,6 +28,10 @@ public class FenwickTree {
         Arrays.fill(binaryIndexedTree, 0);
     }
 
+    public int[] getBinaryIndexedTree() {
+        return binaryIndexedTree;
+    }
+
     /**
      * start from (index + 1) if you're updating index in original array. Keep adding this value
      * for next node till you reach outside range of tree
@@ -81,6 +85,10 @@ public class FenwickTree {
      */
     private int getNext(int index){ // O(1)
         return index + (index & -index);
+    }
+
+    public int rangeSum(int left, int right) {
+        return getSum(right) - getSum(left - 1);
     }
 
     /**

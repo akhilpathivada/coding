@@ -11,8 +11,6 @@
  */
 package graph;
 
-import java.util.Arrays;
-
 public class NumberOfIslands {
         private int m, n; // rows, columns
         private void DFS(char[][] grid, int i, int j) {
