@@ -7,6 +7,7 @@
  * https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679
  *
  * Time Complexity: O(log(m) * log(n))
+ * Space Complexity: O(1)
  */
 package binarysearch;
 
