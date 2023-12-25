@@ -52,7 +52,7 @@ public class PaintersPartition {
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> boards = new ArrayList<>(Arrays.asList(2, 1, 5, 6, 2,3 ));
+        ArrayList<Integer> boards = new ArrayList<>(Arrays.asList(2, 1, 5, 6, 2, 3));
         int k = 2;
         System.out.println(new PaintersPartition().findLargestMinDistance(boards, k));
     }
