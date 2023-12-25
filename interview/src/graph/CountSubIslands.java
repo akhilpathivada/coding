@@ -11,53 +11,39 @@
  */
 package graph;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class CountSubIslands {
 
-    private void dfs(int[][] grid, int i, int j, int m, int n, int baseRow, int baseColumn, List<String> coordinates) {
+    private int flag;
+
+    private void dfs(int[][] grid1, int[][] grid2, int i, int j) {
         // base case
-        if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] != 1) {
+        if (i < 0 || j < 0 || i == grid1.length || j == grid1[0].length || grid2[i][j] == 0) {
             return;
         }
+        if (grid1[i][j] == 0) {
+            flag = 0;
+        }
         // mark the island as visited
-        grid[i][j] = 0;
-        // store the coordinate
-        coordinates.add(baseRow - i + "," + (baseColumn - j));
+        grid2[i][j] = 0;
         // recur on its neighbours
-        dfs(grid, i + 1, j, m, n, baseRow, baseColumn, coordinates);
-        dfs(grid, i - 1, j, m, n, baseRow, baseColumn, coordinates);
-        dfs(grid, i, j + 1, m, n, baseRow, baseColumn, coordinates);
-        dfs(grid, i, j - 1, m, n, baseRow, baseColumn, coordinates);
+        dfs(grid1, grid2, i + 1, j);
+        dfs(grid1, grid2, i - 1, j);
+        dfs(grid1, grid2, i, j + 1);
+        dfs(grid1, grid2, i, j - 1);
     }
 
-
     private int countSubIslands(int[][] grid1, int[][] grid2) {
-        int m = grid1.length;
-        if (m == 0) {
-            return 0;
+        int countOfSubIslands = 0;
+        for (int i = 0; i < grid1.length; ++i) {
+            for (int j = 0; j < grid1[0].length; ++j) {
+                if (grid2[i][j] == 1) {
+                    flag = 1;
+                    dfs(grid1, grid2, i, j);
+                    countOfSubIslands += flag;
+                }
+            }
         }
-        int n = grid1[0].length;
-        List<Set<String>> islandsSetOfGrid1 = new ArrayList<>();
-//        List<String> islandsOfGrid2 = new ArrayList<>();
-//        for (int i = 0; i < m; ++i) {
-//            for (int j = 0; j < n; ++j) {
-//                // island found
-//                if (grid1[i][j] == 1) {
-//                    List<String> coordinates = new ArrayList<>();
-//                    dfs(grid, i, j, m, n, i, j, coordinates);
-//                    set.add(coordinates);
-//                }
-//            }
-//        }
-//        for (Set<String> island : islandsSetOfGrid1) {
-//            if (island.contains())
-//        }
-//        return set.size();
-        return 1;
+        return countOfSubIslands;
     }
 
     public static void main(String[] args) {
@@ -75,5 +61,6 @@ public class CountSubIslands {
                 { 1, 0, 1, 1, 0 },
                 { 0, 1, 0, 1, 0 }
         };
+        System.out.println(new CountSubIslands().countSubIslands(grid1, grid2));
     }
 }
