@@ -20,12 +20,12 @@ public class KthSmallestElementInASortedMatrix {
     private int kthSmallest(int[][] matrix, int k) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, Collections.reverseOrder());
         for (int[] row : matrix) {
-            for (int j = 0; j < matrix[0].length; ++j) {
+            for (int element : row) {
                 if (maxHeap.size() < k) {
-                    maxHeap.offer(row[j]);
-                } else if (!maxHeap.isEmpty() && row[j] < maxHeap.peek()) {
+                    maxHeap.offer(element);
+                } else if (!maxHeap.isEmpty() && element < maxHeap.peek()) {
                     maxHeap.poll();
-                    maxHeap.offer(row[j]);
+                    maxHeap.offer(element);
                 }
             }
         }
