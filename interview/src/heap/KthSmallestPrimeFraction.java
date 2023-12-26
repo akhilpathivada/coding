@@ -15,6 +15,7 @@ package heap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class KthSmallestPrimeFraction {
@@ -52,7 +53,6 @@ public class KthSmallestPrimeFraction {
                 }
             }
         }
-        new ArrayList<>(Arrays.asList(new int[] { -1, -1 }));
         return maxHeap.isEmpty() ? new int[] { -1, -1 } : new int[] { maxHeap.peek().i, maxHeap.peek().j };
     }
 
