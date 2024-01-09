@@ -5,7 +5,8 @@
  * time: 05:29
  *
  * https://leetcode.com/problems/design-browser-history/description/
- * 
+ * https://www.codingninjas.com/studio/problems/browser_2427908
+ *
  */
 package linkedlist;
 
