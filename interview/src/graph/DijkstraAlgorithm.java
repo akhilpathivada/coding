@@ -15,9 +15,10 @@ import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
 
-    private class Node implements Comparable<Node> {
-        int vertex;
-        int distance;
+    private static class Node implements Comparable<Node> {
+
+        private final int vertex;
+        private final int distance;
 
         public Node(int vertex, int distance) {
             this.vertex = vertex;
@@ -45,7 +46,6 @@ public class DijkstraAlgorithm {
         PriorityQueue<Node> minHeap = new PriorityQueue<>();
         // initially add the source vertex and it's distance
         minHeap.add(new Node(S, 0));
-
         while (!minHeap.isEmpty()) {
             // get the least weighted edge
             Node node = minHeap.poll();
