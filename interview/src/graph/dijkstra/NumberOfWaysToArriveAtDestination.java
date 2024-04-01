@@ -9,7 +9,7 @@
  * Time Complexity: O(m + n log n)
  * Space Complexity: O(mn)
  */
-package graph;
+package graph.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Arrays;

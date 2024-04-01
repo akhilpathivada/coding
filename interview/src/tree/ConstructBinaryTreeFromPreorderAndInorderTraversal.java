@@ -11,43 +11,41 @@
  */
 package tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
-        private static TreeNode constructTreeUtil(int preOrderStart, int inOrderStart, int inOrderEnd, int[] preorder,
-                int[] inorder) {
+        private TreeNode buildTreeUtil(int preorderStart, int inorderStart, int inorderEnd, int[] preorder,
+                Map<Integer, Integer> nodeToInOrderIndexMap) {
                 // base case
-                if (preOrderStart > preorder.length - 1 || inOrderStart > inOrderEnd) {
+                if (preorderStart > preorder.length - 1 || inorderStart > inorderEnd) {
                         return null;
                 }
                 // create the root
-                TreeNode root = new TreeNode(preorder[preOrderStart]);
+                TreeNode root = new TreeNode(preorder[preorderStart]);
                 // search the index of current root in inorder
-                int inOrderIndex = 0;
-                for (int i = inOrderStart; i <= inOrderEnd; ++i) {
-                        // root found in inorder
-                        if (inorder[i] == root.data) {
-                                inOrderIndex = i;
-                                break;
-                        }
-                }
+                int inOrderIndexOfTheRoot = nodeToInOrderIndexMap.get(preorder[preorderStart]);
                 // recur to create left and right subtrees
-                root.left = constructTreeUtil(preOrderStart + 1, inOrderStart, inOrderIndex - 1, preorder, inorder);
-                root.right = constructTreeUtil(preOrderStart + inOrderIndex - inOrderStart + 1, inOrderIndex + 1,
-                        inOrderEnd, preorder, inorder);
-
+                root.left = buildTreeUtil(preorderStart + 1, inorderStart, inOrderIndexOfTheRoot - 1, preorder,
+                        nodeToInOrderIndexMap);
+                root.right = buildTreeUtil(preorderStart + inOrderIndexOfTheRoot - inorderStart + 1,
+                        inOrderIndexOfTheRoot + 1, inorderEnd, preorder, nodeToInOrderIndexMap);
                 return root;
         }
 
-        private static TreeNode constructTree(int[] preorder, int[] inorder) {
-
-                return constructTreeUtil(0, 0, inorder.length - 1, preorder, inorder);
+        private TreeNode buildTree(int[] preorder, int[] inorder) {
+                // store the indexes of nodes of the inorder
+                Map<Integer, Integer> nodeToInOrderIndexMap = new HashMap<>();
+                for (int i = 0; i < inorder.length; ++i) {
+                        nodeToInOrderIndexMap.put(inorder[i], i);
+                }
+                return buildTreeUtil(0, 0, inorder.length - 1, preorder, nodeToInOrderIndexMap);
         }
 
         public static void main(String[] args) {
-
                 int[] preorder = { 3, 9, 20, 15, 7 }, inorder = { 9, 3, 15, 20, 7 };
-                TreeNode root = constructTree(preorder, inorder);
-
+                TreeNode root = new ConstructBinaryTreeFromPreorderAndInorderTraversal().buildTree(preorder, inorder);
                 root.preOrder(root);
         }
 }

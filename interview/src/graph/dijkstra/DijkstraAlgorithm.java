@@ -4,7 +4,7 @@
  * Time Complexity: O(E * log(V))
  * Space Complexity: O(V ^ 2)
  * */
-package graph;
+package graph.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Arrays;
