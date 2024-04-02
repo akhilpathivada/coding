@@ -8,7 +8,9 @@ package trie;
 public class TrieNode {
         
         TrieNode[] trie; // each characters' index acts as a pointer
-        boolean isEndOfString; // tells if the string ends there or not
+
+        boolean isEndOfString; // tells if the string ends here or not
+
         public TrieNode() {
                 trie = new TrieNode[256];
                 // iterates over 256 indexes and initializes as null
