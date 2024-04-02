@@ -13,17 +13,17 @@ package tree;
 
 public class SumRootToLeafNumbers {
 
-    private int sumNumbers(TreeNode root, int sum) {
+    private int sumNumbers(TreeNode root, int sumSoFar) {
         // base case
         if (root == null) {
             return 0;
         }
-        int currentSumSoFar = sum * 10 + root.data;
+        int currentSum = sumSoFar * 10 + root.data;
         // leaf node
         if (root.left == null && root.right == null) {
-            return currentSumSoFar;
+            return currentSum;
         }
-        return sumNumbers(root.left, currentSumSoFar) + sumNumbers(root.right, currentSumSoFar);
+        return sumNumbers(root.left, currentSum) + sumNumbers(root.right, currentSum);
     }
 
     private int sumNumbers(TreeNode root) {
