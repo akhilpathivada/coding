@@ -5,7 +5,7 @@
  * Space Complexity: O(N)
  *
  * */
-package greedy;
+package greedy.intervals;
 
 import java.util.Arrays;
 import java.util.Comparator;
