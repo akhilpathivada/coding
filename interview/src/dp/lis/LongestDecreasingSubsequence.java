@@ -8,14 +8,15 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.lis;
+
+import java.util.Arrays;
 
 public class LongestDecreasingSubsequence {
-        private static int LDS(int[] nums, int n) {
+        private int LDS(int[] nums, int n) {
                 // store longest decreasing sequence till that point
                 int[] lds = new int[n];
-                lds[0] = 1;
-                for (int i = 1; i < n; ++i) {
+                for (int i = 0; i < n; ++i) {
                         lds[i] = 1;
                         // iterate over previous elements and check adding current element
                         // to its sequence can increase result
@@ -25,17 +26,11 @@ public class LongestDecreasingSubsequence {
                                 }
                         }
                 }
-                // get the maximum from lis[]
-                int maxLength = Integer.MIN_VALUE;
-                for (int i : lds) {
-                        if (i > maxLength) {
-                                maxLength = i;
-                        }
-                }
-                return maxLength;
+                // return the maximum from lis[]
+                return Arrays.stream(lds).max().getAsInt();
         }
         public static void main(String[] args) {
                 int[] nums = { 15, 27, 14, 38, 63, 55, 46, 65, 85 };
-                System.out.printf("Length of LDS is = %d ", LDS(nums, nums.length));
+                System.out.printf("Length of LDS is = %d ", new LongestDecreasingSubsequence().LDS(nums, nums.length));
         }
 }

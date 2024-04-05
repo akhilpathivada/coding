@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class InsertDeleteGetRandom {
+public class InsertDeleteGetRandomI {
 
     private static class RandomizedSet {
 

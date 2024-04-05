@@ -1,6 +1,18 @@
-package dp;
+/**
+ * Date 08/04/2022
+ *
+ * @author akhilpathivada
+ *
+ * https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1
+ *
+ * Time Complexity : O(N ^ 2)
+ * Space Complexity : O(N)
+ */
+package dp.lis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LongestIncreasingSubsequencePrint {
@@ -8,12 +20,9 @@ public class LongestIncreasingSubsequencePrint {
     private static List<Integer> printLIS(int[] nums, int n) {
         // store longest increasing sequence till that point
         int lis[] = new int[n];
-        lis[0] = 1;
         // track the with whom lis formed
         int hash[] = new int[n];
-        hash[0] = 0;
-        int maxLength = 1;
-        for (int i = 1; i < n; ++i) {
+        for (int i = 0; i < n; ++i) {
             lis[i] = 1;
             hash[i] = i;
             // iterate over previous elements and check adding current element
@@ -24,22 +33,24 @@ public class LongestIncreasingSubsequencePrint {
                     hash[i] = j;
                 }
             }
-            maxLength = Math.max(maxLength, lis[i]);
         }
         // get the maximum from lis[]
-        int lastIndex = -1;
+        int maxLength = Arrays.stream(lis).max().getAsInt();
+        int lastIndexInTheLIS = -1;
         for (int i = 0; i < n; ++i) {
             if (lis[i] == maxLength) {
-                lastIndex = i;
+                lastIndexInTheLIS = i;
             }
         }
-        List<Integer> list = new ArrayList<>();
-        list.add(nums[lastIndex]);
-        while (hash[lastIndex] != lastIndex) { // till not reach the initialization value
-            lastIndex = hash[lastIndex];
-            list.add(nums[lastIndex]);
+        List<Integer> sequence = new ArrayList<>();
+        sequence.add(nums[lastIndexInTheLIS]);
+        // till we not reach the initialization value
+        while (hash[lastIndexInTheLIS] != lastIndexInTheLIS) {
+            lastIndexInTheLIS = hash[lastIndexInTheLIS];
+            sequence.add(nums[lastIndexInTheLIS]);
         }
-        return list;
+        Collections.reverse(sequence);
+        return sequence;
     }
 
     public static void main(String[] args) {

@@ -4,18 +4,22 @@
  * @author akhilpathivada
  *
  * https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
+ * https://leetcode.com/problems/longest-increasing-subsequence/
  *
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.lis;
+
+import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
-        private static int lengthOfLIS(int[] nums, int n) {
+
+        private int lengthOfLIS(int[] nums) {
+                int n = nums.length;
                 // store longest increasing sequence till that point
-                int lis[] = new int[n];
-                lis[0] = 1;
-                for (int i = 1; i < n; ++i) {
+                int[] lis = new int[n];
+                for (int i = 0; i < n; ++i) {
                         lis[i] = 1;
                         // iterate over previous elements and check adding current element
                         // to its sequence can increase result
@@ -25,18 +29,12 @@ public class LongestIncreasingSubsequence {
                                 }
                         }
                 }
-                // get the maximum from lis[]
-                int maxLength = Integer.MIN_VALUE;
-                for (int i : lis) {
-                        if (i > maxLength) {
-                                maxLength = i;
-                        }
-                }
-                return maxLength;
+                // return the maximum from lis[]
+                return Arrays.stream(lis).max().getAsInt();
         }
 
         public static void main(String[] args) {
                 int[] nums = { 10, 22, 9, 33, 21, 50, 41, 60 };
-                System.out.printf("Longest Increasing Subsequence : %d ", lengthOfLIS(nums, nums.length));
+                System.out.printf("Longest Increasing Subsequence : %d ", new LongestIncreasingSubsequence().lengthOfLIS(nums));
         }
 }

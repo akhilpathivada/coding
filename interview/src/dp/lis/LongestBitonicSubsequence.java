@@ -8,9 +8,10 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.lis;
 
 public class LongestBitonicSubsequence {
+
         private static int LBS(int[] nums, int n) {
                 // store longest increasing sequence till that point
                 int lis[] = new int[n];

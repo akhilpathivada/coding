@@ -8,7 +8,9 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.lis;
+
+import java.util.Arrays;
 
 public class LongestIncreasingSubsequenceCount {
 
@@ -16,15 +18,13 @@ public class LongestIncreasingSubsequenceCount {
         int n = nums.length;
         // base case
         if (n == 1) {
-            return 1;
+            return n;
         }
-        int maxLength = Integer.MIN_VALUE;
-        // stores the length of longest increasing sequence till ends here
+        // stores the length of longest increasing sequence ends at a certain position
         int[] lis = new int[n];
-        // stores the count of longest increasing sequence till ends here
+        // stores the count of longest increasing sequences ends at a certain position
         int[] count = new int[n];
-        lis[0] = count[0] = 1;
-        for (int i = 1; i < n; ++i) {
+        for (int i = 0; i < n; ++i) {
             lis[i] = 1;
             count[i] = 1;
             // iterate over previous elements and check adding current element
@@ -39,9 +39,9 @@ public class LongestIncreasingSubsequenceCount {
                     count[i] += count[j];
                 }
             }
-            maxLength = Math.max(maxLength, lis[i]);
         }
         // get the maximum from lis[]
+        int maxLength = Arrays.stream(lis).max().getAsInt();
         int numberOfLIS = 0;
         for (int i = 0; i < n; ++i) {
             if (lis[i] == maxLength) {
