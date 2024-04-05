@@ -4,7 +4,7 @@
  * Time Complexity: O(V + E)
  * Space Complexity: O(V)
  * */
-package graph;
+package graph.bipartite;
 
 import java.util.LinkedList;
 import java.util.Queue;

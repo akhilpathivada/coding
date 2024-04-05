@@ -1,13 +1,11 @@
 /**
  * https://leetcode.com/problems/possible-bipartition/description/
  * */
-package graph;
+package graph.bipartite;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 
 public class PossibleBipartition {
