@@ -11,7 +11,7 @@
  *
  * Space Complexity : O(n)
  */
-package dp;
+package dp.lcs;
 
 public class LongestCommonSubsequenceIII {
         private int LCS(char[] X, char[] Y, int m, int n) {

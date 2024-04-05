@@ -4,7 +4,7 @@
  * Time Complexity: O(N ^ 2)
  * Space Complexity: O(N ^ 2)
  * */
-package dp;
+package dp.lcs;
 
 public class DeleteOperationForTwoStrings {
 

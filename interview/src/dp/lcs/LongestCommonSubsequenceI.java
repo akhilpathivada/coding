@@ -13,7 +13,7 @@
  * The Sequences are of length : m, n
  *
  */
-package dp;
+package dp.lcs;
 
 public class LongestCommonSubsequenceI {
         private int LCS(char[] X, char[] Y, int m, int n) {

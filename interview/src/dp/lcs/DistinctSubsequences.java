@@ -4,7 +4,7 @@
  * Time Complexity: O(m * n)
  * Space Complexity: O(m * n)
  * */
-package dp;
+package dp.lcs;
 
 import java.util.Arrays;
 

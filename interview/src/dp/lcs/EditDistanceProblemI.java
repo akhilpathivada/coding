@@ -7,7 +7,7 @@
  *
  * Time Complexity : O(3 ^ max(m, n))
  */
-package dp;
+package dp.lcs;
 
 public class EditDistanceProblemI {
         
