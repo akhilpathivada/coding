@@ -8,7 +8,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.houserobber;
 
 import tree.TreeNode;
 

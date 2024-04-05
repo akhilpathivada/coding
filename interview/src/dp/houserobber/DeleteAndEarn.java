@@ -4,7 +4,7 @@
  * Time Complexity: O(n * log n)
  * Space Complexity: O(n)
  * */
-package dp;
+package dp.houserobber;
 
 import java.util.*;
 import java.util.stream.Collectors;
