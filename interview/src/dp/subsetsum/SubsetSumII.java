@@ -13,7 +13,7 @@ package dp;
 public class SubsetSumII {
         
         private boolean isSubsetSum(int[] set, int n, int sum) {
-                boolean table[][] = new boolean[n + 1][sum + 1];
+                boolean[][] table = new boolean[n + 1][sum + 1];
                 // If sum is 0, then answer is true
                 for (int i = 0; i <= n; ++i) {
                         table[i][0] = true;

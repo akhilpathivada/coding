@@ -31,9 +31,9 @@ public class MinCostPath {
                 }
                 return mc[m - 1][n - 1];
         }
-        
+
         public static void main(String[] args) {
-                int cost[][]= {
+                int[][] cost = {
                         { 1, 2, 3 },
                         { 4, 8, 2 },
                         { 1, 5, 3 }

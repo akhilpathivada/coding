@@ -36,7 +36,7 @@ public class PalindromePartitioningII {
     }
 
     // top down approach
-    private int topDown(String s, int n, int i, int[] dp) {
+    private int memorize(String s, int n, int i, int[] dp) {
         if (i == n) {
             return 0;
         }
@@ -46,7 +46,7 @@ public class PalindromePartitioningII {
         int min = Integer.MAX_VALUE;
         for (int j = i; j < n; ++j) {
             if (isPalindrome(s, i, j)) {
-                int cost = 1 + topDown(s, n, j + 1, dp);
+                int cost = 1 + memorize(s, n, j + 1, dp);
                 min = Math.min(min, cost);
             }
         }
@@ -60,7 +60,7 @@ public class PalindromePartitioningII {
         // top down solution
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
-        System.out.println(topDown(s, n, 0, dp) - 1);
+        System.out.println(memorize(s, n, 0, dp) - 1);
         // tabulation
         dp = new int[n + 1];
         dp[n] = 0;
