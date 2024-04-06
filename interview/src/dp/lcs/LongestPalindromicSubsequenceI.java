@@ -4,7 +4,7 @@
  * Time Complexity : O(2 ^ N)
  * Space Complexity : O(N)
  * */
-package dp;
+package dp.lcs;
 
 public class LongestPalindromicSubsequenceI {
         private int LPS(char[] str, int start, int end) {

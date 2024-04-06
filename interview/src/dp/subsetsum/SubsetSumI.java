@@ -9,7 +9,7 @@
  * Therefore time complexity of the above solution is exponential.
  * The problem is in-fact NP-Complete (There is no known polynomial time solution for this problem)
  */
-package dp;
+package dp.subsetsum;
 
 public class SubsetSumI {
         

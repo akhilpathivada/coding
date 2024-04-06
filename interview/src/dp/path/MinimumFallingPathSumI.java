@@ -5,7 +5,9 @@
  * Space Complexity: O(m *n)
  *
  * */
-package dp;
+package dp.path;
+
+import java.util.Arrays;
 
 public class MinimumFallingPathSumI {
 
@@ -13,9 +15,8 @@ public class MinimumFallingPathSumI {
         int m = matrix.length;
         int n = matrix[0].length;
         int[][] dp = new int[m][n];
-        for (int i = 0; i < n; ++i) {
-            dp[0][i] = matrix[0][i];
-        }
+        // fill the first row of dp
+        System.arraycopy(matrix[0], 0, dp[0], 0, n);
         for (int i = 1; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 // from up
@@ -33,11 +34,7 @@ public class MinimumFallingPathSumI {
                 dp[i][j] = matrix[i][j] + Math.min(up, Math.min(ld, rd));
             }
         }
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < n; ++i) {
-            min = Math.min(min, dp[m - 1][i]);
-        }
-        return min;
+        return Arrays.stream(dp[m - 1]).min().getAsInt();
     }
 
     public static void main(String[] args) {

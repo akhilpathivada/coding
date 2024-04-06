@@ -4,7 +4,7 @@
  * @author akhilpathivada
  */
 
-package dp;
+package dp.subsetsum;
 
 import java.util.Arrays;
 

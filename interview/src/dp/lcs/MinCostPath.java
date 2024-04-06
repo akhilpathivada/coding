@@ -9,7 +9,7 @@
  * Space Complexity : O(m * n)
  *
  */
-package dp;
+package dp.lcs;
 
 public class MinCostPath {
         

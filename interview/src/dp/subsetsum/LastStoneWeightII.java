@@ -4,7 +4,7 @@
  * Time Complexity: O(N ^ 2)
  * Space Complexity: O(N ^ 2)
  * */
-package dp;
+package dp.subsetsum;
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ public class LastStoneWeightII {
 
     // logic: isSubsetSum()
     private int getSumClosestToHalfSum(int[] set, int sum, int n) {
-        boolean table[][] = new boolean[n + 1][sum + 1];
+        boolean[][] table = new boolean[n + 1][sum + 1];
         int maxSum = Integer.MIN_VALUE;
         // If sum is 0, then answer is true
         for (int i = 0; i <= n; ++i) {

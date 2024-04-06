@@ -5,7 +5,7 @@
  * Time Complexity : O(N * K)
  * Space Complexity : O(N)
  * */
-package dp;
+package dp.partition;
 
 public class PartitionArrayForMaximumSum {
 

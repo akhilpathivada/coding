@@ -5,7 +5,9 @@
  * Space Complexity: O(n ^ 2)
  *
  * */
-package dp;
+package dp.path;
+
+import java.util.Arrays;
 
 public class MinimumFallingPathSumII {
 
@@ -48,11 +50,7 @@ public class MinimumFallingPathSumII {
                 minSoFar = Math.min(minSoFar, dp[i][j]);
             }
         }
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < n; ++i) {
-            min = Math.min(min, dp[n - 1][i]);
-        }
-        return min;
+        return Arrays.stream(dp[n - 1]).min().getAsInt();
     }
 
     public static void main(String[] args) {

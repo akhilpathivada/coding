@@ -9,13 +9,12 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(1)
  */
-package dp;
+package dp.path;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class Triangle {
 

@@ -4,7 +4,7 @@
  * @author akhilpathivada
  *
  */
-package dp;
+package dp.subsetsum;
 
 import java.util.Arrays;
 public class MinimizeTheDifferenceBetweenTargetAndChosenElements {
@@ -15,7 +15,7 @@ public class MinimizeTheDifferenceBetweenTargetAndChosenElements {
             return Math.abs(target - sum);
         }
         int minDiff = Integer.MAX_VALUE;
-        for (int col = 0; col < mat[0].length; ++col) {
+        for (int col = 0; col < mat[row].length; ++col) {
             minDiff = Math.min(minDiff, f(mat, target, sum + mat[row][col], row - 1));
         }
         return minDiff;

@@ -11,7 +11,7 @@
  * Space Complexity : O(N ^ 2)
  *
  */
-package dp;
+package dp.lcs;
 
 public class LongestPalindromicSubsequenceIII {
         private int LCS(char[] X, char[] Y, int m, int n) {

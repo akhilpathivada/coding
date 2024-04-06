@@ -4,7 +4,7 @@
  * Time Complexity: O(N ^ 2)
  * Space Complexity: O(N)
  * */
-package dp;
+package dp.partition;
 
 import java.util.Arrays;
 

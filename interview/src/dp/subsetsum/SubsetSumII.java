@@ -8,7 +8,7 @@
  * Time Complexity : O(n * sum)
  * Space Complexity : O(n * sum)
  */
-package dp;
+package dp.subsetsum;
 
 public class SubsetSumII {
         
