@@ -5,7 +5,7 @@
  * Time Complexity: O(V + E)
  * Space Complexity: O(V + E)
  * */
-package graph;
+package graph.topological;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,17 +8,16 @@
  * Time Complexity: O(V + E)
  * Space Complexity: O(V)
  */
-package graph;
+package graph.topological;
 
-import java.util.Iterator;
+import graph.GraphNode;
 import java.util.Stack;
 
-public class TopologicalSort extends GraphNode {
+public class TopologicalSort {
+
         private void topologicalSortUtil(GraphNode v, boolean[] visited, Stack<Integer> stack) {
                 visited[v.label] = true;
-                Iterator<GraphNode> iterator = v.neighbours.iterator();
-                while (iterator.hasNext()) {
-                        GraphNode _v = iterator.next();
+                for (GraphNode _v : v.neighbours) {
                         // if the node is not visited : recursively call its adjacent nodes
                         if (!visited[_v.label]) {
                                 topologicalSortUtil(_v, visited, stack);
@@ -26,6 +25,7 @@ public class TopologicalSort extends GraphNode {
                 }
                 stack.push(v.label);
         }
+
         private void topologicalSort(GraphNode[] graph) {
                 // by default all the vertices are not visited
                 boolean[] visited = new boolean[graph.length];
@@ -42,6 +42,7 @@ public class TopologicalSort extends GraphNode {
                         System.out.print(stack.pop() + ", ");
                 }
         }
+
         public static void main(String[] args) {
                 // create graph with 4 nodes
                 GraphNode[] graph = new GraphNode[6];

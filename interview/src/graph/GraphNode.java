@@ -21,7 +21,7 @@ public class GraphNode {
         }
 
         // Add Edge into the Graph Node
-        protected void addEdge(GraphNode w) {
+        public void addEdge(GraphNode w) {
                 this.neighbours.add(w);
         }
 
