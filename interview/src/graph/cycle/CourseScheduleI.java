@@ -4,7 +4,9 @@
  * Time Complexity : O(V + E)
  * Space Complexity : O(V + E)
  */
-package graph;
+package graph.cycle;
+
+import graph.GraphNode;
 
 public class CourseScheduleI {
 
