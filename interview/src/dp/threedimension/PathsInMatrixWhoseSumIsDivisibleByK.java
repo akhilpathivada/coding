@@ -47,7 +47,9 @@ public class PathsInMatrixWhoseSumIsDivisibleByK {
     private int numberOfPaths(int[][] grid, int k) {
         int m = grid.length;
         int n = grid[0].length;
+        // recursion
         System.out.println(f(grid, k, 0, m - 1, n - 1));
+        // memorization
         int[][][] dp = new int[m][n][k];
         for (int[][] a : dp) {
             for (int[] b : a) {

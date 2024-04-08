@@ -4,7 +4,7 @@
  * Time Complexity : O(E) where E is the no. of edges, means the flights size
  * Space Complexity : O(N)
  * */
-package graph;
+package graph.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Arrays;

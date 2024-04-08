@@ -4,7 +4,7 @@
  * Time Complexity: O(E * log(V))
  * Space Complexity: O(V ^ 2)
  * */
-package graph;
+package graph.dijkstra;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,13 +14,12 @@ import java.util.PriorityQueue;
 public class NetworkDelayTime {
 
     private int networkDelayTime(int[][] times, int n, int k) {
-        // create a graph
+        // create a graph (adjacency list)
         Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
         for (int[] time : times) {
             graph.putIfAbsent(time[0], new HashMap<>());
             graph.get(time[0]).put(time[1], time[2]);
         }
-
         // stores the distance to each vertex from source
         int[] dist = new int[n + 1];
         // fill the distance with infinity
@@ -31,7 +30,6 @@ public class NetworkDelayTime {
         PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> (a[0] - b[0]));
         // initially add the source vertex and it's distance
         minHeap.add(new int[] { k, 0 });
-
         while (!minHeap.isEmpty()) {
             // get the least weighted edge
             int[] edge = minHeap.poll();
@@ -52,7 +50,9 @@ public class NetworkDelayTime {
                 }
             }
         }
-        int maxDistance = Integer.MIN_VALUE;
+        // the minimum time it takes for all the n nodes to receive the signal is
+        // equals to max distance of any node from the source
+        int maxDistance = dist[0];
         // the max. distance taken to reach a node would be our required answer
         for (int i = 1; i <= n; ++i) {
             maxDistance = Math.max(maxDistance, dist[i]);
