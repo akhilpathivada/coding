@@ -27,10 +27,10 @@ public class BestTimeToBuyAndSellStockIV {
         int[] maxProfits = new int[k];
         Arrays.fill(minPrices, Integer.MAX_VALUE);
         Arrays.fill(maxProfits, Integer.MIN_VALUE);
-        for (int i = 0; i < n; ++i) {
+        for (int price : prices) {
             for (int j = 0; j < k; ++j) {
-                minPrices[j] = Math.min(minPrices[j], prices[i] - (j > 0 ? maxProfits[j - 1] : 0));
-                maxProfits[j] = Math.max(maxProfits[j], prices[i] - minPrices[j]);
+                minPrices[j] = Math.min(minPrices[j], price - (j > 0 ? maxProfits[j - 1] : 0));
+                maxProfits[j] = Math.max(maxProfits[j], price - minPrices[j]);
             }
         }
         return maxProfits[k - 1];

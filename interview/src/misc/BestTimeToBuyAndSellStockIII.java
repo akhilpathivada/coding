@@ -21,12 +21,10 @@ public class BestTimeToBuyAndSellStockIII {
                 int minPrice1 = Integer.MAX_VALUE;
                 // capture max profit to sell for 1st transaction
                 int profit1 = Integer.MIN_VALUE;
-
                 // capture min price to buy for 2nd transaction
                 int minPrice2 = Integer.MAX_VALUE;
                 // capture max profit to sell for 2nd transaction
                 int profit2 = Integer.MIN_VALUE;
-
                 for (int price : prices) {
                         minPrice1 = Math.min(minPrice1, price);
                         profit1 = Math.max(profit1, price - minPrice1);
