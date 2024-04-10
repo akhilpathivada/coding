@@ -40,7 +40,7 @@ public class AccountsMerge {
         }
         List<List<String>> result = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
-            if (mergedMails[i].size() == 0) {
+            if (mergedMails[i].isEmpty()) {
                 continue;
             }
             Collections.sort(mergedMails[i]);
