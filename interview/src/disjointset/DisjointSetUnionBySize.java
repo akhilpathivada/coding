@@ -14,7 +14,6 @@ public class DisjointSetUnionBySize {
         // create with n + 1 size: so that it would be useful for 0-indexed and 1-indexed as well
         size = new int[n + 1];
         parent = new int[n + 1];
-
         // initially every node itself is a disjoint set
         // so parent of a node is itself and also
         // the size of every node is 1
@@ -31,8 +30,7 @@ public class DisjointSetUnionBySize {
         if (parent[node] == node) {
             return node;
         }
-        parent[node] = findUltimateParent(parent[node]);
-        return parent[node];
+        return parent[node] = findUltimateParent(parent[node]);
     }
 
     private void unionBySize(int u, int v) {

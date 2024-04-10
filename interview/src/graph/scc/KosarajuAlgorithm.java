@@ -6,14 +6,16 @@
  * Time Complexity: O(V + E)
  * Space Complexity: O(V + E)
  * */
-package graph;
+package graph.scc;
+
+import graph.GraphNode;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Stack;
 
-public class KosarajuSCC {
+public class KosarajuAlgorithm {
 
     private void dfs(GraphNode node, Set<Integer> visited, Stack<Integer> stack) {
         visited.add(node.label);
@@ -125,7 +127,7 @@ public class KosarajuSCC {
         graph[5].addEdge(graph[6]);
         graph[6].addEdge(graph[4]);
         graph[6].addEdge(graph[7]);
-        System.out.println("The number of strongly connected components is: " + new KosarajuSCC().findSCC(graph, n));
+        System.out.println("The number of strongly connected components is: " + new KosarajuAlgorithm().findSCC(graph, n));
 
         n = 5;
         GraphNode[] graph2 = new GraphNode[n];
@@ -142,7 +144,7 @@ public class KosarajuSCC {
         graph2[3].addEdge(graph2[0]);
         graph2[2].addEdge(graph2[4]);
         graph2[4].addEdge(graph2[2]);
-        System.out.println("The given graph is SCC: " + new KosarajuSCC().isSCC(graph2, n));
-        System.out.println("The number of strongly connected components is: " + new KosarajuSCC().findSCC(graph2, n));
+        System.out.println("The given graph is SCC: " + new KosarajuAlgorithm().isSCC(graph2, n));
+        System.out.println("The number of strongly connected components is: " + new KosarajuAlgorithm().findSCC(graph2, n));
     }
 }
