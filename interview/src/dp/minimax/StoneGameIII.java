@@ -6,6 +6,11 @@ import java.util.Arrays;
  * Date 10/04/24
  *
  * @author akhilpathivada
+ *
+ * https://leetcode.com/problems/stone-game-iii/description/
+ *
+ * Time Complexity : O(N)
+ * Space Complexity : O(N)
  */
 public class StoneGameIII {
 
@@ -59,28 +64,23 @@ public class StoneGameIII {
         System.out.println(memorize(stoneValue, dp, 0));
 
         // tabulation
-        dp = new int[n];
-        dp[n - 1] = stoneValue[n - 1];
+        dp = new int[n + 1];
         for (int index = n - 1; index >= 0; --index) {
-            int stone = 0;
             dp[index] = Integer.MIN_VALUE;
-            for (int k = 0; k < 3; ++k) {
+            int stone = 0;
+            for (int k = 0; k < 3 && index + k < n; ++k) {
                 int i = index + k;
-                if (i >= n - 1) {
-                    break;
-                }
                 stone += stoneValue[i];
-                int score = stone - dp[i + 1];
-                dp[index] = Math.max(dp[index], score);
+                dp[index] = Math.max(dp[index], stone - dp[i + 1]);
             }
         }
-            if (dp[0] > 0) {
-                return "Alice";
-            } else if (dp[0] < 0) {
-                return "Bob";
-            } else {
-                return "Tie";
-            }
+        if (dp[0] > 0) {
+            return "Alice";
+        } else if (dp[0] < 0) {
+            return "Bob";
+        } else {
+            return "Tie";
+        }
     }
 
     public static void main(String[] args) {
