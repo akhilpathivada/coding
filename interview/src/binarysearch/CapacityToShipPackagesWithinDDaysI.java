@@ -15,7 +15,6 @@ public class CapacityToShipPackagesWithinDDaysI {
         int capacity = 0;
         for (int i = 0; i < weights.length; ++i) {
             capacity += weights[i];
-
             if (capacity >= maxCapacity) {
                 if (capacity == maxCapacity) {
                     capacity = 0;
