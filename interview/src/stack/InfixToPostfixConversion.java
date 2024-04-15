@@ -31,7 +31,7 @@ public class InfixToPostfixConversion {
 
         private String infixToPostfix(String infix) {
                 // initializing empty String for result
-                StringBuilder postfix = new StringBuilder("");
+                StringBuilder postfix = new StringBuilder();
                 // initializing empty stack
                 Stack<Character> stack = new Stack<>();
                 for (char ch : infix.toCharArray()) {

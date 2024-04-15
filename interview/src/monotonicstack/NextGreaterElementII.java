@@ -5,7 +5,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  * */
-package stack;
+package monotonicstack;
 
 import java.util.Arrays;
 import java.util.Stack;
