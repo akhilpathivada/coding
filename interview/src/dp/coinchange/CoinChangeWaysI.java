@@ -6,7 +6,7 @@
  * https://www.geeksforgeeks.org/coin-change-dp-7/
  *
  */
-package dp;
+package dp.coinchange;
 
 public class CoinChangeWaysI {
         

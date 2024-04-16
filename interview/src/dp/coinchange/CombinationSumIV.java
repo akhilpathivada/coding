@@ -4,7 +4,7 @@
  * Time Complexity: O(n * target)
  * Space Complexity: O(n * target)
  * */
-package dp;
+package dp.coinchange;
 
 import java.util.Arrays;
 
@@ -25,7 +25,7 @@ public class CombinationSumIV {
         return count;
     }
 
-    // top down approach
+    // top-down approach
     private int topDown(int[] nums, int target, int[] dp) {
         // base case
         if (target == 0) {

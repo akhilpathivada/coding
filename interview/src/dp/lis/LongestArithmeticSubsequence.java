@@ -2,9 +2,9 @@
  * https://leetcode.com/problems/longest-arithmetic-subsequence/description/
  *
  * Time Complexity: O(N ^ 2)
- * Space Complexity: O(N ^ 2)
+ * Space Complexity: O(N)
  * */
-package dp;
+package dp.lis;
 
 import java.util.HashMap;
 import java.util.Map;

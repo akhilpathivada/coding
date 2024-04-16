@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/target-sum/description/
  * */
-package dp;
+package dp.coinchange;
 
 public class TargetSum {
 
