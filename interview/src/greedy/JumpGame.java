@@ -5,7 +5,7 @@
  * Space Complexity: O(1)
  * */
 
-package array;
+package greedy;
 
 public class JumpGame {
 

@@ -5,16 +5,14 @@
  * Space Complexity: O(1)
  * */
 
-package array;
+package greedy;
 
 public class GasStation {
 
     private int canCompleteCircuit(int[] gas, int[] cost) {
-
         int fuelInTank = 0; // fuel inside our tank
         int totalFuelInTank = 0; // tracks the difference b/w gas & cost
-        int start = 0; // final result : starting gas station
-
+        int start = 0; // final result: starting gas station
         for (int i = 0; i < gas.length; ++i) {
             fuelInTank += gas[i] - cost[i];
             totalFuelInTank += gas[i] - cost[i];

@@ -38,8 +38,8 @@ public class IntersectionOfTwoArraysII {
     }
 
     public static void main(String[] args) {
-        int nums1[] = { 4, 9, 5, 4 };
-        int nums2[] = { 9, 4, 9, 8, 4 };
+        int[] nums1 = { 4, 9, 5, 4 };
+        int[] nums2 = { 9, 4, 9, 8, 4 };
         System.out.println(Arrays.toString(new IntersectionOfTwoArraysII().intersectionOfArrays(nums1, nums2)));
     }
 }

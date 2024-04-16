@@ -16,7 +16,7 @@ public class DuplicateNumber {
                 int fast = nums[0];
                 do {
                         slow = nums[slow];
-                        fast = nums[nums[nums[fast]]];
+                        fast = nums[nums[fast]];
                 } while (slow != fast);
                 slow = nums[0];
                 while (slow != fast) {

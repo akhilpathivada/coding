@@ -26,7 +26,7 @@ public class CountDistinctPairsOfDifferenceKIV {
                 return count;
         }
         public static void main(String[] args) {
-                int arr[] = { 1, 2, 2, 1 };
+                int[] arr = { 1, 2, 2, 1 };
                 int n = arr.length;
                 int k = 3;
                 System.out.println("Count of pairs with given diff is " + countPairsWithDiffK(arr, n, k));

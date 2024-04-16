@@ -37,7 +37,6 @@ public class FirstMissingPositiveI {
     }
 
     private int moveNegativeElementsToBeginning(int[] nums) {
-
         // to track the positive element
         int indexOfFirstPositive = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -51,11 +50,9 @@ public class FirstMissingPositiveI {
     }
 
     private int firstMissingPositive(int[] nums) {
-
         int n = nums.length;
         int indexOfFirstPositive = moveNegativeElementsToBeginning(nums);
         int[] copyOfOnlyPositives = Arrays.copyOfRange(nums, indexOfFirstPositive, n);
-
         return firstMissingPositive(copyOfOnlyPositives, n - indexOfFirstPositive);
     }
 
