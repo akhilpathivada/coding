@@ -7,14 +7,12 @@
  * */
 package bfs;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MinimumJumpsToReachHome {
 
-    private static class State {
+    private final static class State {
         private final int position;
         private final boolean cameFromBackward;
 
@@ -24,15 +22,16 @@ public class MinimumJumpsToReachHome {
         }
     }
 
+    private String getStringValue(State state) {
+        return state.position + "," + state.cameFromBackward;
+    }
+
     public int minimumJumps(int[] forbidden, int a, int b, int x) {
-        // form a hashset to easily check whether a state is forbit or not
-        Set<Integer> forbit = new HashSet<>();
-        for (int forbid : forbidden) {
-            forbit.add(forbid);
-        }
-        // add the first state as '0'
-        Set<State> seen = new HashSet<>();
-        seen.add(new State(0, false));
+        // create a forbit set
+        Set<Integer> forbit = Arrays.stream(forbidden).boxed().collect(Collectors.toSet());
+        // add the initial state as '0'
+        Set<String> seen = new HashSet<>();
+        seen.add(getStringValue(new State(0, false)));
         // add the first state to Queue
         Queue<State> queue = new LinkedList<>();
         queue.add(new State(0, false));
@@ -53,17 +52,17 @@ public class MinimumJumpsToReachHome {
                 }
                 // jump forward
                 State nextState = new State(current + a, false);
-                if (!forbit.contains(nextState.position) && nextState.position < 4000 && !seen.contains(nextState)) {
+                if (!forbit.contains(nextState.position) && nextState.position < 4000 && !seen.contains(getStringValue(nextState))) {
                     queue.offer(nextState);
-                    seen.add(nextState);
+                    seen.add(getStringValue(nextState));
                 }
                 // jump backward
                 nextState = new State(current - b, true);
                 // if the current state it didn't come through a backward jump
                 if (!cameFromBackward && !forbit.contains(nextState.position) && nextState.position >= 0
-                        && !seen.contains(nextState)) {
+                        && !seen.contains(getStringValue(nextState))) {
                     queue.offer(nextState);
-                    seen.add(nextState);
+                    seen.add(getStringValue(nextState));
                 }
             }
             ++jumps;
@@ -72,8 +71,8 @@ public class MinimumJumpsToReachHome {
     }
 
     public static void main(String[] args) {
-        int[] forbidden = { 8,3,16,6,12,20 };
-        int a = 15, b = 13, x = 11;
+        int[] forbidden = {14, 4, 18, 1, 15};
+        int a = 3, b = 15, x = 9;
         System.out.println(new MinimumJumpsToReachHome().minimumJumps(forbidden, a, b, x));
     }
 }

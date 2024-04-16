@@ -5,7 +5,7 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N ^ 2)
  */
-package graph;
+package bfs.multisource;
 
 import java.util.LinkedList;
 import java.util.Queue;

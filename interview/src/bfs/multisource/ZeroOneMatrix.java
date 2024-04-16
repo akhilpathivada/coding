@@ -11,7 +11,7 @@
  * Space Complexity: O(m * n)
  *
  */
-package graph;
+package bfs.multisource;
 
 import java.util.Arrays;
 import java.util.LinkedList;

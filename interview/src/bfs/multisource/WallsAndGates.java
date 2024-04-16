@@ -9,7 +9,7 @@
  * Time Complexity: O(m * n * 4)
  * Space Complexity: O(m * n)
  */
-package bfs;
+package bfs.multisource;
 
 import java.util.Arrays;
 import java.util.LinkedList;
