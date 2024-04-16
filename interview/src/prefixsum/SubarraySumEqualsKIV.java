@@ -25,7 +25,8 @@ public class SubarraySumEqualsKIV {
                 return result;
         }
         public static void main(String[] args) {
-                int nums[] = { 1, 5, 20, 3, 10, 4}, k = 33;
-                System.out.printf("Total subarrays with sum K = %d ", new SubarraySumEqualsKIV().subarraySum(nums, k));
+                int[] nums = { 1, 5, 20, 3, 10, 4};
+            int k = 33;
+            System.out.printf("Total subarrays with sum K = %d ", new SubarraySumEqualsKIV().subarraySum(nums, k));
         }
 }

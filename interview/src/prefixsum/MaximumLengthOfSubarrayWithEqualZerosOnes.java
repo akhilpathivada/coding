@@ -8,7 +8,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package array;
+package prefixsum;
 
 import java.util.HashMap;
 
@@ -20,17 +20,17 @@ public class MaximumLengthOfSubarrayWithEqualZerosOnes {
                                 nums[i] = -1;
                         }
                 }
-                int sum = 0, max = 0;
-                // store the presum
-                HashMap<Integer, Integer> preSum = new HashMap<>();
-                preSum.put(0, -1);
+                int prefixSum = 0, max = 0;
+                // store the map
+                HashMap<Integer, Integer> map = new HashMap<>();
+                map.put(0, -1);
                 for (int i = 0; i < n; ++i) {
-                        sum += nums[i];
+                        prefixSum += nums[i];
                         // found, update the length
-                        if (preSum.containsKey(sum)) {
-                                max = Math.max(i - preSum.get(sum), max);
+                        if (map.containsKey(prefixSum)) {
+                                max = Math.max(i - map.get(prefixSum), max);
                         } else {
-                                preSum.put(sum, i);
+                                map.put(prefixSum, i);
                         }
                 }
                 return max;

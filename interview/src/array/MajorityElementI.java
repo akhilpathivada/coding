@@ -35,7 +35,7 @@ public class MajorityElementI {
                                 ++count;
                         }
                 }
-                if (count > n/2) {
+                if (count > n / 2) {
                         return voter;
                 }
                 return -1;

@@ -10,7 +10,6 @@ package greedy;
 public class JumpGameII {
 
     private int jump(int[] nums) {
-
         int currFarthestJump = 0; // farthest jumps we can do
         int currEnd = 0; // last jump ends here
         int jumps = 0;
