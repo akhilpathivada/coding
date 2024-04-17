@@ -11,17 +11,18 @@ import java.util.Arrays;
 public class MoveZeros {
 
     private static void moveZeros(int[] nums) {
-
-        int temp = -1;
-        for (int i = 0; i < nums.length; ++i) {
-            if (temp == -1 && nums[i] == 0) {
-                temp = i;
-            } else if (temp != -1 && nums[i] != 0) {
-                nums[temp] = nums[i];
-                nums[i] = 0;
-                i = temp;
-                temp = -1;
+        int n = nums.length;
+        if (n == 0 || n == 1) {
+            return;
+        }
+        int insertPosition = 0;
+        for (int num : nums) {
+            if (num != 0) {
+                nums[insertPosition++] = num;
             }
+        }
+        while (insertPosition < n) {
+            nums[insertPosition++] = 0;
         }
     }
 

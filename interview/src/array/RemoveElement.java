@@ -11,24 +11,14 @@ public class RemoveElement {
 		if (nums.length == 0) {
 			return 0;
 		}
-		int i = 0, j = nums.length - 1, k = 0;
-		while (i < j) {
-			if (nums[j] == val) {
-				--j;
-				++k;
-			} else if (nums[i] == val && nums[j] != val) {
-				nums[i] = nums[j];
-				++i;
-				--j;
-				++k;
-			} else {
-				++i;
+		int i = 0;
+		// move elements which are not equal to val to beginning
+		for (int num : nums) {
+			if (num != val) {
+				nums[i++] = num;
 			}
 		}
-		if (nums[j] == val) {
-			k++;
-		}
-		return nums.length - k;
+		return i;
 	}
 	public static void main(String[] args) {
 		int[] nums = { 0, 1, 2, 2, 3, 0, 4, 2 };

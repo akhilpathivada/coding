@@ -7,6 +7,8 @@
  *
  * https://leetcode.com/problems/maximum-length-of-repeated-subarray/description/
  *
+ * https://www.naukri.com/code360/problems/longest-common-substring_1235207
+ *
  * Time Complexity : O(m * n)
  * Space Complexity : O(m * n)
  */
@@ -19,7 +21,7 @@ public class LongestCommonSubstringII {
                 if (m == 0 || n == 0) {
                         return 0;
                 }
-                int table[][] = new int[m + 1][n + 1];
+                int[][] table = new int[m + 1][n + 1];
                 // store length of the longest common substring
                 int count = 0;
                 for (int i = 0; i <= m; ++i) {
@@ -29,8 +31,6 @@ public class LongestCommonSubstringII {
                                 } else if (X[i - 1] == Y[j - 1]) {
                                         table[i][j] = 1 + table[i - 1][j - 1];
                                         count = Math.max(count, table[i][j]);
-                                } else {
-                                        table[i][j] = 0;
                                 }
                         }
                 }

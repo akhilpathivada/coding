@@ -13,8 +13,8 @@ package array;
 public class TrappingRainWaterProblemII {
         private static int trap(int[] heights) {
                 int n = heights.length;
-                int left[] = new int[n]; // stores left max of an element
-                int right[] = new int[n]; // stores right max of an element
+                int[] left = new int[n]; // stores left max of an element
+                int[] right = new int[n]; // stores right max of an element
                 // compute left max of every element
                 left[0] = heights[0];
                 for (int i = 1; i < n; ++i) {
@@ -36,7 +36,7 @@ public class TrappingRainWaterProblemII {
 
         public static void main(String[] args) {
 
-                int heights[] = { 1, 0, 2, 0, 1, 0, 3, 1, 0, 2 };
+                int[] heights = { 1, 0, 2, 0, 1, 0, 3, 1, 0, 2 };
                 System.out.println(trap(heights));
         }
 }

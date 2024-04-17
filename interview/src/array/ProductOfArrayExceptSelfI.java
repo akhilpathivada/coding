@@ -32,7 +32,7 @@ public class ProductOfArrayExceptSelfI {
         }
 
         public static void main(String[] args) {
-                int nums[] = { 1, 2, 3, 4 };
+                int[] nums = { 1, 2, 3, 4 };
                 System.out.println(Arrays.toString(new ProductOfArrayExceptSelfI().productExceptSelf(nums)));
         }
 }
