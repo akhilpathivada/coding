@@ -16,7 +16,6 @@ public class ValidSudoku {
     private static boolean notInRow(char[][] board, int row) {
         // Set to store characters seen so far.
         Set<Character> set = new HashSet<>();
-
         for (int i = 0; i < 9; ++i) {
             char currentCharacter = board[row][i];
             // If already encountered before, return false
@@ -38,7 +37,6 @@ public class ValidSudoku {
     private static boolean notInColumn(char[][] board, int column) {
         // Set to store characters seen so far.
         Set<Character> set = new HashSet<>();
-
         for (int i = 0; i < 9; ++i) {
             char currentCharacter = board[i][column];
             // If already encountered before, return false
@@ -58,7 +56,6 @@ public class ValidSudoku {
     // in current 3x3 box or not.
     private static boolean notInBox(char[][] board, int startRow, int startColumn) {
         Set<Character> set = new HashSet<>();
-
         for (int row = 0; row < 3; ++row) {
             for (int column = 0; column < 3; ++column) {
                 char currentCharacter = board[row + startRow][column + startColumn];
@@ -85,7 +82,6 @@ public class ValidSudoku {
 
     private static boolean isValidSudoku(char[][] board) {
         int n = board.length;
-
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 // If current row or current column or

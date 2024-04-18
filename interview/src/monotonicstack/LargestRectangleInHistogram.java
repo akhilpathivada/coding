@@ -9,7 +9,7 @@
  * Space Complexity : O(N)
  *
  */
-package stack;
+package monotonicstack;
 
 import java.util.Stack;
 
@@ -49,7 +49,7 @@ public class LargestRectangleInHistogram {
         }
         
         public static void main(String[] args) {
-                int heights[] = { 6, 2, 5, 4, 5, 1, 6 };
+                int[] heights = { 6, 2, 5, 4, 5, 1, 6 };
                 System.out.println("Maximum area is = " + new LargestRectangleInHistogram().largestRectangleArea(heights, heights.length));
         }
 }

@@ -13,7 +13,6 @@ package slidingwindow;
 public class MinimumSizeSubarraySum {
 
         private static int minSubArrayLength(int[] nums, int target) {
-
                 if (nums == null || nums.length == 0) {
                         return 0;
                 }

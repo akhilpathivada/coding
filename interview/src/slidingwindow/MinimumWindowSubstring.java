@@ -24,7 +24,6 @@ public class MinimumWindowSubstring {
         int startIndexOfResultWindow = 0;
         int countOfCharactersToFind = t.length();
         int minLength = Integer.MAX_VALUE;
-
         for (int i = 0; i < s.length(); ++i) {
             char ch = s.charAt(i);
             // we found the char of 't' : which exists in 's'
@@ -32,7 +31,6 @@ public class MinimumWindowSubstring {
                 --countOfCharactersToFind;
             }
             frequency[ch]--;
-
             // we found the window which contains all chars of 't'
             while (countOfCharactersToFind == 0) {
                 // assume window ends here
@@ -48,10 +46,8 @@ public class MinimumWindowSubstring {
                 ++start;
             }
         }
-
-        return minLength == Integer.MAX_VALUE ?
-                "" :
-                s.substring(startIndexOfResultWindow, startIndexOfResultWindow + minLength + 1);
+        return minLength == Integer.MAX_VALUE ? ""
+                                              : s.substring(startIndexOfResultWindow, startIndexOfResultWindow + minLength + 1);
     }
 
     public static void main(String[] args) {

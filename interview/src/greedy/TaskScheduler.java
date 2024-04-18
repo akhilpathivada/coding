@@ -12,18 +12,19 @@ public class TaskScheduler {
 	private int leastInterval(char[] tasks, int n) {
 		// store frequencies of the tasks
 		int[] frequencies = new int[26];
-		for (int i = 0; i < tasks.length; ++i) {
-			frequencies[tasks[i] - 'A']++;
-		}
+        for (char task : tasks) {
+            frequencies[task - 'A']++;
+        }
 		Arrays.sort(frequencies);
 		int maxFrequency = frequencies[25];
 		// max idle time possible
-		int idleTime = (maxFrequency - 1) * n;
-		for (int i = frequencies.length - 2; i >= 0 && idleTime > 0; --i) {
-			idleTime -= Math.min(maxFrequency - 1, frequencies[i]);
+		int idleSlots = (maxFrequency - 1) * n;
+		for (int i = frequencies.length - 2; i >= 0 && idleSlots > 0; --i) {
+			// we can assign this idle slot for another task instead of being idle
+			idleSlots -= Math.min(maxFrequency - 1, frequencies[i]);
 		}
-		idleTime = Math.max(0, idleTime);
-		return idleTime + tasks.length;
+		idleSlots = Math.max(0, idleSlots);
+		return idleSlots + tasks.length;
 	}
 	public static void main(String[] args) {
 		char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };

@@ -40,8 +40,8 @@ public class DistinctElementsInWindowOfSizeKII {
         }
         
         public static void main(String[] args) {
-        
-                int arr[] = { 1, 2, 1, 3, 4, 2, 3 }, k = 4;
-                countDistinct(arr, k);
+            int[] arr = { 1, 2, 1, 3, 4, 2, 3 };
+            int k = 4;
+            countDistinct(arr, k);
         }
 }

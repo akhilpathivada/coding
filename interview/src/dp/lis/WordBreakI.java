@@ -9,7 +9,7 @@
  * Space Complexity : O(N)
  *
  */
-package dp;
+package dp.lis;
 
 import java.util.ArrayList;
 import java.util.Arrays;

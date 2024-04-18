@@ -17,7 +17,6 @@ import java.util.Set;
 public class LongestSubstringWithoutRepeatingCharactersII {
 
         private static int lengthOfLongestSubstring(String s) {
-
                 Set<Character> set = new HashSet<>();
                 int i = 0, indexOfSubstringStart = 0, maxLength = 0;
                 while (i < s.length()) {
@@ -35,7 +34,6 @@ public class LongestSubstringWithoutRepeatingCharactersII {
         }
 
         public static void main(String[] args) {
-
                 String str = "abcabcbb";
                 System.out.printf("Longest Substring without repeating characters = %d ",
                         lengthOfLongestSubstring(str));
