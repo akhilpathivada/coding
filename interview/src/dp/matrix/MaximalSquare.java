@@ -10,13 +10,13 @@
  * Time Complexity : O(m * n)
  * Space Complexity : O(m * n)
  */
-package dp;
+package dp.matrix;
 
-public class LargestSquareSubMatrixWithOnes {
+public class MaximalSquare {
         
         private void printLargestSubSquare(int[][] M) {
                 int m = M.length, n = M[0].length;
-                int S[][] = new int[m][n];
+                int[][] S = new int[m][n];
                 for (int i = 0; i < m; ++i) {
                         S[i][0] = M[i][0];
                 }
@@ -27,7 +27,7 @@ public class LargestSquareSubMatrixWithOnes {
                         for (int j = 1; j < n; ++j) {
                                 if (M[i][j] == 1) {
                                         S[i][j] = 1 + Math.min(S[i][j - 1],
-                                                 Math.min(S[i - 1][j], S[i - 1][j - 1])
+                                                Math.min(S[i - 1][j], S[i - 1][j - 1])
                                         );
                                 } else {
                                         S[i][j] = 0;
@@ -63,6 +63,6 @@ public class LargestSquareSubMatrixWithOnes {
                         {1, 1, 1, 1, 1},
                         {0, 0, 0, 0, 0}
                 };
-                new LargestSquareSubMatrixWithOnes().printLargestSubSquare(M);
+                new MaximalSquare().printLargestSubSquare(M);
         }
 }

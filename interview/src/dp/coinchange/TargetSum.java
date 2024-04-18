@@ -5,22 +5,16 @@ package dp.coinchange;
 
 public class TargetSum {
 
-    private int f(int[] nums, int target, int n) {
-        // base case
-        if (n == 0) {
-            return (Math.abs(target - nums[0]) == 0) ? 1 : 0;
+    private int f(int[] nums, int target, int n, int sum) {
+        if (n < 0) {
+            return sum == target ? 1 : 0;
         }
-        int taken = 0;
-        if (nums[n] <= target) {
-            taken = f(nums, target + n, n - 1) + f(nums, target - n, n - 1);
-        }
-        int notTaken = f(nums, target, n - 1);
-        return taken + notTaken;
+        return f(nums, target, n - 1, sum + nums[n]) + f(nums, target, n - 1, sum - nums[n]);
     }
 
     private int findTargetSumWays(int[] nums, int target) {
         int n = nums.length;
-        System.out.println(f(nums, target, n - 1));
+        System.out.println(f(nums, target, n - 1, 0));
         return 0;
     }
 
