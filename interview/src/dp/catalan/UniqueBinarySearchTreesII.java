@@ -1,11 +1,11 @@
-package dp;
+package dp.catalan;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UniqueBinarySearchTreesII {
 
-    static class TreeNode {
+    private static final class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

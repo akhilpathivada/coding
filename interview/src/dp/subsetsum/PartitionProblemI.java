@@ -6,7 +6,7 @@
  * https://www.geeksforgeeks.org/partition-problem-dp-18/
  *
  */
-package dp;
+package dp.subsetsum;
 
 public class PartitionProblemI {
         

@@ -4,7 +4,7 @@
  * @author akhilpathivada
  */
 
-package dp.subsetsum;
+package dp.coinchange;
 
 import java.util.Arrays;
 

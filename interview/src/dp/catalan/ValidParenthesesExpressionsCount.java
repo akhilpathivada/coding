@@ -4,12 +4,11 @@
  * Time Complexity: O(N ^ 2)
  * Space Complexity: O(N)
  * */
-package dp;
+package dp.catalan;
 
 public class ValidParenthesesExpressionsCount {
 
-    private static int catalan(int n) {
-
+    private int catalan(int n) {
         int[] catalan = new int[n + 1];
         catalan[0] = catalan[1] = 1;
         for (int i = 2; i <= n; ++i) {
@@ -21,7 +20,7 @@ public class ValidParenthesesExpressionsCount {
         return catalan[n];
     }
 
-    private static int findWays(int n) {
+    private int findWays(int n) {
         // If n is odd, not possible to
         // create any valid parentheses
         if ((n & 1) != 0) {
@@ -33,6 +32,6 @@ public class ValidParenthesesExpressionsCount {
 
     public static void main(String[] args) {
         int n = 6;
-        System.out.println(findWays(n));
+        System.out.println(new ValidParenthesesExpressionsCount().findWays(n));
     }
 }

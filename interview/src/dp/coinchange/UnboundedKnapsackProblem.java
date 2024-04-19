@@ -9,7 +9,7 @@
  * Time Complexity : O(N * W)
  * Space Complexity : O(W)
  */
-package dp;
+package dp.coinchange;
 
 public class UnboundedKnapsackProblem {
 

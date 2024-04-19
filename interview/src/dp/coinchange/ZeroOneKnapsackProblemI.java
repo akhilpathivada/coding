@@ -9,7 +9,7 @@
  * Time Complexity : O(2 ^ N)
  * Space Complexity : O(N)
  */
-package dp;
+package dp.coinchange;
 
 public class ZeroOneKnapsackProblemI {
 
