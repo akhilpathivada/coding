@@ -11,7 +11,7 @@ package slidingwindow;
  */
 public class MaximizeTheConfusionOfAnExam {
 
-    private int flipCharacter(final String answerKey, final int k, final char charToFlip) {
+    private int maxSubstringObtainsByFlippingTheChar(final String answerKey, final int k, final char charToFlip) {
         int left = 0;
         int count = 0;
         int length = Integer.MIN_VALUE;
@@ -26,7 +26,7 @@ public class MaximizeTheConfusionOfAnExam {
     }
 
     private int maxConsecutiveAnswers(String answerKey, int k) {
-        return Math.max(flipCharacter(answerKey, k, 'T'), flipCharacter(answerKey, k, 'F'));
+        return Math.max(maxSubstringObtainsByFlippingTheChar(answerKey, k, 'T'), maxSubstringObtainsByFlippingTheChar(answerKey, k, 'F'));
     }
 
     public static void main(String[] args) {
