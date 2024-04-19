@@ -18,18 +18,24 @@ public class EvaluateReversePolishNotation {
     private int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {
-            if (token.equals("+")) {
-                stack.push(stack.pop() + stack.pop());
-            } else if (token.equals("-")) {
-                stack.push(-(stack.pop() - stack.pop()));
-            } else if (token.equals("*")) {
-                stack.push(stack.pop() * stack.pop());
-            } else if (token.equals("/")) {
-                int divisor = stack.pop();
-                int dividend = stack.pop();
-                stack.push(dividend / divisor);
-            } else {
-                stack.push(Integer.valueOf(token));
+            switch (token) {
+                case "+":
+                    stack.push(stack.pop() + stack.pop());
+                    break;
+                case "-":
+                    stack.push(-(stack.pop() - stack.pop()));
+                    break;
+                case "*":
+                    stack.push(stack.pop() * stack.pop());
+                    break;
+                case "/":
+                    int divisor = stack.pop();
+                    int dividend = stack.pop();
+                    stack.push(dividend / divisor);
+                    break;
+                default:
+                    stack.push(Integer.valueOf(token));
+                    break;
             }
         }
         return stack.pop();

@@ -14,13 +14,13 @@ public class SimplifyPath {
     private String simplifyPath(String path) {
         Stack<String> stack  = new Stack<>();
         // split into tokens
-        String[] p = path.split("/");
+        String[] tokens = path.split("/");
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < p.length; ++i) {
-            if (!stack.isEmpty() && p[i].equals("..")) {
+        for (String token : tokens) {
+            if (!stack.isEmpty() && token.equals("..")) {
                 stack.pop();
-            } else if (!p[i].equals("") && !p[i].equals(".") && !p[i].equals("..")) { // if it's a directory
-                stack.push(p[i]);
+            } else if (!token.isEmpty() && !token.equals(".") && !token.equals("..")) { // if it's a directory
+                stack.push(token);
             }
         }
         if (stack.isEmpty()) {
