@@ -16,7 +16,6 @@ import java.util.*;
 public class SlidingWindowMaximumII {
 
         private static int[] maxSlidingWindow(int[] nums, int k) {
-
                 // maintain a deque, we store indexes of elements
                 // always the index of maximum element of a window is at head
                 Deque<Integer> deque = new LinkedList<>();
@@ -52,8 +51,8 @@ public class SlidingWindowMaximumII {
         }
 
         public static void main(String[] args) {
-
-                int nums[] = { 1, 3, -1, -3, 5, 3, 6, 7 }, k = 3;
+                int[] nums = { 1, 3, -1, -3, 5, 3, 6, 7 };
+                int k = 3;
                 System.out.println(Arrays.toString(maxSlidingWindow(nums, k)));
         }
 }
