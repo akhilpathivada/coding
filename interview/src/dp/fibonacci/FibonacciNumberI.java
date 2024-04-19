@@ -5,30 +5,24 @@
  *
  * https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
  *
- * Time Complexity : O(N)
- * Space Complexity : O(1)
+ * Time Complexity : O(2 ^ N)
+ * Space Complexity : O(N)
  *
  */
-package dp;
+package dp.fibonacci;
 
-public class FibonacciNumberIII {
+public class FibonacciNumberI {
         
         private int fibonacci(int n) {
                 // base case
                 if(n <= 1) {
                         return n;
                 }
-                int a = 0, b = 1, c;
-                for(int i = 2; i <= n; ++i) {
-                        c = a + b;
-                        a = b;
-                        b = c;
-                }
-                return b;
+                return fibonacci(n - 1) + fibonacci(n -2 );
         }
         
         public static void main(String[] args) {
                 int n = 9;
-                System.out.println(new FibonacciNumberIII().fibonacci(n));
+                System.out.println(new FibonacciNumberI().fibonacci(n));
         }
 }

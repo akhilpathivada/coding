@@ -8,7 +8,7 @@
  * Time Complexity : O(2 ^ (m + n))
  * Space Complexity : O(m + n)
  */
-package dp;
+package dp.lcs;
 
 public class LongestCommonSubstringI {
 

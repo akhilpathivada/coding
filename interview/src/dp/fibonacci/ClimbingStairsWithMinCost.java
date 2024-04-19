@@ -4,7 +4,7 @@
  * Time Complexity: O(N)
  * Space Complexity: O(N)
  * */
-package dp;
+package dp.fibonacci;
 
 public class ClimbingStairsWithMinCost {
 
@@ -17,7 +17,6 @@ public class ClimbingStairsWithMinCost {
         if (n == 1) {
             return cost[0];
         }
-
         int[] dp = new int[n];
         dp[0] = cost[0];
         dp[1] = cost[1];

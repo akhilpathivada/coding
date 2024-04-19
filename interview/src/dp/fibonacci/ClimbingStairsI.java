@@ -5,7 +5,7 @@
  * Space Complexity : O(N)
  * */
 
-package dp;
+package dp.fibonacci;
 
 public class ClimbingStairsI {
         private static int climbStairs(int n) {

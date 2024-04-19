@@ -4,11 +4,11 @@
  * Time Complexity: O(n * sum)
  * Space Complexity: O(n * sum)
  * */
-package dp;
+package dp.subsetsum;
 
 public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
 
-    private boolean[][] isSubsetSumEqualsToTarget(int[] nums, int target) {
+    private boolean[][] getSubsetSums(int[] nums, int target) {
         int n = nums.length;
         boolean[][] dp = new boolean[n][target + 1];
         for (int i = 0; i <= target; ++i) {
@@ -34,8 +34,8 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
             sum += num;
         }
         // get the tabulation sum
-        boolean[][] dp = isSubsetSumEqualsToTarget(nums, sum);
-        // now check for which of the sub-sums we can find the subset sum
+        boolean[][] dp = getSubsetSums(nums, sum);
+        // now check for which of the sub-sums we can find the subset sum i.e., in last row
         int minDiff = Integer.MAX_VALUE;
         for (int i = 0; i < sum; ++i) {
             if (dp[n - 1][i]) {

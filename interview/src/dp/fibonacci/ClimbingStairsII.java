@@ -6,7 +6,7 @@
  *
  * */
 
-package dp;
+package dp.fibonacci;
 
 public class ClimbingStairsII {
         private static int climbStairs(int n) {
