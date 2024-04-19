@@ -8,12 +8,12 @@
  * Time Complexity : O(m * n)
  * Space Complexity : O(m * n)
  */
-package dp;
+package dp.path;
 
 public class UniquePaths {
-        
+
         private int uniquePaths(int m, int n) {
-                int dp[][] = new int[m][n];
+                int[][] dp = new int[m][n];
                 for (int i = 0; i < m; ++i) {
                         for (int j = 0; j < n; ++j) {
                                 if (i == 0 || j == 0) {
@@ -25,7 +25,7 @@ public class UniquePaths {
                 }
                 return dp[m - 1][n - 1];
         }
-        
+
         public static void main(String[] args) {
                 int m = 3, n = 7;
                 System.out.println(new UniquePaths().uniquePaths(m, n));
