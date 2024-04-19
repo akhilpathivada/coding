@@ -5,6 +5,8 @@
  *
  * https://www.geeksforgeeks.org/connect-n-ropes-minimum-cost/
  *
+ * https://www.naukri.com/code360/problems/connect-n-ropes-with-minimum-cost_630476?leftPanelTabValue=PROBLEM
+ *
  * Time Complexity : O(N * log(N))
  * Space Complexity : O(N)
  */
