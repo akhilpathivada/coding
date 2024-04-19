@@ -4,7 +4,7 @@
  * Time Complexity: O(n * k)
  * Space Complexity: O(n * k)
  * */
-package dp;
+package dp.coinchange;
 
 import java.util.Arrays;
 
