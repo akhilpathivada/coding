@@ -38,7 +38,7 @@ public class SpecialStackForGetMaximum {
         }
 
         // returns the maximum element
-        private static int getmaximum() {
+        private static int getMaximum() {
                 return MAX;
         }
 
