@@ -8,8 +8,8 @@ package dp.catalan;
 
 public class ValidParenthesesExpressionsCount {
 
-    private int catalan(int n) {
-        int[] catalan = new int[n + 1];
+    private int catalan(final int n) {
+        final int[] catalan = new int[n + 1];
         catalan[0] = catalan[1] = 1;
         for (int i = 2; i <= n; ++i) {
             catalan[i] = 0;
