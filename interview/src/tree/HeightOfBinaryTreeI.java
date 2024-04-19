@@ -1,5 +1,8 @@
 /**
  * Height of a Binary Tree
+ *
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+ *
  * Time Complexity : O(N)
  * Space Complexity : O(H)
  * */
@@ -15,7 +18,7 @@ public class HeightOfBinaryTreeI {
                 // recur over left and right subtrees
                 int leftTreeDepth = heightOfBinaryTree(root.left);
                 int rightTreeDepth = heightOfBinaryTree(root.right);
-                return Math.max(leftTreeDepth, rightTreeDepth) + 1;
+                return 1 + Math.max(leftTreeDepth, rightTreeDepth);
         }
 
         public static void main(String[] args) {

@@ -3,7 +3,9 @@
  *  Time Complexity : O(N)
  *  Space Complexity : O(N) -> Queue
  * */
-package tree;
+package tree.view;
+
+import tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

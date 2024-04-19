@@ -5,6 +5,8 @@
  *
  * https://www.geeksforgeeks.org/check-for-children-sum-property-in-a-binary-tree/
  *
+ * https://leetcode.com/problems/root-equals-sum-of-children/description/
+ *
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */

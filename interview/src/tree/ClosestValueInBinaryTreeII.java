@@ -39,7 +39,6 @@ public class ClosestValueInBinaryTreeII {
         }
         
         public static void main(String[] args) {
-                
                 TreeNode node = new TreeNode(9);
                 node.left = new TreeNode(4);
                 node.right = new TreeNode(17);
@@ -49,7 +48,6 @@ public class ClosestValueInBinaryTreeII {
                 node.left.right.right = new TreeNode(7);
                 node.right.right = new TreeNode(22);
                 node.right.right.left = new TreeNode(20);
-                
                 System.out.println("Closest value of is = " + findClosestValue(node, 18.99));
         }
 }

@@ -20,8 +20,8 @@ public class CheckBinaryTreeIsCompleteII {
                 }
                 Queue<TreeNode> queue = new LinkedList<>();
                 queue.add(root);
-                /** Create a flag variable which will be set true
-                 when a leaf node is seen */
+                // create a flag variable which will be set true
+                // when a leaf node is seen
                 boolean leafEncountered = false;
                 // do the level order traversal
                 while (!queue.isEmpty()) {
@@ -30,15 +30,15 @@ public class CheckBinaryTreeIsCompleteII {
                         // if we have seen leaf node
                         if (node == null) {
                                 leafEncountered = true;
-                        } else {
-                                // if the leaf node we have seen eariler is not last node
-                                if (leafEncountered) {
-                                        return false;
-                                }
-                                // insert left and right children
-                                queue.add(node.left);
-                                queue.add(node.right);
+                                continue;
                         }
+                        // if the leaf node we have seen eariler is not last node
+                        if (leafEncountered) {
+                                return false;
+                        }
+                        // insert left and right children
+                        queue.add(node.left);
+                        queue.add(node.right);
                 }
                 return true;
         }

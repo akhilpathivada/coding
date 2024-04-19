@@ -7,7 +7,9 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(H) -> Height of Tree
  */
-package tree;
+package tree.traversal;
+
+import tree.TreeNode;
 
 public class VerticalOrderTraversalOfBinaryTreeI {
         // store min and max horizontal distances of tree

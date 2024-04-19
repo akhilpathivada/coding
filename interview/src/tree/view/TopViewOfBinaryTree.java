@@ -1,14 +1,16 @@
 /**
- * Program to get the Bottom View of the Binary Tree
+ * Program to get the Top View of the Binary Tree
  *
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  * */
-package tree;
+package tree.view;
+
+import tree.TreeNode;
 
 import java.util.*;
 
-public class BottomViewOfBinaryTree {
+public class TopViewOfBinaryTree {
         
         class QueueObj {
                 int hd; // horizontal distance
@@ -20,7 +22,7 @@ public class BottomViewOfBinaryTree {
                 }
         }
         
-        private void printBottomView(TreeNode root) {
+        private void printTopView(TreeNode root) {
                 // base case
                 if (root == null) {
                         return;
@@ -33,8 +35,10 @@ public class BottomViewOfBinaryTree {
                 queue.add(new QueueObj(root, 0));
                 while (!queue.isEmpty()) {
                         QueueObj tempObj = queue.poll();
-                        // even if node exists for that hd or not update entry with current node
-                        map.put(tempObj.hd, tempObj.node);
+                        // if node is the first one with the horizontal distance
+                        if (!map.containsKey(tempObj.hd)) {
+                                map.put(tempObj.hd, tempObj.node);
+                        }
                         // insert left and right children into Queue
                         if (tempObj.node.left != null) {
                                 queue.add(new QueueObj(tempObj.node.left, tempObj.hd - 1));
@@ -50,15 +54,12 @@ public class BottomViewOfBinaryTree {
         }
         
         public static void main(String[] args) {
-                TreeNode root = new TreeNode(20);
-                root.left = new TreeNode(8);
-                root.right = new TreeNode(22);
-                root.left.left = new TreeNode(5);
-                root.left.right = new TreeNode(3);
-                root.right.left = new TreeNode(4);
-                root.right.right = new TreeNode(25);
-                root.left.right.left = new TreeNode(10);
-                root.left.right.right = new TreeNode(14);
-                new BottomViewOfBinaryTree().printBottomView(root);
+                TreeNode root = new TreeNode(1);
+                root.left = new TreeNode(2);
+                root.right = new TreeNode(3);
+                root.left.right = new TreeNode(4);
+                root.left.right.right = new TreeNode(5);
+                root.left.right.right.right = new TreeNode(6);
+                new TopViewOfBinaryTree().printTopView(root);
         }
 }

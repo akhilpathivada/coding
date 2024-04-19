@@ -8,7 +8,9 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package tree;
+package tree.traversal;
+
+import tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

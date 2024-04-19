@@ -8,7 +8,9 @@
  * Space Complexity : O(N)
  */
 
-package tree;
+package tree.traversal;
+
+import tree.TreeNode;
 
 import java.util.*;
 
