@@ -12,8 +12,10 @@
 package graph;
 
 public class MaxAreaOfIsland {
+
         private int m, n; // rows, columns
-        private int DFS(int[][] grid, int i, int j) {
+
+        private int dfs(int[][] grid, int i, int j) {
                 // base case
                 if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] != 1) {
                         return 0;
@@ -21,8 +23,12 @@ public class MaxAreaOfIsland {
                 // mark the island as visited
                 grid[i][j] = 0;
                 // recur on its neighbours
-                return 1 + DFS(grid, i + 1, j) + DFS(grid, i - 1, j) + DFS(grid, i, j + 1) + DFS(grid, i, j - 1);
+                return 1 + dfs(grid, i + 1, j)
+                        + dfs(grid, i - 1, j)
+                        + dfs(grid, i, j + 1)
+                        + dfs(grid, i, j - 1);
         }
+
         private int maxAreaOfIsland(int[][] grid) {
                 m = grid.length;
                 if (m == 0) {
@@ -34,14 +40,14 @@ public class MaxAreaOfIsland {
                         for (int j = 0; j < n; ++j) {
                                 // island found
                                 if (grid[i][j] == 1) {
-                                        area = Math.max(area, DFS(grid, i, j));
+                                        area = Math.max(area, dfs(grid, i, j));
                                 }
                         }
                 }
                 return area;
         }
         public static void main(String[] args) {
-                int grid[][] = new int[][] {
+                int[][] grid = new int[][] {
                         { 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                         { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
                         { 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},

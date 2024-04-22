@@ -22,12 +22,10 @@ public class NumberOfClosedIslands {
             return true;
         }
         visited[i][j] = true;
-        boolean isClosed = true;
-        isClosed &= isClosedIsland(grid, visited, i - 1, j, m, n);
-        isClosed &= isClosedIsland(grid, visited, i + 1, j, m, n);
-        isClosed &= isClosedIsland(grid, visited, i, j - 1, m, n);
-        isClosed &= isClosedIsland(grid, visited, i, j + 1, m, n);
-        return isClosed;
+        return isClosedIsland(grid, visited, i - 1, j, m, n) &
+                isClosedIsland(grid, visited, i + 1, j, m, n) &
+                isClosedIsland(grid, visited, i, j - 1, m, n) &
+                isClosedIsland(grid, visited, i, j + 1, m, n);
     }
 
     private int closedIsland(int[][] grid) {

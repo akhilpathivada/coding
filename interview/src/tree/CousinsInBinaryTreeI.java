@@ -10,7 +10,7 @@ package tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CheckCousins {
+public class CousinsInBinaryTreeI {
         
         private boolean checkCousins(TreeNode root, int x, int y) {
                 // base case
@@ -63,6 +63,6 @@ public class CheckCousins {
                 root.left.left = new TreeNode(4);
                 root.right.left = new TreeNode(5);
                 int x = 4, y = 5;
-                System.out.println("Height of Binary Tree = " + new CheckCousins().checkCousins(root, x, y));
+                System.out.println("Height of Binary Tree = " + new CousinsInBinaryTreeI().checkCousins(root, x, y));
         }
 }

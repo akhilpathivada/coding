@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class FloydWarshallAlgorithm {
 
-    private static int INF = (int) 1e9;
+    private static final int INF = (int) 1e9;
 
     private void shortestDistance(int[][] matrix) {
         int n = matrix.length;
@@ -44,7 +44,7 @@ public class FloydWarshallAlgorithm {
     }
 
     public static void main(String[] args) {
-        int graph[][] = { { 0, 5, -1, 10 }, { -1, 0, 3, -1 }, { -1, -1, 0, 1 }, { -1, -1, -1, 0 } };
+        int[][] graph = { { 0, 5, -1, 10 }, { -1, 0, 3, -1 }, { -1, -1, 0, 1 }, { -1, -1, -1, 0 } };
         new FloydWarshallAlgorithm().shortestDistance(graph);
         System.out.println(Arrays.deepToString(graph));
     }
