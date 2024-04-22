@@ -1,7 +1,9 @@
 /**
  * https://www.geeksforgeeks.org/bridge-in-a-graph/
  *
- * Time Complexity: O(V + 2E).. time taken for dfs traversal
+ * https://leetcode.com/problems/critical-connections-in-a-network/description/
+ *
+ * Time Complexity: O(V + 2E). time taken for dfs traversal
  * Space Complexity: O(V + 2E)
  * */
 package graph.bridge;

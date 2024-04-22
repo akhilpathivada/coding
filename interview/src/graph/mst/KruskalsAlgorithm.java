@@ -4,7 +4,7 @@
  * Time Complexity: O(M) * 4 * alpha * 2 where M is number of given edges
  * Space Complexity: O(M)
  * */
-package graph;
+package graph.mst;
 
 import disjointset.DisjointSet;
 import java.util.ArrayList;
