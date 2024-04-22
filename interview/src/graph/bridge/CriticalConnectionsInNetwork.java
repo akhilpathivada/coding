@@ -4,7 +4,7 @@
  * Time Complexity: O(V + 2E).. time taken for dfs traversal
  * Space Complexity: O(V + 2E)
  * */
-package graph;
+package graph.bridge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,44 +13,44 @@ import java.util.List;
 public class CriticalConnectionsInNetwork {
     private int timer = 1;
 
-    private void dfs(int node, int parent, int[] visited, int[] timeOfVisit, int[] lowestTimeOfVisit,
-            List<List<Integer>> adj, List<List<Integer>> bridges) {
+    private void dfs(final int node, final int parent, final int[] visited, final int[] timeOfVisit, final int[] lowestTimeOfVisit,
+                     final List<List<Integer>> adjacencyList, final List<List<Integer>> bridges) {
         visited[node] = 1;
         timeOfVisit[node] = lowestTimeOfVisit[node] = timer++;
-        for (Integer _node : adj.get(node)) {
-            if (_node == parent) {
+        for (Integer adjacentNode : adjacencyList.get(node)) {
+            if (adjacentNode == parent) {
                 continue;
             }
-            if (visited[_node] == 0) {
-                dfs(_node, node, visited, timeOfVisit, lowestTimeOfVisit, adj, bridges);
-                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[_node]);
+            if (visited[adjacentNode] == 0) {
+                dfs(adjacentNode, node, visited, timeOfVisit, lowestTimeOfVisit, adjacencyList, bridges);
+                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[adjacentNode]);
                 // if this connection is a bridge
-                if (lowestTimeOfVisit[_node] > timeOfVisit[node]) {
-                    bridges.add(Arrays.asList(_node, node));
+                if (lowestTimeOfVisit[adjacentNode] > timeOfVisit[node]) {
+                    bridges.add(Arrays.asList(adjacentNode, node));
                 }
             } else {
-                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[_node]);
+                lowestTimeOfVisit[node] = Math.min(lowestTimeOfVisit[node], lowestTimeOfVisit[adjacentNode]);
             }
         }
     }
 
     private List<List<Integer>> findBridges(int n, List<List<Integer>> connections) {
         // forming an adjacency list
-        List<List<Integer>> adj = new ArrayList<>();
+        final List<List<Integer>> adjacencyList = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
-            adj.add(new ArrayList<>());
+            adjacencyList.add(new ArrayList<>());
         }
         for (List<Integer> connection : connections) {
             int u = connection.get(0);
             int v = connection.get(1);
-            adj.get(u).add(v);
-            adj.get(v).add(u);
+            adjacencyList.get(u).add(v);
+            adjacencyList.get(v).add(u);
         }
-        int[] visited = new int[n];
-        int[] timeOfVisit = new int[n];
-        int[] lowestTimeOfVisit = new int[n];
-        List<List<Integer>> bridges = new ArrayList<>();
-        dfs(0, -1, visited, timeOfVisit, lowestTimeOfVisit, adj, bridges);
+        final int[] visited = new int[n];
+        final int[] timeOfVisit = new int[n];
+        final int[] lowestTimeOfVisit = new int[n];
+        final List<List<Integer>> bridges = new ArrayList<>();
+        dfs(0, -1, visited, timeOfVisit, lowestTimeOfVisit, adjacencyList, bridges);
         return bridges;
     }
 

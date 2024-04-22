@@ -94,7 +94,7 @@ public class KosarajuAlgorithm {
         visited = new HashSet<>();
         // Step 5: Do DFS for reversed graph starting from first vertex.
         // Starting Vertex must be same starting point of first DFS
-        dfs2(graph[0], visited);
+        dfs2(transpose[0], visited);
         // Step 6: If DFS traversal doesn't visit all vertices, then return false.
         for (int i = 0; i < n; ++i) {
             if (!visited.contains(graph[i].label)) {

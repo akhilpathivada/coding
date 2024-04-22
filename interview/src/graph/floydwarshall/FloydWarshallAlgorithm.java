@@ -5,7 +5,7 @@
  * Time Complexity: O(V ^ 3)
  * Space Complexity: O(V ^ 2)
  * */
-package graph;
+package graph.floydwarshall;
 
 import java.util.Arrays;
 
