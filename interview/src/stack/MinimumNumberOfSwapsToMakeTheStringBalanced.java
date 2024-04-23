@@ -10,7 +10,7 @@
  */
 package stack;
 
-public class MinimumNumberOfSwapsToMakeTheString {
+public class MinimumNumberOfSwapsToMakeTheStringBalanced {
 
     private int minSwaps(String s) {
         int maxClose = 0;
@@ -28,6 +28,6 @@ public class MinimumNumberOfSwapsToMakeTheString {
 
     public static void main(String[] args) {
         String s = "]]][[[";
-        System.out.println(new MinimumNumberOfSwapsToMakeTheString().minSwaps(s));
+        System.out.println(new MinimumNumberOfSwapsToMakeTheStringBalanced().minSwaps(s));
     }
 }

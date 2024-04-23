@@ -8,12 +8,8 @@ package matrix;
 
 public class WordSearch {
 
-    // track whether a cell is already visited or not
-    private boolean[][] visited;
-
-    // iterates over all the cells adjacent to a given cell
-    // searches if the word is found
-    private boolean searchWord(char[][] board, String word, int index, int i, int j) {
+    private boolean searchWord(final char[][] board, final boolean[][] visited,
+                               final String word, final int index, final int i, final int j) {
         // the entire word id found
         if (index == word.length()) {
             return true;
@@ -26,10 +22,10 @@ public class WordSearch {
         // mark the current cell as visited
         visited[i][j] = true;
         // check in all the adjacent directions
-        if (searchWord(board, word, index + 1, i + 1, j) ||
-                searchWord(board, word, index + 1, i - 1, j) ||
-                searchWord(board, word, index + 1, i, j - 1) ||
-                searchWord(board, word, index + 1, i, j + 1)) {
+        if (searchWord(board, visited, word, index + 1, i + 1, j) ||
+                searchWord(board, visited, word, index + 1, i - 1, j) ||
+                searchWord(board, visited, word, index + 1, i, j - 1) ||
+                searchWord(board, visited, word, index + 1, i, j + 1)) {
             return true;
         }
         // mark it as unvisited, since because the word is not found with this cell
@@ -38,15 +34,14 @@ public class WordSearch {
     }
 
     private boolean exist(char[][] board, String word) {
-
-        int rows = board.length;
-        int columns = board[0].length;
-        visited = new boolean[rows][columns];
-
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < columns; ++j) {
+        final int m = board.length;
+        final int n = board[0].length;
+        // track whether a cell is already visited or not
+        final boolean[][] visited = new boolean[m][n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
                 // always assume the word starts with this cell
-                if (word.charAt(0) == board[i][j] && searchWord(board, word, 0, i, j)) {
+                if (word.charAt(0) == board[i][j] && searchWord(board, visited, word, 0, i, j)) {
                     return true;
                 }
             }

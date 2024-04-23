@@ -57,7 +57,7 @@ public class MajorityElementII {
                 return result;
         }
         public static void main(String[] args) {
-                int nums[] = { 1, 1, 1, 2, 2, 2, 4 };
+                int[] nums = { 1, 1, 1, 2, 2, 2, 4 };
                 System.out.println(" The majority element is : " + getMajorityElement(nums, nums.length));
         }
 }

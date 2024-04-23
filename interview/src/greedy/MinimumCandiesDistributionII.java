@@ -7,41 +7,40 @@
  * Space Complexity : O(N)
  * */
 
-package misc;
+package greedy;
 
 import java.util.Arrays;
 
 public class MinimumCandiesDistributionII {
 
-        private static int minCandies(int[] ratings) {
-
-                int candies = 0; // min candies
-                int n = ratings.length;
+        private int minCandies(int[] ratings) {
+                final int n = ratings.length;
                 // stores final results
-                int[] C = new int[n];
-                // filling intial values
-                Arrays.fill(C, 1);
+                final int[] candies = new int[n];
+                // filling initial values
+                Arrays.fill(candies, 1);
+                int candiesNeeded = 0;
                 // compute candies based on left neighbour
                 for (int i = 1; i < n; ++i) {
                         if (ratings[i] > ratings[i - 1]) {
-                                C[i] = C[i - 1] + 1;
+                                candies[i] = candies[i - 1] + 1;
                         }
                 }
                 // compute candies based on right neighbour
                 for (int i = n - 2; i >= 0; --i) {
                         if (ratings[i] > ratings[i + 1]) {
-                                C[i] = Math.max(C[i + 1] + 1, C[i]);
+                                candies[i] = Math.max(candies[i + 1] + 1, candies[i]);
                         }
                 }
-                // Sum of all candies
+                // sum of all candies
                 for (int i = 0; i < n; ++i) {
-                        candies += C[i];
+                        candiesNeeded += candies[i];
                 }
-                return candies;
+                return candiesNeeded;
         }
 
         public static void main(String[] args) {
                 int[] ratings = { 1, 0, 2 };
-                System.out.println(minCandies(ratings));
+                System.out.println(new MinimumCandiesDistributionII().minCandies(ratings));
         }
 }

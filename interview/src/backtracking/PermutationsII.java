@@ -3,7 +3,7 @@
  *
  * @author akhilpathivada
  *
- * https://leetcode.com/problems/permutations/
+ * https://leetcode.com/problems/permutations-ii/
  *
  * Time Complexity: O(n * n!)
  * Space Complexity : O(n)
