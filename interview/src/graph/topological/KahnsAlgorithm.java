@@ -55,9 +55,8 @@ public class KahnsAlgorithm {
             // step-3: decrease the in-degree of adjacent vertices as the
             // current node is in topological order
             for (int neighbor : graph.get(node)) {
-                indegree[neighbor]--;
                 // step-4: if indegree becomes 0, push it to the queue
-                if (indegree[neighbor] == 0) {
+                if (--indegree[neighbor] == 0) {
                     queue.add(neighbor);
                 }
             }

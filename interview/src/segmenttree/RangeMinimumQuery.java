@@ -39,7 +39,7 @@ public class RangeMinimumQuery {
         }
 
         public static void main(String[] args) {
-                int arr[] = { 1, 3, 2, 7, 9, 11 };
+                int[] arr = { 1, 3, 2, 7, 9, 11 };
                 int n = arr.length;
                 int qs = 1;  // Starting index of query range
                 int qe = 5;  // Ending index of query range

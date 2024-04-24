@@ -13,7 +13,8 @@ package graph.cycle;
 import graph.GraphNode;
 
 public class DetectCycleInUndirectedGraph {
-        private boolean isCycleUtil(GraphNode node, boolean[] visited, GraphNode parent) {
+
+        private boolean isCycleUtil(final GraphNode node, final boolean[] visited, final GraphNode parent) {
                 visited[node.label] = true;
                 for (GraphNode neighbour : node.neighbours) {
                         if (!visited[neighbour.label]) {
@@ -28,7 +29,7 @@ public class DetectCycleInUndirectedGraph {
         }
 
         private boolean isCycle(GraphNode[] graph) {
-                boolean[] visited = new boolean[graph.length];
+                final boolean[] visited = new boolean[graph.length];
                 for (GraphNode node : graph) {
                         if (!visited[node.label]) {
                                 if (isCycleUtil(node, visited, null)) {

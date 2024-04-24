@@ -13,7 +13,8 @@ package graph.cycle;
 import graph.GraphNode;
 
 public class DetectCycleInDirectedGraph {
-        private boolean isCycleUtil(GraphNode node, boolean[] visited, boolean[] pathVisited) {
+
+        private boolean isCycleUtil(final GraphNode node, final boolean[] visited, final boolean[] pathVisited) {
                 if (pathVisited[node.label]) {
                         return true;
                 }
@@ -34,12 +35,13 @@ public class DetectCycleInDirectedGraph {
         }
 
         private boolean isCycle(GraphNode[] graph) {
+                final int n = graph.length;
                 // Mark all the vertices as not visited and
                 // not part of recursion stack
-                boolean[] visited = new boolean[graph.length];
-                boolean[] pathVisited = new boolean[graph.length];
-                for (int i = 0; i < graph.length; ++i) {
-                        if (isCycleUtil(graph[i], visited, pathVisited)) {
+                final boolean[] visited = new boolean[n];
+                final boolean[] pathVisited = new boolean[n];
+                for (GraphNode node : graph) {
+                        if (isCycleUtil(node, visited, pathVisited)) {
                                 return true;
                         }
                 }
