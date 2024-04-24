@@ -13,40 +13,64 @@ package disjointset;
 import java.util.Arrays;
 
 public class RedundantConnectionI {
-        // captures parent of each node
-        int[] parent;
+
+        private static final class DisjointSet {
+
+                private final int[] size; // stores size
+
+                private final int[] parent; // stores parent of each node
+
+                private DisjointSet(int n) {
+                        // create with n + 1 size: so that it would be useful for 0-indexed and 1-indexed as well
+                        size = new int[n + 1];
+                        parent = new int[n + 1];
+                        // initially every node itself is a disjoint set
+                        // so parent of a node is itself and also
+                        // the size of every node is 1
+                        for (int i = 0; i <= n; ++i) {
+                                parent[i] = i;
+                                size[i] = 1;
+                        }
+                }
+
+                // to find the ultimate parent of a node
+                // and do "path compression"
+                private int findUltimateParent(int node) {
+                        // this the ultimate parent (root)
+                        if (parent[node] == node) {
+                                return node;
+                        }
+                        return parent[node] = findUltimateParent(parent[node]);
+                }
+
+                private void unionBySize(int u, int v) {
+                        int ultimateParentOfU = findUltimateParent(u);
+                        int ultimateParentOfV = findUltimateParent(v);
+                        // if both are already in same set
+                        if (ultimateParentOfU == ultimateParentOfV) {
+                                return;
+                        }
+                        if (size[ultimateParentOfU] < size[ultimateParentOfV]) {
+                                parent[ultimateParentOfU] = ultimateParentOfV;
+                                size[ultimateParentOfV] += size[ultimateParentOfU];
+                        } else {
+                                parent[ultimateParentOfV] = ultimateParentOfU;
+                                size[ultimateParentOfU] += size[ultimateParentOfV];
+                        }
+                }
+        }
 
         private int[] findRedundantConnection(int[][] edges) {
-                int n = edges.length + 1;
-                parent = new int[n + 1];
-                for (int i = 0; i <= n; ++i) {
-                        parent[i] = i;
-                }
+                final DisjointSet disjointSet = new DisjointSet(edges.length);
                 for (int[] edge : edges) {
-                        // found the edge which created cycle
-                        if (find(edge[0]) == find(edge[1])) {
+                        int u = edge[0];
+                        int v = edge[1];
+                        if (disjointSet.findUltimateParent(u) == disjointSet.findUltimateParent(v)) {
                                 return edge;
                         }
-                        union(edge[0], edge[1]);
+                        disjointSet.unionBySize(u, v);
                 }
                 return null;
-        }
-
-        // find which set it belongs
-        private int find(int node) {
-                while (parent[node] != node) {
-                        node = parent[node];
-                }
-                return node;
-        }
-
-        // combine 2 disjoint sets
-        private void union(int i, int j) {
-                int iRoot = find(i);
-                int jRoot = find(j);
-                if (iRoot != jRoot) {
-                        parent[jRoot] = iRoot;
-                }
         }
 
         public static void main(String[] args) {
