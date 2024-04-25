@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class WordLadderI {
 
-    private class Pair {
+    private static final class Pair {
         private final String word;
         private final int steps;
 
@@ -27,24 +27,24 @@ public class WordLadderI {
 
     private int ladderLength(String beginWord, String endWord, List<String> wordList) {
         // convert the word list into a set
-        Set<String> set = new HashSet<>(wordList);
-        Queue<Pair> queue = new LinkedList<>();
+        final Set<String> set = new HashSet<>(wordList);
+        final Queue<Pair> queue = new LinkedList<>();
         // steps taken to reach beginWord is always '1'
         queue.add(new Pair(beginWord, 1));
         while (!queue.isEmpty()) {
-            Pair p = queue.poll();
-            String word = p.word;
-            int steps = p.steps;
+            String word = queue.peek().word;
+            int steps = queue.peek().steps;
+            queue.remove();
             if (word.equals(endWord)) {
                 return steps;
             }
             // generate all the possibilities with the current word
             for (int i = 0; i < word.length(); ++i) {
-                for (char ch = 'a'; ch <= 'z'; ++ch) {
-                    char[] replacedCharArray = word.toCharArray();
-                    // replace the string with character (a -> z)
-                    replacedCharArray[i] = ch;
-                    String replacedWord = new String(replacedCharArray);
+                // replace the every character of string with characters (a -> z)
+                for (char c = 'a'; c <= 'z'; ++c) {
+                    StringBuilder sb = new StringBuilder(word);
+                    sb.setCharAt(i, c);
+                    String replacedWord = sb.toString();
                     if (set.contains(replacedWord)) {
                         set.remove(replacedWord);
                         queue.add(new Pair(replacedWord, steps + 1));
