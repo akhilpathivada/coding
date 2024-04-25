@@ -7,8 +7,9 @@ package disjointset;
 
 public class DisjointSetUnionBySize {
 
-    int[] size; // stores size
-    int[] parent; // stores parent of each node
+    private final int[] size; // stores size
+
+    private final int[] parent; // stores parent of each node
 
     private DisjointSetUnionBySize(int n) {
         // create with n + 1 size: so that it would be useful for 0-indexed and 1-indexed as well
