@@ -26,7 +26,7 @@ public class RegularExpressionMatching {
                 if ((pattern[j - 1] == text[i - 1]) || pattern[j - 1] == '.') {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else if (pattern[j - 1] == '*') {
-                    // 0 occurence
+                    // 0 occurrence
                     dp[i][j] = dp[i][j - 2];
                     if (pattern[j - 2] == '.' || pattern[j - 2] == text[i - 1]) {
                         dp[i][j] = dp[i][j] || dp[i - 1][j];
