@@ -9,10 +9,9 @@
  * Space Complexity : O(N)
  *
  */
-package graph;
+package bfs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,34 +21,31 @@ import java.util.Queue;
 public class TimeNeededToInformAllEmployees {
 
     public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
-        // Form a graph based on the given data
+        // form a graph based on the given data
         // graphNode contains <managerId, subordinates>
-        Map<Integer, List<Integer>> graph = new HashMap<>();
+        final Map<Integer, List<Integer>> graph = new HashMap<>();
         for (int i = 0; i < n; ++i) {
-            int m = manager[i];
-            graph.putIfAbsent(m, new ArrayList<>());
-            graph.get(m).add(i);
+            graph.computeIfAbsent(manager[i], m -> new ArrayList<>()).add(i);
         }
-        // List<Integer> holds 2 entries....
-        // List(0) -> employeeId
-        // List(1) -> time taken to inform this employee
-        Queue<List<Integer>> queue = new LinkedList<>();
+        // Queue node holds 2 entries: (employeeId, time_taken_to_inform_this_employee)
+        final Queue<int[]> queue = new LinkedList<>();
         // head doesn't take any time to inform himself
-        queue.offer(new ArrayList<>(Arrays.asList(headID, 0)));
+        queue.offer(new int[]{headID, 0});
         int result = 0;
         while (!queue.isEmpty()) {
-            List<Integer> e = queue.poll();
-            int employee = e.get(0);
-            int timeTakenToInform = e.get(1);
+            int employee = queue.peek()[0];
+            int timeTakenToInformSoFar = queue.peek()[1];
+            queue.remove();
             // if employee has no subordinates
             if (!graph.containsKey(employee)) {
                 continue;
             }
             List<Integer> subordinates = graph.get(employee);
+            // let's inform all it's subordinates
             for (int subordinate : subordinates) {
-                queue.add(new ArrayList<>(Arrays.asList(subordinate, timeTakenToInform + informTime[employee])));
+                queue.add(new int[]{subordinate, timeTakenToInformSoFar + informTime[employee]});
             }
-            result = Math.max(result, timeTakenToInform + informTime[employee]);
+            result = Math.max(result, timeTakenToInformSoFar + informTime[employee]);
         }
         return result;
     }

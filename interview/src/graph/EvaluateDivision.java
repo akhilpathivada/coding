@@ -17,8 +17,8 @@ import java.util.Set;
 
 public class EvaluateDivision {
 
-    private void dfs(String node, String dest, Map<String, Map<String, Double>> graph, Set<String> visited,
-            double[] ans, double temp) {
+    private void dfs(final String node, final String dest, final Map<String, Map<String, Double>> graph,
+                     final Set<String> visited, final double[] ans, final double result) {
         // base case
         if (visited.contains(node)) {
             return;
@@ -26,36 +26,26 @@ public class EvaluateDivision {
         visited.add(node);
         // capture the result
         if (node.equals(dest)) {
-            ans[0] = temp;
+            ans[0] = result;
             return;
         }
         for (Map.Entry<String, Double> entry : graph.get(node).entrySet()) {
-            String _node = entry.getKey();
+            String adjacentNode = entry.getKey();
             double val = entry.getValue();
-            dfs(_node, dest, graph, visited, ans, temp * val);
+            dfs(adjacentNode, dest, graph, visited, ans, result * val);
         }
-    }
-
-    private Map<String, Map<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
-        Map<String, Map<String, Double>> graph = new HashMap<>();
-
-        for (int i = 0; i < equations.size(); ++i) {
-            String dividend = equations.get(i).get(0);
-            String divisor = equations.get(i).get(1);
-            double value = values[i];
-
-            graph.putIfAbsent(dividend, new HashMap<>());
-            graph.putIfAbsent(divisor, new HashMap<>());
-
-            graph.get(dividend).put(divisor, value);
-            graph.get(divisor).put(dividend, 1.0 / value); // put inverse
-        }
-        return graph;
     }
 
     private double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        Map<String, Map<String, Double>> graph = buildGraph(equations, values);
-        double[] results = new double[queries.size()];
+        final Map<String, Map<String, Double>> graph = new HashMap<>();
+        // create the graph
+        for (int i = 0; i < equations.size(); ++i) {
+            String dividend = equations.get(i).get(0);
+            String divisor = equations.get(i).get(1);
+            graph.computeIfAbsent(dividend, m -> new HashMap<>()).put(divisor, values[i]);
+            graph.computeIfAbsent(divisor, m -> new HashMap<>()).put(dividend, 1.0 / values[i]); // put inverse
+        }
+        final double[] results = new double[queries.size()];
         for (int i = 0; i < queries.size(); ++i) {
             String dividend = queries.get(i).get(0);
             String divisor = queries.get(i).get(1);
@@ -64,7 +54,7 @@ public class EvaluateDivision {
                 continue;
             }
             Set<String> visited = new HashSet<>();
-            double[] ans = { -1.0 };
+            double[] ans = {-1.0};
             dfs(dividend, divisor, graph, visited, ans, 1.0);
             results[i] = ans[0];
         }
