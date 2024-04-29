@@ -1,28 +1,28 @@
 /**
  * author: akhilpathivada
  * time: 29/04/24 16:08
+ *
+ *
  */
 package slidingwindow;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class FruitIntoBaskets {
 
     private int totalFruit(int[] fruits) {
         int result = 0;
         int left = 0;
-        final Map<Integer, Integer> map = new HashMap<>();
+        final Map<Integer, Integer> fruitTypeToCountMap = new HashMap<>();
         for (int right = 0; right < fruits.length; ++right) {
-            map.put(fruits[right], map.getOrDefault(fruits[right], 0) + 1);
-            while (map.size() > 2) {
-                map.put(fruits[left], map.getOrDefault(fruits[left], 0) - 1);
-                if (map.get(fruits[left]) == 0) {
-                    map.remove(fruits[left]);
+            fruitTypeToCountMap.put(fruits[right], fruitTypeToCountMap.getOrDefault(fruits[right], 0) + 1);
+            while (fruitTypeToCountMap.size() > 2) {
+                int fruitType = fruits[left++];
+                fruitTypeToCountMap.put(fruitType, fruitTypeToCountMap.getOrDefault(fruitType, 0) - 1);
+                if (fruitTypeToCountMap.get(fruitType) == 0) {
+                    fruitTypeToCountMap.remove(fruitType);
                 }
-                ++left;
             }
             result = Math.max(result, right - left + 1);
         }
