@@ -22,9 +22,8 @@ public class MaximumErasureValue {
                 sum -= nums[left];
                 set.remove(nums[left++]);
             }
-            sum += nums[right];
             set.add(nums[right]);
-            result = Math.max(result, sum);
+            result = Math.max(result, sum += nums[right]);
         }
         return result;
     }
