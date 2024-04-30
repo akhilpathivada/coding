@@ -50,8 +50,40 @@ public class MinimumWindowSubstring {
                                               : s.substring(startIndexOfResultWindow, startIndexOfResultWindow + minLength + 1);
     }
 
+    private String minWindow_2(String s, String t) { // unfinished logic
+        final int[] count = new int[128];
+        for (char c : t.toCharArray()) {
+            count[c]++;
+        }
+        int left = 0;
+        int matchedCharsCount = 0;
+        int minLengthOfWindow = Integer.MAX_VALUE;
+        int minWindowBegin = 0;
+        for (int right = 0; right < s.length(); ++right) {
+            char c = s.charAt(right);
+            if (count[c]-- > 0) {
+                System.out.println("found for : " + right);
+                System.out.println("left at : " + left);
+                ++matchedCharsCount;
+            }
+            while (matchedCharsCount == t.length()) {
+                System.out.println("match at " + right);
+                if (right - left + 1 < minLengthOfWindow) {
+                    minWindowBegin = left;
+                    minLengthOfWindow = right - left + 1;
+                }
+                if (count[s.charAt(left)] < 0) {
+                    count[s.charAt(left++)]++;
+                    --matchedCharsCount;
+                }
+            }
+        }
+        return minLengthOfWindow == Integer.MAX_VALUE ? "" : s.substring(minWindowBegin, minWindowBegin + minLengthOfWindow);
+    }
+
     public static void main(String[] args) {
         String s = "ADOBECODEBANC", t = "ABC";
         System.out.println(new MinimumWindowSubstring().minWindow(s, t));
+        System.out.println(new MinimumWindowSubstring().minWindow_2(s, t));
     }
 }
