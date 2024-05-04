@@ -41,7 +41,7 @@ public class MinimumCostForTickets {
     }
 
     private int mincostTickets(int[] days, int[] costs) {
-        int totalDaysToTravel = days.length;
+        final int totalDaysToTravel = days.length;
         // recursive solution
         // return f(days, costs, totalDaysToTravel, 0, 0);
 
