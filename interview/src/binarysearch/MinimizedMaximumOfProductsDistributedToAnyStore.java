@@ -1,6 +1,9 @@
 /**
  * author: akhilpathivada
  * time: 12/05/24 07:39
+ *
+ * https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/description/
+ *
  */
 package binarysearch;
 
@@ -11,7 +14,7 @@ public class MinimizedMaximumOfProductsDistributedToAnyStore {
     private boolean canDistribute(int amount, int n, int[] quantities) {
         int countOfStoresGotDistribution = 0;
         for (int quantity : quantities) {
-            countOfStoresGotDistribution += (int) Math.ceil((double) quantity / (double) amount));
+            countOfStoresGotDistribution += (int) Math.ceil((double) quantity / (double) amount);
         }
         return countOfStoresGotDistribution <= n;
     }
