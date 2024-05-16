@@ -1,11 +1,13 @@
 /**
  * author: akhilpathivada
  * time: 16/05/24 17:16
+ *
+ * https://leetcode.com/problems/most-profit-assigning-work/
+ *
  */
 package greedy;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class MostProfitAssigningWork {
 
