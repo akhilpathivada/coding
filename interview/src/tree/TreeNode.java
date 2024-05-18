@@ -26,6 +26,12 @@ public class TreeNode {
                 preOrder(root.right);
         }
 
+        public void preOrder() {
+                System.out.print(this.data + ", ");
+                preOrder(this.left);
+                preOrder(this.right);
+        }
+
         // prints the InOrder
         protected void inOrder(TreeNode root) {
                 if (root == null) {
