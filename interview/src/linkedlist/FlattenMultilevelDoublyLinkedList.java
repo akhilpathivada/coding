@@ -29,7 +29,7 @@ public class FlattenMultilevelDoublyLinkedList {
         while (current != null) {
             if (current.child != null) {
                 Node headOfTheChildList = current.child;
-                Node tailOfTheChildList = flattenUtil(current.child);
+                Node tailOfTheChildList = flattenUtil(headOfTheChildList);
                 if (current.next != null) {
                     tailOfTheChildList.next = current.next;
                     current.next.prev = tailOfTheChildList;

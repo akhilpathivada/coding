@@ -1,6 +1,9 @@
 /**
  * author: akhilpathivada
  * time: 17/05/24 22:13
+ *
+ * https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+ *
  */
 package linkedlist;
 
