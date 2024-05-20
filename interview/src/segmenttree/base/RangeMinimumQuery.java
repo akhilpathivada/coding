@@ -11,7 +11,7 @@
  * Space Complexity: O(n), since n extra space has been taken.
  *
  */
-package segmenttree;
+package segmenttree.base;
 
 public class RangeMinimumQuery {
 

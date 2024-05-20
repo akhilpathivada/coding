@@ -8,18 +8,17 @@
  * Time complexity to update value is O(log(n))
  * Time complexity to get range min/sum is O(log(n))
  */
-package segmenttree;
+package segmenttree.base;
 
 public abstract class SegmentTree {
 
-        public final int[] st; // this array stores nodes of the segment segment
-
-        private final int size; // size of segment segment
+        public final int[] st; // this array stores nodes of the segment tree
 
         public SegmentTree(int n) {
                 // compute height of segment tree
                 int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
-                size = 2 * (int) Math.pow(2, x) - 1;
+                // size of segment segment
+                int size = 2 * (int) Math.pow(2, x) - 1;
                 st = new int[size];
         }
 

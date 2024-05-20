@@ -4,11 +4,11 @@
  * There are total 2n - 1 nodes, and value of every node is calculated only once in tree construction.
  *
  * */
-package segmenttree;
+package segmenttree.base;
 
-public class SegmentTreeForRangeSumQuery extends SegmentTree {
+public class SegmentTreeForRangeMinimumQuery extends SegmentTree {
 
-    public SegmentTreeForRangeSumQuery(int n) {
+    public SegmentTreeForRangeMinimumQuery(int n) {
         super(n);
     }
 
@@ -23,8 +23,8 @@ public class SegmentTreeForRangeSumQuery extends SegmentTree {
         int mid = ss + (se - ss) / 2;
         // If there are more than one element, then recur for left and
         // right subtrees and store the minimum of two values in this node
-        st[index] = constructSegmentTree(arr, ss, mid, index * 2 + 1) +
-                constructSegmentTree(arr, mid + 1, se, index * 2 + 2);
+        st[index] = Math.min(constructSegmentTree(arr, ss, mid, index * 2 + 1),
+                constructSegmentTree(arr, mid + 1, se, index * 2 + 2));
         return st[index];
     }
 }
