@@ -4,7 +4,7 @@
  * Time Complexity : O(N ^ 2)
  * Space Complexity : O(N)
  */
-package hashing;
+package array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
