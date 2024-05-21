@@ -1,6 +1,9 @@
 /**
  * author: akhilpathivada
  * time: 21/05/24 09:12
+ *
+ * https://leetcode.com/problems/design-a-food-rating-system/description/
+ *
  */
 package design;
 
@@ -68,7 +71,7 @@ public class FoodRatings {
     }
 
     public String highestRated(String cuisine) {
-        // we can add expection handling - but not required for this question
+        // we can add expection handling - but not required for this question :D
         return cuisineToFoodItemsMap.get(cuisine).peek().name;
     }
 
