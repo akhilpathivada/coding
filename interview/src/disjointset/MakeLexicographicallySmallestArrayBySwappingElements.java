@@ -11,18 +11,26 @@ import java.util.*;
 
 public class MakeLexicographicallySmallestArrayBySwappingElements {
 
+    private final class Pair {
+
+        private final int index;
+
+        private final int value;
+
+        private Pair(int index, int value) {
+            this.index = index;
+            this.value = value;
+        }
+    }
+
     private final class DisjointSet {
 
         private final int[] parent;
 
-        private final int[] size;
-
         private DisjointSet(int n) {
             parent = new int[n + 1];
-            size = new int[n + 1];
             for (int i = 0; i <= n; ++i) {
                 parent[i] = i;
-                size[i] = 1;
             }
         }
 
@@ -33,40 +41,30 @@ public class MakeLexicographicallySmallestArrayBySwappingElements {
             return parent[node] = findUltimateParent(parent[node]);
         }
 
-        private void unionBySize(int u, int v) {
-            int ultimateParentOfU = findUltimateParent(u);
-            int ultimateParentOfV = findUltimateParent(v);
-            // if both are already in same set
-            if (ultimateParentOfU == ultimateParentOfV) {
-                return;
-            }
-            if (size[ultimateParentOfU] < size[ultimateParentOfV]) {
-                parent[ultimateParentOfU] = ultimateParentOfV;
-                size[ultimateParentOfV] += size[ultimateParentOfU];
-            } else {
-                parent[ultimateParentOfV] = ultimateParentOfU;
-                size[ultimateParentOfU] += size[ultimateParentOfV];
-            }
+        private void union(int u, int v) {
+            parent[v] = u;
         }
     }
 
     public int[] lexicographicallySmallestArray(int[] nums, int limit) {
         final int n = nums.length;
         final DisjointSet disjointSet = new DisjointSet(n);
+        final List<Pair> pairs = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                if (Math.abs(nums[i] - nums[j]) <= limit) {
-                    disjointSet.unionBySize(i, j);
-                }
+            pairs.add(new Pair(i, nums[i]));
+        }
+        pairs.sort((a, b) -> a.value - b.value);
+        for (int i = 1; i < n; ++i) {
+            Pair u = pairs.get(i);
+            Pair v = pairs.get(i - 1);
+            if (u.value - v.value <= limit) {
+                disjointSet.union(u.index, v.index);
             }
         }
-        final Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
-        for (int i = 0; i < n; ++i) {
-            int root = disjointSet.findUltimateParent(i);
-            if (!map.containsKey(root)) {
-                map.put(root, new PriorityQueue<>());
-            }
-            map.get(root).offer(nums[i]);
+        final Map<Integer, Queue<Integer>> map = new HashMap<>();
+        for (Pair pair : pairs) {
+            int root = disjointSet.findUltimateParent(pair.index);
+            map.computeIfAbsent(root, q -> new LinkedList<>()).offer(pair.value);
         }
         final int[] result = new int[n];
         for (int i = 0; i < n; ++i) {
@@ -77,7 +75,7 @@ public class MakeLexicographicallySmallestArrayBySwappingElements {
     }
 
     public static void main(String[] args) {
-        int[] nums = {5,9,35,60,73,91,61,57,87,76};
+        int[] nums = {5, 9, 35, 60, 73, 91, 61, 57, 87, 76};
         int limit = 11;
         System.out.println(Arrays.toString(new MakeLexicographicallySmallestArrayBySwappingElements().lexicographicallySmallestArray(nums, limit)));
     }
