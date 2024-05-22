@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 public class MyCalendarI {
 
-    private static final class Pair {
+    private final class Pair {
 
         private final int start;
 
