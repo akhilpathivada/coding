@@ -5,7 +5,7 @@
  * Time Complexity : O(N ^ 3)
  * Space Complexity : O(N ^ 2)
  * */
-package dp;
+package dp.mcm;
 
 import java.util.ArrayList;
 import java.util.Arrays;

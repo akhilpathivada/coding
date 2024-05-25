@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class MaximumSumOfDistinctSubarraysWithLengthK {
 
-    public long maximumSubarraySum(int[] nums, int k) {
+    private long maximumSubarraySum(int[] nums, int k) {
         final Set<Integer> set = new HashSet<>();
         long sum = 0;
         long result = 0;
