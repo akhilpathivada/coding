@@ -16,9 +16,9 @@ public class PartitionLabels {
         if (s == null || s.isEmpty()) {
             return null;
         }
-        List<Integer> output = new ArrayList<>();
+        final List<Integer> output = new ArrayList<>();
         // stores the index of last occurrence of a character
-        int[] lastOccurence = new int[26];
+        final int[] lastOccurence = new int[26];
         for (int i = 0; i < s.length(); ++i) {
             lastOccurence[s.charAt(i) - 'a'] = i;
         }
