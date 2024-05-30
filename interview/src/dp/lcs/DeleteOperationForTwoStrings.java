@@ -9,24 +9,19 @@ package dp.lcs;
 public class DeleteOperationForTwoStrings {
 
     private int minDelete(String word1, String word2) {
+        final int m = word1.length();
+        final int n = word2.length();
+        final int[][] dp = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                dp[i][j] = word1.charAt(i - 1) == word2.charAt(j - 1)
+                        ? 1 + dp[i - 1][j - 1]
+                        : Math.max(dp[i - 1][j], dp[i][j - 1]);
 
-        int m = word1.length();
-        int n = word2.length();
-        int[][] dp = new int[m + 1][n + 1];
-        // find the LCS and then remove the LCS length
-        for (int i = 0; i <= m; ++i) {
-            for (int j = 0; j <= n; ++j) {
-                if (i == 0 || j == 0) {
-                    dp[i][j] = 0;
-                } else {
-                    dp[i][j] = word1.charAt(i - 1) == word2.charAt(j - 1) ?
-                            1 + dp[i - 1][j - 1] :
-                            Math.max(dp[i - 1][j], dp[i][j - 1]);
-                }
             }
         }
-        int lengthOfLCS = dp[m][n];
-        return word1.length() - lengthOfLCS + word2.length() - lengthOfLCS;
+        // remove the LCS length from both strings
+        return word1.length() - dp[m][n] + word2.length() - dp[m][n];
     }
 
     public static void main(String[] args) {

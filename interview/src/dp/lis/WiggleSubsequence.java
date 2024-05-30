@@ -3,10 +3,12 @@
  * time: 30/05/24 08:29
  *
  * https://leetcode.com/problems/wiggle-subsequence/description/
+ * https://www.naukri.com/code360/problems/longest-alternating-subsequence_1214645?leftPanelTabValue=PROBLEM
  *
  */
 package dp.lis;
 
+// Longest Alternating Subsequence
 public class WiggleSubsequence {
 
     private int wiggleMaxLength(int[] nums) {
