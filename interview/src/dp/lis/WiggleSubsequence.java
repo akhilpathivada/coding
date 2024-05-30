@@ -18,11 +18,9 @@ public class WiggleSubsequence {
             if (nums[i] > nums[i - 1]) {
                 up[i] = down[i - 1] + 1;
                 down[i] = down[i - 1];
-                System.out.println("at " + nums[i]);
             } else if (nums[i] < nums[i - 1]) {
                 down[i] = up[i - 1] + 1;
                 up[i] = up[i - 1];
-                System.out.println("at " + nums[i]);
             } else {
                 up[i] = up[i - 1];
                 down[i] = down[i - 1];
