@@ -6,6 +6,9 @@ import java.util.Arrays;
  * Date 06/04/24
  *
  * @author akhilpathivada
+ *
+ * https://leetcode.com/problems/partition-string-into-minimum-beautiful-substrings/description/
+ *
  */
 public class PartitionStringIntoMinimumBeautifulSubstrings {
 

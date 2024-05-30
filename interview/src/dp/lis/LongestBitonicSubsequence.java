@@ -14,7 +14,7 @@ public class LongestBitonicSubsequence {
 
         private static int LBS(int[] nums, int n) {
                 // store longest increasing sequence till that point
-                int lis[] = new int[n];
+                int[] lis = new int[n];
                 // store longest decreasing sequence till that point
                 int[] lds = new int[n];
                 // compute LIS

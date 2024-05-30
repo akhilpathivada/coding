@@ -8,7 +8,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(1)
  */
-package misc;
+package greedy;
 
 public class BestTimeToBuyAndSellStockII {
 
