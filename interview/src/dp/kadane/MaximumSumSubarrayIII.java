@@ -10,9 +10,10 @@
  * Time Complexity : O(N)
  * Space Complexity : O(1)
  */
-package array;
+package dp.kadane;
 
 public class MaximumSumSubarrayIII {
+
         private void maxSubArraySum(int[] arr) {
                 int n = arr.length, maxSumSoFar, currSum;
                 currSum = maxSumSoFar = arr[0];
@@ -20,11 +21,11 @@ public class MaximumSumSubarrayIII {
                         currSum = Math.max(currSum + arr[i], arr[i]);
                         maxSumSoFar = Math.max(currSum, maxSumSoFar);
                 }
-                System.out.printf(" Maximum sum in a contiguous Subarray is : %d ", maxSumSoFar);
+                System.out.println("Maximum sum in a contiguous Subarray is: " + maxSumSoFar);
         }
 
         public static void main(String[] args) {
-                int arr[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+                int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
                 new MaximumSumSubarrayIII().maxSubArraySum(arr);
         }
 }

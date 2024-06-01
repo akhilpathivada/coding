@@ -7,8 +7,7 @@
  */
 package tree;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTreePaths {
 
