@@ -3,7 +3,7 @@
  *
  * @author akhilpathivada
  */
-package trie;
+package trie.base;
 
 public class DeletionInTrie {
 }

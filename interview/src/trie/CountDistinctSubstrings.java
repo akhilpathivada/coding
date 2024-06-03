@@ -6,6 +6,8 @@
  * */
 package trie;
 
+import trie.base.TrieNode;
+
 public class CountDistinctSubstrings {
 
     private int countDistinctSubstrings(String s) {

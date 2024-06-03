@@ -3,13 +3,13 @@
  *
  * @author akhilpathivada
  */
-package trie;
+package trie.base;
 
 public class TrieNode {
         
-        TrieNode[] trie; // each characters' index acts as a pointer
+        public TrieNode[] trie; // each characters' index acts as a pointer
 
-        boolean isEndOfString; // tells if the string ends here or not
+        public boolean isEndOfString; // tells if the string ends here or not
 
         public TrieNode() {
                 trie = new TrieNode[256];

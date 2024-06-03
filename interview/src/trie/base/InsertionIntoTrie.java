@@ -6,7 +6,7 @@
  * you need to perform L lookups on the average for each of the W words in the set.
  *
  */
-package trie;
+package trie.base;
 
 public class InsertionIntoTrie {
         
@@ -26,7 +26,7 @@ public class InsertionIntoTrie {
         }
         
         public static void main(String[] args) {
-                String strs[] = { "gee", "geeks", "ape", "apple", "geeksforgeeks" };
+                String[] strs = { "gee", "geeks", "ape", "apple", "geeksforgeeks" };
                 TrieNode root = new TrieNode();
                 // insert the strings into Trie
                 for (String str : strs) {

@@ -3,7 +3,7 @@
  *
  * @author akhilpathivada
  */
-package trie;
+package trie.base;
 
 public class SearchInTrie {
         
@@ -21,7 +21,7 @@ public class SearchInTrie {
         }
         
         public static void main(String[] args) {
-                String strs[] = { "gee", "geeks", "ape", "apple", "geeksforgeeks" };
+                String[] strs = { "gee", "geeks", "ape", "apple", "geeksforgeeks" };
                 TrieNode root = new TrieNode();
                 // insert the strings into Trie
                 for (String str : strs) {
