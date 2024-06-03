@@ -7,8 +7,6 @@
  */
 package trie;
 
-import trie.base.TrieNode;
-
 import java.util.Arrays;
 
 public class LongestWordInDictionary {
