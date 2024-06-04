@@ -61,7 +61,12 @@ public class SearchSuggestionsSystem {
         return suggestions;
     }
 
-    private List<List<String>> getSuggestions(String searchWord) {
+    private List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        trie = new TrieNode();
+        Arrays.sort(products);
+        for (String product : products) {
+            trie.insert(product);
+        }
         final List<List<String>> result = new ArrayList<>();
         String prefix = "";
         for (char c : searchWord.toCharArray()) {
@@ -70,15 +75,6 @@ public class SearchSuggestionsSystem {
             result.add(dfs(trie.getLastNode(prefix), prefix, new ArrayList<>()));
         }
         return result;
-    }
-
-    private List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        trie = new TrieNode();
-        Arrays.sort(products);
-        for (String product : products) {
-            trie.insert(product);
-        }
-        return getSuggestions(searchWord);
     }
 
     public static void main(String[] args) {

@@ -6,80 +6,88 @@ package trie;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PalindromePairs {
 
-    class TrieNode {
-        TrieNode[] trie;
+    private final class TrieNode {
 
-        List<Integer> indexOfStringsEndingHere;
+        private final TrieNode[] trie;
 
-        List<Integer> indexOfStringsHavingThisChar;
+        private List<Integer> wordsEndingHere;
+
+        private List<Integer> wordsSharingThisNode;
 
         public TrieNode() {
-            trie = new TrieNode[256];
-            // initialize all 256 indexes as null
-            Arrays.fill(trie, null);
-            indexOfStringsEndingHere = new ArrayList<>();
-            indexOfStringsHavingThisChar = new ArrayList<>();
+            this.trie = new TrieNode[26];
+            this.wordsEndingHere = new ArrayList<>(); // store indices
+            this.wordsSharingThisNode = new ArrayList<>(); // store indices
         }
 
-        public void insertIntoSuffixTree(String word, int index) {
+        public void insert(String word, int index) {
             TrieNode root = this;
-            root.indexOfStringsHavingThisChar.add(index);
+            root.wordsSharingThisNode.add(index);
             for (char ch : word.toCharArray()) {
-                if (root.trie[ch] == null) {
-                    root.trie[ch] = new TrieNode();
+                if (root.trie[ch - 'a'] == null) {
+                    root.trie[ch - 'a'] = new TrieNode();
                 }
-                root = root.trie[ch];
-                root.indexOfStringsHavingThisChar.add(index);
+                root = root.trie[ch - 'a'];
+                root.wordsSharingThisNode.add(index);
             }
-            System.out.println("came here " + word);
-            root.indexOfStringsEndingHere.add(index);
-            System.out.println(root.indexOfStringsEndingHere);
+            root.wordsEndingHere.add(index);
         }
     }
 
-    private TrieNode suffixTree = new TrieNode();
+    private TrieNode suffixTree;
 
-    private List<List<Integer>> findPalindromePairs(String[] words, String word, int indexOfString) {
+    private void addPalindromePairs(String[] words, String sourceWord,
+                                     int indexOfSourceWord, List<List<Integer>> palindromePairs) {
         TrieNode root = suffixTree;
-        List<List<Integer>> palindromicPairs = new ArrayList<>();
-        if (!root.indexOfStringsEndingHere.isEmpty()) {
-            for (int indexOfStringEndingHere : root.indexOfStringsEndingHere) {
-                if (indexOfStringEndingHere != indexOfString) {
-                    palindromicPairs.add(new ArrayList<>(Arrays.asList(indexOfString, indexOfStringEndingHere)));
+        System.out.println("source word = " + sourceWord);
+        for (int i = 0; i < sourceWord.length(); ++i) {
+            char ch = sourceWord.charAt(i);
+            for (int index : root.wordsEndingHere) {
+                if (index == indexOfSourceWord) {
+                    continue;
+                }
+                String remaining = words[index].isEmpty() ? sourceWord : sourceWord.substring(0, sourceWord.length() - words[index].length());
+                System.out.println("remaing = " + remaining);
+                if (isPalindrome(remaining)) {
+                    System.out.println("adding 1 = " + sourceWord + ", " + words[index]);
+                    palindromePairs.add(Arrays.asList(indexOfSourceWord, index));
                 }
             }
-        }
-        for (char ch : word.toCharArray()) {
-            if (root.trie[ch] == null) {
-                return null;
-            }
-            root = root.trie[ch];
-        }
-        for (int indexOfStringEndingHere : root.indexOfStringsEndingHere) {
-            if (indexOfStringEndingHere != indexOfString) {
-                palindromicPairs.add(new ArrayList<>(Arrays.asList(indexOfString, indexOfStringEndingHere)));
+            root = root.trie[ch - 'a'];
+            if (root == null) {
+                return;
             }
         }
-        for (int indexOfStringHavingThisChar : root.indexOfStringsHavingThisChar) {
-            if (indexOfStringHavingThisChar != indexOfString && isRestOfStringPalindrome(
-                    word.charAt(word.length() - 1) + words[indexOfStringHavingThisChar], word.length() - 1)) {
-                palindromicPairs.add(new ArrayList<>(Arrays.asList(indexOfString, indexOfStringHavingThisChar)));
+
+        for (int index : root.wordsEndingHere) {
+            if (index == indexOfSourceWord) {
+                continue;
+            }
+            System.out.println("adding 2 = " + sourceWord + ", " + words[index]);
+            palindromePairs.add(Arrays.asList(indexOfSourceWord, index));
+        }
+        System.out.println("root.wordsSharingThisNode  " + root.wordsSharingThisNode);
+        for (int index : root.wordsSharingThisNode) {
+            if (index == indexOfSourceWord) {
+                continue;
+            }
+            String remaining = words[index].isEmpty() ? sourceWord : words[index].substring(0, words[index].length() - sourceWord.length());
+            System.out.println("remaining  = " + remaining);
+            if (isPalindrome(remaining)) {
+                System.out.println("adding 3 = " + sourceWord + ", " + words[index]);
+                palindromePairs.add(Arrays.asList(indexOfSourceWord, index));
             }
         }
-        return palindromicPairs;
     }
 
-    private String reverseString(String s) {
-        return new StringBuilder(s).reverse().toString();
-    }
-
-    private boolean isRestOfStringPalindrome(String s, int endIndex) {
+    private boolean isPalindrome(String s) {
         int left = 0;
-        int right = endIndex;
+        int right = s.length() - 1;
         while (left < right) {
             if (s.charAt(left++) != s.charAt(right--)) {
                 return false;
@@ -89,26 +97,22 @@ public class PalindromePairs {
     }
 
     private List<List<Integer>> palindromePairs(String[] words) {
+        suffixTree = new TrieNode();
         // insert the words into suffix tree in reverse order
         for (int i = 0; i < words.length; ++i) {
-            suffixTree.insertIntoSuffixTree(reverseString(words[i]), i);
+            suffixTree.insert(new StringBuilder(words[i]).reverse().toString(), i);
         }
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < words.length; ++i) {
-            List<List<Integer>> palindromicPairs = findPalindromePairs(words, words[i], i);
-            if (palindromicPairs != null) {
-                for (List<Integer> pair : palindromicPairs) {
-                    result.add(new ArrayList<>(pair));
-                }
-            }
+            addPalindromePairs(words, words[i], i, result);
         }
-        System.out.println("ak = " + suffixTree.indexOfStringsHavingThisChar);
         return result;
     }
 
     public static void main(String[] args) {
-//        String[] words = {"abcd","dcba","lls","s","sssll"};
-        String[] words = {"a","abc","aba",""};
+        String[] words = {"abcd","dcba","lls","s","sssll"};
+//        String[] words = {"a","abc","aba",""}; // [[0,3],[3,0],[2,3],[3,2]]
+//        String[] words = {"a",""};
 //        String s = "";
 //        System.out.println("b" + s + "a");
         System.out.println(new PalindromePairs().palindromePairs(words));
