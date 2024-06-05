@@ -9,77 +9,31 @@ package tree;
 
 public class DeleteNodeInBST {
 
-    private TreeNode parent = null;
-
-    private TreeNode getInorderSuccessor(TreeNode root) {
+    private int getInorderSuccessor(TreeNode root) {
         TreeNode current = root;
-        TreeNode parentOfTheInorderSuccessor = root;
-        while (current != null) {
-            parentOfTheInorderSuccessor = root;
+        while (current.left != null) {
             current = current.left;
         }
-        parentOfTheInorderSuccessor.left = current.right;
-        return current;
-    }
-
-    private TreeNode getInorderPredecessor(TreeNode root) {
-        TreeNode current = root;
-        TreeNode parentOfTheInorderSuccessor = root;
-        while (current != null) {
-            parentOfTheInorderSuccessor = root;
-            current = current.left;
-        }
-        parentOfTheInorderSuccessor.left = current.right;
-        return current;
-    }
-
-
-
-    private TreeNode getTargetNode(TreeNode root, int key) {
-        if (root == null || root.data == key) {
-            return root;
-        }
-        parent = root;
-        if (key < root.data) {
-            return getTargetNode(root.left, key);
-        }
-        return getTargetNode(root.right, key);
+        return current.data;
     }
 
     private TreeNode deleteNode(TreeNode root, int key) {
-        TreeNode target = getTargetNode(root, key);
-        System.out.println(target.data);
-        System.out.println(parent.data);
-        if (target == null) {
-            return root;
+        if (root == null) {
+            return null;
         }
-        if (target.left == null && target.right == null) {
-            if (parent.left == target) {
-                parent.left = null;
-            } else {
-                parent.right = null;
+        if (key < root.data) { // target lies in left subtree
+            root.left = deleteNode(root.left, key);
+        } else if (key > root.data) { // target lies in right subtree
+            root.right = deleteNode(root.right, key);
+        } else { // found target
+            // node with only one child or no child
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
             }
-        } else if (target.left == null) {
-            TreeNode inorderSuccessor = getInorderSuccessor(target.right);
-            if (parent.left == target) {
-                parent.left = inorderSuccessor;
-            } else {
-                parent.right = inorderSuccessor;
-            }
-        } else if (target.right == null) {
-            TreeNode inorderPredecessor = getInorderPredecessor(target);
-            if (parent.left == target) {
-                parent.left = inorderPredecessor;
-            } else {
-                parent.right = inorderPredecessor;
-            }
-        } else {
-            TreeNode inorderSuccessor = getInorderSuccessor(target);
-            if (parent.left == target) {
-                parent.left = inorderSuccessor;
-            } else {
-                parent.right = inorderSuccessor;
-            }
+            root.data = getInorderSuccessor(root.right); // replace root's data with inorder successor's data
+            root.right = deleteNode(root.right, root.data);
         }
         return root;
     }
