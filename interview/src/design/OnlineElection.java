@@ -23,12 +23,11 @@ public class OnlineElection {
         int leader = persons[0];
         for (int i = 0; i < persons.length; ++i) {
             int person = persons[i];
-            int time = times[i];
             candidateToVotesMap.put(person, candidateToVotesMap.getOrDefault(person, 0) + 1);
             if (candidateToVotesMap.get(person) >= candidateToVotesMap.get(leader)) {
                 leader = person;
             }
-            timeToLeaderMap.put(time, leader);
+            timeToLeaderMap.put(times[i], leader);
         }
     }
 

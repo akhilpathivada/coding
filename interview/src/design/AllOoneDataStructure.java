@@ -22,7 +22,6 @@ public class AllOoneDataStructure {
 
     public void inc(String key) {
         int oldFreq = stringToFreqMap.getOrDefault(key, 0);
-        stringToFreqMap.put(key, oldFreq + 1);
         update(key, oldFreq, oldFreq + 1);
     }
 
@@ -31,7 +30,6 @@ public class AllOoneDataStructure {
             return;
         }
         int oldFreq = stringToFreqMap.getOrDefault(key, 0);
-        stringToFreqMap.put(key, oldFreq - 1);
         update(key, oldFreq, oldFreq - 1);
     }
 
@@ -44,6 +42,7 @@ public class AllOoneDataStructure {
     }
 
     private void update(String key, int oldFreq, int newFreq) {
+        stringToFreqMap.put(key, newFreq);
         Set<String> set = freqToStringsMap.getOrDefault(oldFreq, null);
         if (set != null) {
             set.remove(key);
