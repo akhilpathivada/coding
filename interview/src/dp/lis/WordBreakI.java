@@ -24,7 +24,6 @@ public class WordBreakI {
                 for (int i = 1; i <= n; ++i) {
                         for (int j = 0; j < i; ++j) {
                                 if (dp[j] && wordDict.contains(s.substring(j, i))) {
-                                        System.out.println("for i = j " + i + " - " + j);
                                         dp[i] = true;
                                         break;
                                 }

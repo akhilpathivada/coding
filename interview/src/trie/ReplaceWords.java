@@ -2,24 +2,27 @@ package trie;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ReplaceWords {
 
-    private static class TrieNode {
-        private final TrieNode[] trie;
+    private final class TrieNode {
+
+        private final TrieNode[] children;
+
         private boolean isEndOfWord;
 
         public TrieNode() {
-            this.trie = new TrieNode[26];
+            this.children = new TrieNode[26];
             this.isEndOfWord = false;
         }
 
         public void insert(TrieNode root, String dict) {
             for (char ch : dict.toCharArray()) {
-                if (root.trie[ch - 'a'] == null) {
-                    root.trie[ch - 'a'] = new TrieNode();
+                if (root.children[ch - 'a'] == null) {
+                    root.children[ch - 'a'] = new TrieNode();
                 }
-                root = root.trie[ch - 'a'];
+                root = root.children[ch - 'a'];
             }
             root.isEndOfWord = true;
         }
@@ -30,35 +33,29 @@ public class ReplaceWords {
             for (char ch : word.toCharArray()) {
                 sb.append(ch);
                 // if the character in target string not exists in Trie
-                if (root.trie[ch - 'a'] == null) {
+                if (root.children[ch - 'a'] == null) {
                     return null;
                 }
-                if (root.trie[ch - 'a'].isEndOfWord) {
+                if (root.children[ch - 'a'].isEndOfWord) {
                     return sb.toString();
                 }
-                root = root.trie[ch - 'a'];
+                root = root.children[ch - 'a'];
             }
             return root.isEndOfWord ? sb.toString() : null;
         }
     }
 
-    public String replaceWords(List<String> dictionary, String sentence) {
-
+    private String replaceWords(List<String> dictionary, String sentence) {
         TrieNode prefixTree = new TrieNode();
         // construct a trie based on given dictionary
         for (String dict : dictionary) {
             prefixTree.insert(prefixTree, dict);
         }
-        // split based on space
-        String[] splits = sentence.split(" ");
+        String[] splits = sentence.split(" "); // split based on space
         StringBuilder repalcedSentence = new StringBuilder();
         for (String split : splits) {
             String root = prefixTree.getRootWord(prefixTree, split);
-            if (root != null) {
-                repalcedSentence.append(root);
-            } else {
-                repalcedSentence.append(split);
-            }
+            repalcedSentence.append(Objects.requireNonNullElse(root, split));
             repalcedSentence.append(" ");
         }
         return repalcedSentence.toString().trim();
