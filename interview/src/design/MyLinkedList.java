@@ -9,99 +9,91 @@ package design;
 
 public class MyLinkedList {
 
-    private static final class LinkedListNode {
+    private final class Node {
 
         private final int val;
 
-        private LinkedListNode next;
+        private Node next;
 
-        private LinkedListNode(int val, LinkedListNode next) {
+        private Node(int val) {
             this.val = val;
-            this.next = next;
+            this.next = null;
         }
     }
 
-    private LinkedListNode head;
+    private Node head;
 
-    private LinkedListNode tail;
+    private int length;
 
     public MyLinkedList() {
-        this.head = this.tail = null;
+        this.head = null;
+        this.length = 0;
     }
 
     public int get(int index) {
-        if (head == null) {
+        if (index < 0 || index >= length) {
             return -1;
         }
-        LinkedListNode current = head;
+        Node current = head;
         while (index-- > 0) {
             current = current.next;
-            if (current == null) {
-                return -1;
-            }
         }
         return current.val;
     }
 
     public void addAtHead(int val) {
-        head = new LinkedListNode(val, head);
-        if (tail == null) {
-            tail = head;
-        }
+        Node newNode = new Node(val);
+        newNode.next = head;
+        head = newNode;
+        ++length;
     }
 
     public void addAtTail(int val) {
-        LinkedListNode node = new LinkedListNode(val, null);
-        if (tail == null) {
-            head = node;
-        } else {
-            tail.next = node;
+        if (head == null) {
+            addAtHead(val);
+            return;
         }
-        tail = node;
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = new Node(val);
+        ++length;
     }
 
     public void addAtIndex(int index, int val) {
         if (index == 0) {
             addAtHead(val);
             return;
-        }
-        if (head == null) {
-            return;
-        }
-        int i = 0;
-        LinkedListNode current = head;
-        while (i < index - 1 && current.next != null) {
-            ++i;
-            current = current.next;
-        }
-        if (i < index - 1) {
-            return;
-        }
-        if (current.next == null) { // case: tail
+        } else if (index == length) {
             addAtTail(val);
             return;
+        } else if (index > length) {
+            return;
         }
-        LinkedListNode node = new LinkedListNode(val, null);
-        node.next = current.next;
-        current.next = node;
+        Node current = head;
+        while (--index > 0) {
+            current = current.next;
+        }
+        Node temp = current.next;
+        Node newNode = new Node(val);
+        current.next = newNode;
+        newNode.next = temp;
+        ++length;
     }
 
     public void deleteAtIndex(int index) {
-        if (head == null) {
+        if (index < 0 || index >= length) {
             return;
         }
+        --length;
         if (index == 0) {
             head = head.next;
             return;
         }
-        int i = 0;
-        LinkedListNode current = head;
-        while (i < index - 1 && current.next != null) {
-            ++i;
+        Node current = head;
+        while (--index > 0) {
             current = current.next;
-        }
-        if (current.next == null) {
-            return;
         }
         current.next = current.next.next;
     }
