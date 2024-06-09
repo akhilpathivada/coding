@@ -17,7 +17,7 @@ import java.util.Map;
 public class SubarraySumsDivisibleByK {
 
     private int subarraysDivByK(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
+        final Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1);
         int prefixSum = 0, result = 0;
         for (int num : nums) {
