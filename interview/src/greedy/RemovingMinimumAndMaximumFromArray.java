@@ -24,7 +24,8 @@ public class RemovingMinimumAndMaximumFromArray {
         // no. of operations required for the 3 possible cases
         int deletingBothFromLeft = Math.max(minIndex, maxIndex) + 1; // min, max both are on left
         int deletingBothFromRight = n - Math.min(minIndex, maxIndex);  // min, max both are on right
-        int deletingFromLeftAndRight = (1 + Math.min(minIndex, maxIndex)) + (n - Math.max(minIndex, maxIndex)); // one from left and other from right
+        int deletingFromLeftAndRight = (1 + Math.min(minIndex, maxIndex))
+                + (n - Math.max(minIndex, maxIndex)); // one from left and other from right
         return Math.min(deletingFromLeftAndRight, Math.min(deletingBothFromLeft, deletingBothFromRight));
     }
 
