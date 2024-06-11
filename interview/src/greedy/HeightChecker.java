@@ -5,7 +5,7 @@
  * https://leetcode.com/problems/height-checker/
  *
  */
-package sort;
+package greedy;
 
 import java.util.Arrays;
 
