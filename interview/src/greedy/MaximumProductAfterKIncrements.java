@@ -4,16 +4,16 @@
  */
 package greedy;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 public class MaximumProductAfterKIncrements {
 
     public int maximumProduct(int[] nums, int k) {
         final PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         long product = 1;
-        for (int num : nums) {
-            minHeap.add(num);
-        }
+        minHeap.addAll(Arrays.stream(nums).boxed().collect(Collectors.toList()));
         while (k-- > 0) {
             minHeap.add(minHeap.poll() + 1);
         }
