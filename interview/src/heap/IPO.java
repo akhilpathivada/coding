@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
 
 public class IPO {
 
-    private static class Pair {
+    private final class Pair {
 
         private final int capital;
 
@@ -29,10 +29,10 @@ public class IPO {
     }
 
     private int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
-        int n = capital.length;
-        PriorityQueue<Pair> minCapitalHeap = new PriorityQueue<>(
+        final int n = capital.length;
+        final PriorityQueue<Pair> minCapitalHeap = new PriorityQueue<>(
                 (pair1, pair2) -> Integer.compare(pair1.capital, pair2.capital));
-        PriorityQueue<Pair> maxProfitHeap = new PriorityQueue<>(
+        final PriorityQueue<Pair> maxProfitHeap = new PriorityQueue<>(
                 (pair1, pair2) -> Integer.compare(pair2.profit, pair1.profit));
         for (int i = 0; i < n; ++i) {
             minCapitalHeap.add(new Pair(capital[i], profits[i]));
