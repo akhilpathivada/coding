@@ -46,7 +46,7 @@ public class StepByStepDirectionsFromABinaryTreeNodeToAnother {
     }
 
     private String getDirections(TreeNode root, int startValue, int destValue) {
-        TreeNode lca = getLCA(root, startValue, destValue);
+        final TreeNode lca = getLCA(root, startValue, destValue);
         StringBuilder path = new StringBuilder();
         storePath(lca, startValue, path);
         // replace all chars of lca_to_start with 'U'
