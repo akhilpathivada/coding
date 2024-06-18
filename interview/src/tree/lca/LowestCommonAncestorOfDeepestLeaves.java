@@ -12,7 +12,7 @@ import tree.TreeNode;
 
 public class LowestCommonAncestorOfDeepestLeaves {
 
-    private static final class Pair {
+    private final class Pair {
 
         private final TreeNode node;
 
