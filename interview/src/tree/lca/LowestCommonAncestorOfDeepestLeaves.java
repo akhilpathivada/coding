@@ -6,7 +6,9 @@
  * https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/description/
  *
  */
-package tree;
+package tree.lca;
+
+import tree.TreeNode;
 
 public class LowestCommonAncestorOfDeepestLeaves {
 

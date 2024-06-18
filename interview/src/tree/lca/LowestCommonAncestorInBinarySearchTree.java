@@ -5,7 +5,9 @@
  * Space complexity : O(H) -> recursive calls
  * Space complexity : O(1) -> iterative version
  * */
-package tree;
+package tree.lca;
+
+import tree.TreeNode;
 
 public class LowestCommonAncestorInBinarySearchTree {
 

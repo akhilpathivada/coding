@@ -4,7 +4,9 @@
  * Time complexity : O(N)
  * Space complexity : O(H) -> Height of Tree
  * */
-package tree;
+package tree.lca;
+
+import tree.TreeNode;
 
 public class LowestCommonAncestorInBinaryTree {
 
