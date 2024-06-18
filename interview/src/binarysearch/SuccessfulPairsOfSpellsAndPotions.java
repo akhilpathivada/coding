@@ -19,7 +19,7 @@ public class SuccessfulPairsOfSpellsAndPotions {
         final int n = spells.length;
         final int m = potions.length;
         final int[] result = new int[n];
-        Arrays.sort(potions);
+        Arrays.parallelSort(potions);
         for (int i = 0; i < n; ++i) {
             int left = 0;
             int right = m - 1;
