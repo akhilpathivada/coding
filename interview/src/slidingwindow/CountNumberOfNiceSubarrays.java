@@ -17,17 +17,14 @@ public class CountNumberOfNiceSubarrays {
             return 0;
         }
         int left = 0;
-        int right = 0;
         int count = 0;
         int sum = 0;
-        while (right < nums.length) {
+        for (int right = 0; right < nums.length; ++right) {
             sum += nums[right];
             while (sum > k) {
-                sum -= nums[left];
-                ++left;
+                sum -= nums[left++];
             }
             count += right - left + 1;
-            ++right;
         }
         return count;
     }
