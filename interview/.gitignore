@@ -2,4 +2,6 @@
 /out/*
 interview.iml
 /src/out/*
+.DS_Store
+.gitignore
 

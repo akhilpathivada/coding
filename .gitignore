@@ -1,4 +1,7 @@
 /.idea/*
 /out/*
 interview.iml
+.gitignore
+coding.iml
+.DS_Store
 
