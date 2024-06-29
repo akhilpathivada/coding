@@ -28,7 +28,7 @@ public class AllAncestorsOfANodeInADAG {
             ancestors[i] = new TreeSet<>();
         }
         // applying kahn's algorithm
-        Queue<Integer> queue = new LinkedList<>();
+        final Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; ++i) {
             if (indegree[i] == 0) {
                 queue.add(i);
