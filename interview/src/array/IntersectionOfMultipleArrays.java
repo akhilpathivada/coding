@@ -15,8 +15,8 @@ public class IntersectionOfMultipleArrays {
     public List<Integer> intersection(int[][] nums) {
         final Map<Integer, Integer> frequencyMap = new HashMap<>();
         Arrays.stream(nums).forEach(arr ->
-                Arrays.stream(arr).forEach(
-                        num -> frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1))
+                Arrays.stream(arr).forEach(num ->
+                        frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1))
         );
         return frequencyMap.keySet()
                 .stream()
