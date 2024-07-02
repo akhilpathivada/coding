@@ -18,7 +18,7 @@ public class IntersectionOfMultipleArrays {
                 Arrays.stream(arr).forEach(
                         num -> frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1))
         );
-        return new ArrayList<>(frequencyMap.keySet())
+        return frequencyMap.keySet()
                 .stream()
                 .filter(num -> frequencyMap.get(num) == nums.length)
                 .sorted()
