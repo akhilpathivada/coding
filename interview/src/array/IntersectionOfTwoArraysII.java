@@ -17,18 +17,15 @@ public class IntersectionOfTwoArraysII {
 
     private int[] intersectionOfArrays(int[] nums1, int[] nums2) {
         // map stores number and it's frequency
-        Map<Integer, Integer> map = new HashMap<>();
-        // insert all elements of nums1
-        for (int num : nums1) {
-            int frequency = map.getOrDefault(num, 0);
-            map.put(num, frequency + 1);
-        }
+        final Map<Integer, Integer> map = new HashMap<>();
+        // insert all elements of nums1 into map
+        Arrays.stream(nums1).forEach(num -> map.put(num, map.getOrDefault(num, 0) + 1));
         // list to track the intersecting elements : the result
-        List<Integer> intersect = new ArrayList<>();
+        final List<Integer> intersect = new ArrayList<>();
         // for any element in num2, if it exists in map :
-        // add to list and reduce it's frequency
+        // add to list and reduce its frequency
         for (int num : nums2) {
-            if (map.get(num) != null && map.get(num) > 0) {
+            if (map.containsKey(num) && map.get(num) > 0) {
                 intersect.add(num);
                 map.put(num, map.get(num) - 1);
             }
