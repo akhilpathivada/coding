@@ -15,9 +15,9 @@ import java.util.Map;
 public class AccountsMerge {
 
     private List<List<String>> accountsMerge(List<List<String>> accounts) {
-        int n = accounts.size();
-        DisjointSet disjointSet = new DisjointSet(n);
-        Map<String, Integer> mailIdToNodeMap = new HashMap<>();
+        final int n = accounts.size();
+        final DisjointSet disjointSet = new DisjointSet(n);
+        final Map<String, Integer> mailIdToNodeMap = new HashMap<>();
         // insert the elements into disjoint set
         for (int i = 0; i < n; ++i) {
             for (int j = 1; j < accounts.get(i).size(); ++j) {
@@ -29,7 +29,7 @@ public class AccountsMerge {
                 }
             }
         }
-        ArrayList<String>[] mergedMails = new ArrayList[n];
+        final ArrayList<String>[] mergedMails = new ArrayList[n];
         for (int i = 0; i < n; ++i) {
             mergedMails[i] = new ArrayList<>();
         }
@@ -38,7 +38,7 @@ public class AccountsMerge {
             int node = disjointSet.findUltimateParent(entry.getValue());
             mergedMails[node].add(mailId);
         }
-        List<List<String>> result = new ArrayList<>();
+        final List<List<String>> result = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
             if (mergedMails[i].isEmpty()) {
                 continue;
