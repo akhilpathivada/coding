@@ -34,11 +34,11 @@ public class DeleteNodesAndReturnForest {
     }
 
     private List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
-        Set<Integer> to_delete_set = new HashSet<>();
+        final Set<Integer> to_delete_set = new HashSet<>();
         for (int node : to_delete) {
             to_delete_set.add(node);
         }
-        List<TreeNode> result = new ArrayList<>();
+        final List<TreeNode> result = new ArrayList<>();
         if (!to_delete_set.contains(root.data)) {
             result.add(root);
         }
