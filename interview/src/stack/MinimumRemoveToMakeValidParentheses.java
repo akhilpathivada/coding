@@ -18,7 +18,7 @@ public class MinimumRemoveToMakeValidParentheses {
                 final StringBuilder sb = new StringBuilder(s);
                 final Stack<Integer> stack = new Stack<>();
                 for (int i = 0; i < sb.length(); ++i) {
-                        if (sb.charAt(i) == '(') { // push index of '('
+                        if (sb.charAt(i) == '(') { // push the index of '('
                                 stack.push(i);
                         } else if (sb.charAt(i) == ')') {
                                 if (!stack.isEmpty()) { // balanced
