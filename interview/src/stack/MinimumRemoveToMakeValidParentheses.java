@@ -15,27 +15,23 @@ import java.util.Stack;
 public class MinimumRemoveToMakeValidParentheses {
 
         private String minRemove(String s) {
-                StringBuilder sb = new StringBuilder(s);
-                Stack<Integer> stack = new Stack<>();
+                final StringBuilder sb = new StringBuilder(s);
+                final Stack<Integer> stack = new Stack<>();
                 for (int i = 0; i < sb.length(); ++i) {
-                        // push index of '('
-                        if (sb.charAt(i) == '(') {
+                        if (sb.charAt(i) == '(') { // push index of '('
                                 stack.push(i);
                         } else if (sb.charAt(i) == ')') {
-                                // balanced
-                                if (!stack.isEmpty()) {
+                                if (!stack.isEmpty()) { // balanced
                                         stack.pop();
                                 } else { // replace ')' with '*'
                                         sb.setCharAt(i, '*');
                                 }
                         }
                 }
-                // replace ')' with '*'
-                while (!stack.isEmpty()) {
+                while (!stack.isEmpty()) { // replace ')' with '*'
                         sb.setCharAt(stack.pop(), '*');
                 }
-                // replace '*' with ''
-                return sb.toString().replaceAll("\\*", "");
+                return sb.toString().replaceAll("\\*", ""); // replace '*' with ''
         }
 
         public static void main(String[] args) {
