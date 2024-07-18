@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class NumberOfGoodLeafNodesPairs {
 
-    private void storeLeafPaths(TreeNode root, List<TreeNode> leaves, List<TreeNode> path, Map<TreeNode, List<TreeNode>> leavesPathMap) {
+    private void storeLeafPaths(TreeNode root, List<TreeNode> leaves, List<TreeNode> path,
+                                Map<TreeNode, List<TreeNode>> leavesPathMap) {
         if (root == null) {
             return;
         }
