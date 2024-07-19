@@ -1,7 +1,3 @@
-package monotonicstack;
-
-import java.util.*;
-
 /**
  * Date 14/04/24
  * Time 19:20
@@ -13,6 +9,11 @@ import java.util.*;
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  */
+
+package monotonicstack;
+
+import java.util.*;
+
 public class NextGreaterElementI {
 
     private int[] nextGreaterElement(int[] nums1, int[] nums2) {
