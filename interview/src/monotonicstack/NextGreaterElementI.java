@@ -16,18 +16,16 @@ import java.util.*;
 public class NextGreaterElementI {
 
     private int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        Stack<Integer> stack = new Stack<>();
-        Map<Integer, Integer> map = new HashMap<>();
+        final Stack<Integer> stack = new Stack<>();
+        final Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums2) {
             while (!stack.isEmpty() && num > stack.peek()) {
                 map.put(stack.pop(), num);
             }
             stack.push(num);
         }
-        List<Integer> result = new ArrayList<>(nums1.length);
-        for (int num : nums1) {
-            result.add(map.getOrDefault(num, -1));
-        }
+        final List<Integer> result = new ArrayList<>(nums1.length);
+        Arrays.stream(nums1).forEach(num -> result.add(map.getOrDefault(num, -1)));
         return result.stream().mapToInt(i -> i).toArray();
     }
 
