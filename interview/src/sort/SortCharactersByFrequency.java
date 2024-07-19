@@ -18,9 +18,7 @@ import java.util.PriorityQueue;
 public class SortCharactersByFrequency {
         private String sortCharacters(String s) {
                 final Map<Character, Integer> map = new HashMap<>();
-                for (char c : s.toCharArray()) { // insert all character, frequency into map
-                        map.put(c, map.getOrDefault(c, 0) + 1);
-                }
+                s.chars().forEach(c -> map.put((char) c, map.getOrDefault((char) c, 0) + 1)); // insert the <char, freq> into map
                 final PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
                 maxHeap.addAll(map.entrySet()); // add all map elements into max heap
                 final StringBuilder sb = new StringBuilder();
