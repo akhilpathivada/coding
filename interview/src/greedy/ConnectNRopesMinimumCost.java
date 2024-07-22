@@ -12,17 +12,16 @@
  */
 package greedy;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class ConnectNRopesMinimumCost {
 
         private int minCost(int[] arr, int n) {
                 // create a min heap
-                PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+                final PriorityQueue<Integer> minHeap = new PriorityQueue<>();
                 // adding items to the heap
-                for (int i : arr) {
-                        minHeap.add(i);
-                }
+                Arrays.stream(arr).forEach(minHeap::add);
                 // initialize result
                 int result = 0;
                 while (minHeap.size() > 1) {
@@ -37,7 +36,7 @@ public class ConnectNRopesMinimumCost {
         }
         
         public static void main(String[] args) {
-                int arr[] = { 4, 3, 2, 6 };
+                int[] arr = { 4, 3, 2, 6 };
                 System.out.println("Total cost for connecting ropes is = " + new ConnectNRopesMinimumCost().minCost(arr, arr.length));
         }
 }
