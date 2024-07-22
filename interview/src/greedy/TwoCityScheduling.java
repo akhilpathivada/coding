@@ -15,14 +15,8 @@ public class TwoCityScheduling {
         Arrays.sort(costs, (a, b) -> {
             return (a[0] - a[1]) - (b[0] - b[1]);
         });
-        int cost = 0;
-        for (int i = 0; i < costs.length / 2; ++i) {
-            cost += costs[i][0];
-        }
-        for (int i = costs.length / 2; i < costs.length; ++i) {
-            cost += costs[i][1];
-        }
-        return cost;
+        return Arrays.stream(costs, 0, costs.length / 2).mapToInt(cost -> cost[0]).sum() +
+                Arrays.stream(costs, costs.length / 2, costs.length).mapToInt(cost -> cost[1]).sum();
     }
 
     public static void main(String[] args) {
