@@ -10,20 +10,19 @@ package hashing;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class ReplaceElementsInAnArray {
 
     private int[] arrayChange(int[] nums, int[][] operations) {
         final Map<Integer, Integer> numToIndexMap = new HashMap<>();
-        for (int i = 0; i < nums.length; ++i) {
-            numToIndexMap.put(nums[i], i);
-        }
-        for (int[] operation : operations) {
+        IntStream.range(0, nums.length).forEach(i -> numToIndexMap.put(nums[i], i));
+        Arrays.stream(operations).forEach(operation -> {
             int index = numToIndexMap.get(operation[0]);
             nums[index] = operation[1];
             numToIndexMap.remove(operation[0]);
             numToIndexMap.put(operation[1], index);
-        }
+        });
         return nums;
     }
 
