@@ -10,28 +10,19 @@ package tree;
 public class ClosestValueInBinaryTreeII {
         
         private static int findClosestValue(TreeNode root, double target) {
-                // initialize values
-                double minDiff =  Double.MAX_VALUE;
+                double minDiff = Double.MAX_VALUE;
                 int closestValue = -1;
-                
-                while(root != null) {
-                        // compute current difference
+                while (root != null) {
                         double currentDiff = Math.abs(target - root.data);
-                        // if current difference less then min difference so far
-                        if(currentDiff < minDiff) {
+                        if (currentDiff < minDiff) { // current difference less than min difference so far
                                 minDiff = currentDiff;
                                 closestValue = root.data;
                         }
-                        // check in left subtree
-                        if(target < root.data) {
+                        if (target < root.data) { // check in left subtree
                                 root = root.left;
-                        }
-                        // check in right subtree
-                        else if(target > root.data) {
+                        } else if (target > root.data) { // check in right subtree
                                 root = root.right;
-                        }
-                        // if node equals to target
-                        else {
+                        } else { // if node equals to target
                                 break;
                         }
                 }
