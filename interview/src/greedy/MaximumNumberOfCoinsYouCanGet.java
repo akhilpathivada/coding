@@ -17,8 +17,7 @@ public class MaximumNumberOfCoinsYouCanGet {
         int myPointer = piles.length - 2;
         int bobPointer = 0;
         int myCoins = 0;
-        while (bobPointer < myPointer) {
-            ++bobPointer;
+        while (bobPointer++ < myPointer) {
             myCoins += piles[myPointer];
             myPointer -= 2;
         }
