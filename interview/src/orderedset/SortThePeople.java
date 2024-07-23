@@ -8,14 +8,13 @@
 package orderedset;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class SortThePeople {
 
     private String[] sortPeople(String[] names, int[] heights) {
         final TreeMap<Integer, String> map = new TreeMap<>(Collections.reverseOrder());
-        for (int i = 0; i < names.length; ++i) {
-            map.put(heights[i], names[i]);
-        }
+        IntStream.range(0, names.length).forEach(i -> map.put(heights[i], names[i]));
         return new ArrayList<>(map.values()).toArray(String[]::new);
     }
 
