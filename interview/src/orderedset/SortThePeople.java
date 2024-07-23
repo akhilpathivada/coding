@@ -19,8 +19,8 @@ public class SortThePeople {
     }
 
     public static void main(String[] args) {
-        String[] names = {"Mary","John","Emma"};
-        int[] heights = {180,165,170};
+        String[] names = {"Mary", "John", "Emma"};
+        int[] heights = {180, 165, 170};
         System.out.println(Arrays.toString(new SortThePeople().sortPeople(names, heights)));
     }
 }
