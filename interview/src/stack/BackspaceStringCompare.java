@@ -5,8 +5,9 @@
 package stack;
 
 public class BackspaceStringCompare {
-	private static String getString(String s) {
-		StringBuilder sb = new StringBuilder();
+
+	private String getString(String s) {
+		final StringBuilder sb = new StringBuilder();
 		for (char ch : s.toCharArray()) {
 			if (ch == '#') {
 				if (sb.length() != 0) {
@@ -18,9 +19,11 @@ public class BackspaceStringCompare {
 		}
 		return sb.toString();
 	}
+
 	public boolean backspaceCompare(String s, String t) {
 		return getString(s).equals(getString(t));
 	}
+
 	public static void main(String[] args) {
 		String s = "ab#c", t = "ad#c";
 		System.out.println(new BackspaceStringCompare().backspaceCompare(s, t));
