@@ -28,7 +28,7 @@ public class SortTheJumbledNumbers {
         return result;
     }
 
-    public int[] sortJumbled(int[] mapping, int[] nums) {
+    private int[] sortJumbled(int[] mapping, int[] nums) {
         final int n = nums.length;
         final Integer[] indices = new Integer[n];
         IntStream.range(0, n).forEach(i -> indices[i] = i);
