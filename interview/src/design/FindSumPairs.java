@@ -7,6 +7,7 @@
  */
 package design;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,9 +23,8 @@ class FindSumPairs {
         this.nums1 = nums1;
         this.nums2 = nums2;
         this.numberToCountMap = new HashMap<>();
-        for (int num : nums2) {
-            numberToCountMap.put(num, numberToCountMap.getOrDefault(num, 0) + 1);
-        }
+        Arrays.stream(nums2).forEach(num ->
+                numberToCountMap.put(num, numberToCountMap.getOrDefault(num, 0) + 1));
     }
 
     public void add(int index, int val) {
@@ -34,11 +34,8 @@ class FindSumPairs {
     }
 
     public int count(int tot) {
-        int pairs = 0;
-        for (int num : nums1) {
-            pairs += numberToCountMap.getOrDefault(tot - num, 0);
-        }
-        return pairs;
+        return Arrays.stream(nums1).reduce(0, (pairs, num) ->
+                pairs + numberToCountMap.getOrDefault(tot - num, 0));
     }
 
     public static void main(String[] args) {
