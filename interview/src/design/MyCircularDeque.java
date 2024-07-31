@@ -32,7 +32,6 @@ public class MyCircularDeque {
             front = rear = 0;
         } else if (front == 0) {
             front = size - 1;
-
         } else {
             --front;
         }
