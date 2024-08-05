@@ -31,14 +31,14 @@ public class DeleteNodesFromLinkedListPresentInArray {
     }
 
     public static void main(String[] args) {
-        LinkedListNode head = new LinkedListNode(1);
-        head.next = new LinkedListNode(2);
-        head.next.next = new LinkedListNode(3);
-        head.next.next.next = new LinkedListNode(4);
-        head.next.next.next.next = new LinkedListNode(5);
-        head.next.next.next.next.next = new LinkedListNode(6);
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+        head.next.next.next.next.next = new ListNode(6);
         int[] nums = {1, 2, 3};
-        // head = new DeleteNodesFromLinkedListPresentInArray().modifiedList(nums, head);
+        head = new DeleteNodesFromLinkedListPresentInArray().modifiedList(nums, head);
         // head.printLinkedList(head);
     }
 }
