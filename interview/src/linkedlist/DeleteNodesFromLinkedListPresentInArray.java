@@ -38,7 +38,7 @@ public class DeleteNodesFromLinkedListPresentInArray {
         head.next.next.next.next = new LinkedListNode(5);
         head.next.next.next.next.next = new LinkedListNode(6);
         int[] nums = {1, 2, 3};
-        head = new DeleteNodesFromLinkedListPresentInArray().modifiedList(nums, head);
-        head.printLinkedList(head);
+        // head = new DeleteNodesFromLinkedListPresentInArray().modifiedList(nums, head);
+        // head.printLinkedList(head);
     }
 }
