@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class FindTheLengthOfTheLongestCommonPrefix {
 
-    private int getDigitsCount(int num) {
+    private int getLengthOfPrefix(int num) {
         return (int) Math.log10(num) + 1;
     }
 
@@ -28,7 +28,7 @@ public class FindTheLengthOfTheLongestCommonPrefix {
         for (int num : arr2) {
             for (int value = num; value > 0; value /= 10) {
                 if (prefixSet.contains(value)) {
-                    result = Math.max(result, getDigitsCount(value));
+                    result = Math.max(result, getLengthOfPrefix(value));
                     break;
                 }
             }
