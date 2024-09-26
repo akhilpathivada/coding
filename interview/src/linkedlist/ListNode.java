@@ -22,4 +22,12 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
+
+    // printing linked List
+    public void printLinkedList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.val + ", ");
+            node = node.next;
+        }
+    }
 }
