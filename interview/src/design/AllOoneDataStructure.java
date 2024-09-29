@@ -45,8 +45,8 @@ public class AllOoneDataStructure {
                 .orElse("");
     }
 
-    private void update(String key, int oldFrequency, int newFrequecny) {
-        stringToFrequencyMap.put(key, newFrequecny);
+    private void update(String key, int oldFrequency, int newFrequency) {
+        stringToFrequencyMap.put(key, newFrequency);
         Optional.ofNullable(frequencyToStringsMap.get(oldFrequency))
                 .ifPresent(set -> {
                     set.remove(key);
@@ -55,7 +55,7 @@ public class AllOoneDataStructure {
                     }
                 });
         if (newFrequecny > 0) {
-            frequencyToStringsMap.computeIfAbsent(newFrequecny, s -> new HashSet<>()).add(key);
+            frequencyToStringsMap.computeIfAbsent(newFrequency, s -> new HashSet<>()).add(key);
         }
     }
 
