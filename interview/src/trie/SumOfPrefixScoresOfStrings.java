@@ -25,14 +25,14 @@ public class SumOfPrefixScoresOfStrings {
         }
 
         private void insert(String word) {
-            TrieNode root = this;
+            TrieNode current = this;
             for (char letter : word.toCharArray()) {
                 int index = letter - 'a';
-                if (root.children[index] == null) {
-                    root.children[index] = new TrieNode();
+                if (current.children[index] == null) {
+                    current.children[index] = new TrieNode();
                 }
-                root = root.children[index];
-                root.countOfWordsWithPrefix++;
+                current = current.children[index];
+                current.countOfWordsWithPrefix++;
             }
         }
     }

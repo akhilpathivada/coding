@@ -43,7 +43,7 @@ public class AllOoneDataStructure {
 
     private void update(String key, int oldFreq, int newFreq) {
         stringToFreqMap.put(key, newFreq);
-        Set<String> set = freqToStringsMap.getOrDefault(oldFreq, null);
+        final Set<String> set = freqToStringsMap.getOrDefault(oldFreq, null);
         if (set != null) {
             set.remove(key);
             if (set.isEmpty()) {
