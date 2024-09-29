@@ -54,7 +54,7 @@ public class AllOoneDataStructure {
                         frequencyToStringsMap.remove(oldFrequency);
                     }
                 });
-        if (newFrequecny > 0) {
+        if (newFrequency > 0) {
             frequencyToStringsMap.computeIfAbsent(newFrequency, s -> new HashSet<>()).add(key);
         }
     }
