@@ -11,47 +11,51 @@ import java.util.*;
 
 public class AllOoneDataStructure {
 
-    private final Map<String, Integer> stringToFreqMap;
+    private final Map<String, Integer> stringToFrequencyMap;
 
-    private final TreeMap<Integer, Set<String>> freqToStringsMap;
+    private final TreeMap<Integer, Set<String>> frequencyToStringsMap;
 
     public AllOoneDataStructure() {
-        this.stringToFreqMap = new HashMap<>();
-        this.freqToStringsMap = new TreeMap<>();
+        this.stringToFrequencyMap = new HashMap<>();
+        this.frequencyToStringsMap = new TreeMap<>();
     }
 
     public void inc(String key) {
-        int oldFreq = stringToFreqMap.getOrDefault(key, 0);
-        update(key, oldFreq, oldFreq + 1);
+        int oldFrequency = stringToFrequencyMap.getOrDefault(key, 0);
+        update(key, oldFrequency, oldFrequency + 1);
     }
 
     public void dec(String key) {
-        if (!stringToFreqMap.containsKey(key)) {
+        if (!stringToFrequencyMap.containsKey(key)) {
             return;
         }
-        int oldFreq = stringToFreqMap.getOrDefault(key, 0);
-        update(key, oldFreq, oldFreq - 1);
+        int oldFrequency = stringToFrequencyMap.getOrDefault(key, 0);
+        update(key, oldFrequency, oldFrequency - 1);
     }
 
     public String getMaxKey() {
-        return freqToStringsMap.isEmpty() ? "" : freqToStringsMap.lastEntry().getValue().iterator().next();
+        return Optional.ofNullable(frequencyToStringsMap.lastEntry())
+                .map(entry -> entry.getValue().iterator().next())
+                .orElse("");
     }
 
     public String getMinKey() {
-        return freqToStringsMap.isEmpty() ? "" : freqToStringsMap.firstEntry().getValue().iterator().next();
+        return Optional.ofNullable(frequencyToStringsMap.firstEntry())
+                .map(entry -> entry.getValue().iterator().next())
+                .orElse("");
     }
 
-    private void update(String key, int oldFreq, int newFreq) {
-        stringToFreqMap.put(key, newFreq);
-        final Set<String> set = freqToStringsMap.getOrDefault(oldFreq, null);
-        if (set != null) {
-            set.remove(key);
-            if (set.isEmpty()) {
-                freqToStringsMap.remove(oldFreq);
-            }
-        }
-        if (newFreq > 0) {
-            freqToStringsMap.computeIfAbsent(newFreq, s -> new HashSet<>()).add(key);
+    private void update(String key, int oldFrequency, int newFrequecny) {
+        stringToFrequencyMap.put(key, newFrequecny);
+        Optional.ofNullable(frequencyToStringsMap.get(oldFrequency))
+                .ifPresent(set -> {
+                    set.remove(key);
+                    if (set.isEmpty()) {
+                        frequencyToStringsMap.remove(oldFrequency);
+                    }
+                });
+        if (newFrequecny > 0) {
+            frequencyToStringsMap.computeIfAbsent(newFrequecny, s -> new HashSet<>()).add(key);
         }
     }
 
