@@ -1,39 +1,36 @@
+/**
+ * https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ * */
 package linkedlist;
 
 public class DeleteMiddleNodeOfList {
 
-    private LinkedListNode getMiddleNodeOfList(LinkedListNode head) {
-        LinkedListNode slow, fast;
-        slow = fast = head;
+    private ListNode deleteMiddle(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode prev = head;
         while (fast != null && fast.next != null) {
+            prev = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-        return slow;
-    }
-
-    private void deleteMiddle(LinkedListNode head) {
-        LinkedListNode dummy = new LinkedListNode(-1);
-        dummy.next = head;
-        LinkedListNode middle = getMiddleNodeOfList(dummy);
-        LinkedListNode curr = dummy;
-
-        while (curr != null) {
-            if (curr.next == middle) {
-                curr.next = curr.next.next;
-            }
-            curr = curr.next;
-        }
-        dummy.next = null;
+        prev.next = slow.next;
+        return head;
     }
 
     public static void main(String[] args) {
-        LinkedListNode head = new LinkedListNode(3);
-        head.next = new LinkedListNode(2);
-        head.next.next = new LinkedListNode(4);
-        head.next.next.next = new LinkedListNode(2);
-        head.next.next.next.next = new LinkedListNode(7);
-        head.next.next.next.next.next = new LinkedListNode(5);
+        ListNode head = new ListNode(3);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(4);
+        head.next.next.next = new ListNode(2);
+        head.next.next.next.next = new ListNode(7);
+        head.next.next.next.next.next = new ListNode(5);
         new DeleteMiddleNodeOfList().deleteMiddle(head);
         head.printLinkedList(head);
     }
