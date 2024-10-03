@@ -7,6 +7,7 @@
  */
 package prefixsum;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -15,18 +16,15 @@ public class MakeSumDivisibleByP {
 
     public int minSubarray(int[] nums, int p) {
         final int n = nums.length;
-        long totalSum = 0;
-        for (int num : nums) {
-            totalSum += num;
-        }
+        final long totalSum = Arrays.stream(nums).asLongStream().sum();
         final int remainder = (int) (totalSum % p);
         if (remainder == 0) { // no need to remove any subarray
             return 0;
         }
         final Map<Integer, Integer> prefixModMap = new HashMap<>();
+        prefixModMap.put(0, -1);
         long prefixSum = 0;
         int minLength = n;
-        prefixModMap.put(0, -1);
         for (int i = 0; i < n; ++i) {
             prefixSum += nums[i];
             int currentMod = (int) (prefixSum % p);
