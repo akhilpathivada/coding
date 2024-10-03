@@ -26,7 +26,7 @@ public class TwoSum {
     }
 
     // approach-2
-    private static int[] twoSum_2(int[] nums, int target) {
+    private int[] twoSum_2(int[] nums, int target) {
         final int n = nums.length;
         final Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; ++i) {
