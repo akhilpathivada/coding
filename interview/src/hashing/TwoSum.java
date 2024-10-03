@@ -12,8 +12,7 @@ import java.util.Map;
 
 public class TwoSum {
 
-    // approach-1
-    private int[] twoSum(int[] nums, int target) {
+    private int[] twoSum_bruteForce(int[] nums, int target) {
         final int n = nums.length;
         for (int i = 0; i < n; ++i) {
             for (int j = i + 1; j < n; ++j) {
@@ -26,7 +25,7 @@ public class TwoSum {
     }
 
     // approach-2
-    private int[] twoSum_2(int[] nums, int target) {
+    private int[] twoSum(int[] nums, int target) {
         final int n = nums.length;
         final Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; ++i) {
