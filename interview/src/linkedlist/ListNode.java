@@ -23,11 +23,22 @@ public class ListNode {
         this.next = next;
     }
 
-    // printing linked List
-    public void printLinkedList(ListNode node) {
+    // printing linked list
+    public static void printLinkedList(ListNode node) {
         while (node != null) {
             System.out.print(node.val + ", ");
             node = node.next;
         }
+    }
+
+    // create linked list from the array
+    public static ListNode createLinkedListFromArray(int[] nums) {
+        ListNode head, current;
+        current = head = new ListNode(-1);
+        for (int i = 1; i < nums.length; ++i) {
+            current.next = new ListNode(nums[i]);
+            current = current.next;
+        }
+        return head;
     }
 }

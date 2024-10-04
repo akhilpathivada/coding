@@ -31,7 +31,6 @@ public class DeleteMiddleNodeOfList {
         head.next.next.next = new ListNode(2);
         head.next.next.next.next = new ListNode(7);
         head.next.next.next.next.next = new ListNode(5);
-        new DeleteMiddleNodeOfList().deleteMiddle(head);
-        head.printLinkedList(head);
+        ListNode.printLinkedList(new DeleteMiddleNodeOfList().deleteMiddle(head));
     }
 }

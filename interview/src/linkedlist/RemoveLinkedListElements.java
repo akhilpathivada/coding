@@ -22,14 +22,9 @@ public class RemoveLinkedListElements {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(6);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next.next = new ListNode(6);
+        int[] nums = {1, 2, 6, 3, 4, 5, 6};
         int val = 6;
-        head.printLinkedList(new RemoveLinkedListElements().removeElements(head, val));
+        ListNode head = ListNode.createLinkedListFromArray(nums);
+        ListNode.printLinkedList((new RemoveLinkedListElements().removeElements(head, val)));
     }
 }
