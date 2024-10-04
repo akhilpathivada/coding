@@ -34,7 +34,7 @@ public class ListNode {
     // create linked list from the array
     public static ListNode createLinkedListFromArray(int[] nums) {
         ListNode head, current;
-        current = head = new ListNode(-1);
+        current = head = new ListNode(nums[0]);
         for (int i = 1; i < nums.length; ++i) {
             current.next = new ListNode(nums[i]);
             current = current.next;

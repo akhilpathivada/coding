@@ -1,63 +1,65 @@
 /**
- * Date 29/04/2022
+ * author: akhilpathivada
+ * time: 04/10/24 19:59
  *
- * @author akhilpathivada
+ * https://leetcode.com/problems/reorder-list/description/
  *
- * https://leetcode.com/problems/reorder-list/
- *
- * Time Complexity : O(N)
- * Space Complexity : O(1)
  */
 package linkedlist;
 
 public class ReorderList {
-        // reverse the second half
-        private LinkedListNode reverse(LinkedListNode head) {
-                LinkedListNode curr = head, prev = null;
-                while (curr != null) {
-                        LinkedListNode next = curr.next;
-                        curr.next = prev;
-                        prev = curr;
-                        curr = next;
-                }
-                return prev;
+
+    private void mergeAlternatively(ListNode curr1, ListNode curr2) {
+        while (curr2 != null) {
+            ListNode next = curr1.next;
+            curr1.next = curr2;
+            curr1 = curr2;
+            curr2 = next;
         }
-        // get the middle node of list
-        private LinkedListNode middle(LinkedListNode head) {
-                LinkedListNode slow = head, fast = head;
-                while (fast != null && fast.next != null) {
-                        slow = slow.next;
-                        fast = fast.next.next;
-                }
-                return slow;
+    }
+
+    private ListNode getMiddleNode(ListNode head) {
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        private void reorderList(LinkedListNode head) {
-                if (head == null) {
-                        return;
-                }
-                LinkedListNode curr1 = head;
-                LinkedListNode curr2 = reverse(middle(head));
-                // merge two lists alternatively
-                while (curr1 != null && curr2 != null) {
-                        // last node of list1 still points to node in list2, so remove it
-                        if (curr1.next == curr2) {
-                                curr1.next = null;
-                        }
-                        LinkedListNode temp1 = curr1.next;
-                        LinkedListNode temp2 = curr2.next;
-                        curr1.next = curr2;
-                        curr2.next = temp1;
-                        curr1 = temp1;
-                        curr2 = temp2;
-                }
+        prev.next = null;
+        return slow;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode curr = head;
+        ListNode prev = null;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        public static void main(String[] args) {
-                LinkedListNode head = new LinkedListNode(1);
-                head.next =  new LinkedListNode(2);
-                head.next.next =  new LinkedListNode(3);
-                head.next.next.next =  new LinkedListNode(4);
-                head.next.next.next.next =  new LinkedListNode(5);
-                new ReorderList().reorderList(head);
-                head.printLinkedList(head);
+        return prev;
+    }
+
+    private void reorderList(ListNode head) {
+        if (head == null || head.next == null) {
+            return;
         }
+        /**
+         * 1. get middle node of the list
+         * 2. middle node will become head of second half list
+         * 3. reverse the second half
+         * 4. merge both the lists alternatively
+         * */
+        mergeAlternatively(head, reverse(getMiddleNode(head)));
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5};
+        ListNode head = ListNode.createLinkedListFromArray(nums);
+        new ReorderList().reorderList(head);
+        ListNode.printLinkedList(head);
+    }
 }
