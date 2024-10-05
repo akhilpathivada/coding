@@ -1,26 +1,29 @@
-
+/**
+ * author: akhilpathivada
+ * time: 04/10/24 19:59
+ *
+ * https://leetcode.com/problems/reverse-linked-list/
+ *
+ */
 package linkedlist;
 
 public class ReverseLinkedList {
-        private LinkedListNode reverseList(LinkedListNode head) {
-                LinkedListNode prev, curr, nextPtr;
-                prev = null;
-                curr = head;
-                while (curr != null) {
-                        nextPtr = curr.next;
-                        curr.next = prev;
-                        prev = curr;
-                        curr = nextPtr;
-                }
-                return prev;
+
+    private ListNode reverseList(ListNode head) {
+        ListNode curr = head;
+        ListNode prev = null;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        public static void main(String[] args) {
-                LinkedListNode head = new LinkedListNode(3);
-                head.next = new LinkedListNode(1);
-                head.next.next = new LinkedListNode(4);
-                head.next.next.next = new LinkedListNode(2);
-                head.next.next.next.next = new LinkedListNode(7);
-                head.next.next.next.next.next = new LinkedListNode(5);
-                head.printLinkedList(new ReverseLinkedList().reverseList(head));
-        }
+        return prev;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5};
+        ListNode head = ListNode.createLinkedListFromArray(nums);
+        ListNode.printLinkedList(new ReverseLinkedList().reverseList(head));
+    }
 }
