@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/swap-nodes-in-pairs/
  *
- * Time Complexity : O(N)
+ * Time Complexity : O(n)
  * Space Complexity : O(1)
  * */
 
@@ -9,26 +9,11 @@ package linkedlist;
 
 public class SwapNodesInPairs {
 
-    private LinkedListNode swapPairs(LinkedListNode head) {
-        // base case
-        if (head == null || head.next == null) {
-            return head;
-        }
-        LinkedListNode head1 = head;
-        LinkedListNode head2 = head.next;
-        LinkedListNode current = head;
-        // split nodes alternatively
-        while (current != null) {
-            LinkedListNode nextNode = current.next;
-            current.next = nextNode != null ? nextNode.next : nextNode;
-            current = nextNode;
-        }
-        // merge both the lists
-        LinkedListNode tail;
-        head = tail = head2;
+    private void mergeNodesInReverse(ListNode head1, ListNode head2) {
+        ListNode tail = head2;
         while (head2 != null) {
-            LinkedListNode temp1 = head1.next;
-            LinkedListNode temp2 = head2.next;
+            ListNode temp1 = head1.next;
+            ListNode temp2 = head2.next;
             head2.next = head1;
             head1.next = temp2;
             tail = head1;
@@ -38,17 +23,30 @@ public class SwapNodesInPairs {
         if (head1 != null) {
             tail.next = head1;
         }
-        return head;
+    }
+
+    private void splitAlternatively(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = next != null ? next.next : next;
+            current = next;
+        }
+    }
+
+    private ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = head.next;
+        splitAlternatively(head);
+        mergeNodesInReverse(head, newHead);
+        return newHead;
     }
 
     public static void main(String[] args) {
-        LinkedListNode head = new LinkedListNode(1);
-        head.next = new LinkedListNode(2);
-        head.next.next = new LinkedListNode(3);
-        head.next.next.next = new LinkedListNode(4);
-        head.next.next.next.next = new LinkedListNode(5);
-        head.next.next.next.next.next = new LinkedListNode(6);
-        head = new SwapNodesInPairs().swapPairs(head);
-        head.printLinkedList(head);
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        ListNode head = ListNode.createLinkedListFromArray(nums);
+        ListNode.printLinkedList(new SwapNodesInPairs().swapPairs(head));
     }
 }
