@@ -5,7 +5,7 @@
  */
 package linkedlist;
 
-public class ListNode {
+public final class ListNode {
 
     public int val;
 

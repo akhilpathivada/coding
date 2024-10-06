@@ -4,7 +4,7 @@
  */
 package linkedlist;
 
-public class LinkedListUtil {
+public final class LinkedListUtil {
 
     // Print linked list
     public static void printLinkedList(ListNode head) {
