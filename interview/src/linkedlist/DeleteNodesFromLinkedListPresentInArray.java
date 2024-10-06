@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 public class DeleteNodesFromLinkedListPresentInArray {
 
     private ListNode modifiedList(int[] nums, ListNode head) {
+        final ListNode dummyHead = new ListNode(0, head);
         final Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
-        final ListNode dummy = new ListNode(0, head);
-        for (ListNode current = dummy; current.next != null; ) {
+        for (ListNode current = dummyHead; current.next != null; ) {
             if (set.contains(current.next.val)) {
                 current.next = current.next.next;
             } else {
                 current = current.next;
             }
         }
-        return dummy.next;
+        return dummyHead.next;
     }
 
     public static void main(String[] args) {
