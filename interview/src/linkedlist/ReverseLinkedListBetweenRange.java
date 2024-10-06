@@ -36,8 +36,8 @@ public class ReverseLinkedListBetweenRange {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6};
-        ListNode head = ListNode.createLinkedListFromArray(nums);
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
         int left = 2, right = 4;
-        ListNode.printLinkedList(new ReverseLinkedListBetweenRange().reverseBetween(head, left, right));
+        LinkedListUtil.printLinkedList(new ReverseLinkedListBetweenRange().reverseBetween(head, left, right));
     }
 }

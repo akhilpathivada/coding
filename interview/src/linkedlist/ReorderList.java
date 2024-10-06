@@ -58,8 +58,8 @@ public class ReorderList {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
-        ListNode head = ListNode.createLinkedListFromArray(nums);
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
         new ReorderList().reorderList(head);
-        ListNode.printLinkedList(head);
+        LinkedListUtil.printLinkedList(head);
     }
 }

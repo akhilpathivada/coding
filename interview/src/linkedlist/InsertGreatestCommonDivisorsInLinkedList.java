@@ -33,10 +33,8 @@ public class InsertGreatestCommonDivisorsInLinkedList {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(18);
-        head.next = new ListNode(6);
-        head.next.next = new ListNode(10);
-        head.next.next.next = new ListNode(3);
-        head.printLinkedList(new InsertGreatestCommonDivisorsInLinkedList().insertGreatestCommonDivisors(head));
+        int[] nums = {18, 6, 10, 3};
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
+        LinkedListUtil.printLinkedList(new InsertGreatestCommonDivisorsInLinkedList().insertGreatestCommonDivisors(head));
     }
 }

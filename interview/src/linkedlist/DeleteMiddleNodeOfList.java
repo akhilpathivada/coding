@@ -25,12 +25,8 @@ public class DeleteMiddleNodeOfList {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(3);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(4);
-        head.next.next.next = new ListNode(2);
-        head.next.next.next.next = new ListNode(7);
-        head.next.next.next.next.next = new ListNode(5);
-        ListNode.printLinkedList(new DeleteMiddleNodeOfList().deleteMiddle(head));
+        int[] nums = {3, 2, 4, 2, 7, 5};
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
+        LinkedListUtil.printLinkedList(new DeleteMiddleNodeOfList().deleteMiddle(head));
     }
 }

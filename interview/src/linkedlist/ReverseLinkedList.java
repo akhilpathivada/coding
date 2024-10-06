@@ -23,7 +23,7 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
-        ListNode head = ListNode.createLinkedListFromArray(nums);
-        ListNode.printLinkedList(new ReverseLinkedList().reverseList(head));
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
+        LinkedListUtil.printLinkedList(new ReverseLinkedList().reverseList(head));
     }
 }

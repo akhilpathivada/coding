@@ -24,7 +24,7 @@ public class RemoveLinkedListElements {
     public static void main(String[] args) {
         int[] nums = {1, 2, 6, 3, 4, 5, 6};
         int val = 6;
-        ListNode head = ListNode.createLinkedListFromArray(nums);
-        ListNode.printLinkedList((new RemoveLinkedListElements().removeElements(head, val)));
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
+        LinkedListUtil.printLinkedList((new RemoveLinkedListElements().removeElements(head, val)));
     }
 }

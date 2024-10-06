@@ -46,7 +46,7 @@ public class SwapNodesInPairs {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6};
-        ListNode head = ListNode.createLinkedListFromArray(nums);
-        ListNode.printLinkedList(new SwapNodesInPairs().swapPairs(head));
+        ListNode head = LinkedListUtil.buildLinkedListFromArray(nums);
+        LinkedListUtil.printLinkedList(new SwapNodesInPairs().swapPairs(head));
     }
 }
