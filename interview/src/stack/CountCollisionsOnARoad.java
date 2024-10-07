@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class CountCollisionsOnARoad {
 
-    public int countCollisions_2(String directions) {
+    private int countCollisions_2(String directions) {
         int collisions = 0;
         char prev = directions.charAt(0);  // Track the previous state
         for (int i = 1; i < directions.length(); ++i) {

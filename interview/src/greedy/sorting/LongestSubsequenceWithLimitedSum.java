@@ -5,7 +5,7 @@
  * https://leetcode.com/problems/longest-subsequence-with-limited-sum/description/
  *
  */
-package greedy.sort;
+package greedy.sorting;
 
 import java.util.Arrays;
 
