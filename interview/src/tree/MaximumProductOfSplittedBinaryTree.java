@@ -9,24 +9,36 @@ package tree;
 
 public class MaximumProductOfSplittedBinaryTree {
 
-    private int maxProduct(TreeNode root, int sum) {
+    private long totalTreeSum = 0;
+
+    private long result = 0;
+
+    private long maxProductUtil(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        if (root.left == null && root.right == null) {
-            return root.data;
-        }
-        System.out.println("root = " + root.data);
-        int leftSum = maxProduct(root.left, sum);
-        int rightSum = maxProduct(root.right, sum);
-        System.out.println("left sum = " + leftSum);
-        System.out.println("right sum = " + rightSum);
-        System.out.println("returning = " + Math.max((root.data + leftSum) * rightSum, leftSum * (root.data + rightSum)));
-        return Math.max((root.data + leftSum) * rightSum, leftSum * (root.data + rightSum));
+        long leftSubtreeSum = maxProductUtil(root.left);
+        long rightSubtreeSum = maxProductUtil(root.right);
+        long upperSubtreeSum = totalTreeSum - leftSubtreeSum - rightSubtreeSum - root.data;
+        result = Math.max(result,
+                Math.max(upperSubtreeSum * (root.data + leftSubtreeSum + rightSubtreeSum),
+                        Math.max(leftSubtreeSum * (upperSubtreeSum + root.data + rightSubtreeSum),
+                                rightSubtreeSum * (upperSubtreeSum + root.data + leftSubtreeSum))));
+        return root.data + leftSubtreeSum + rightSubtreeSum;
     }
 
+    private long calculateTotalTreeSum(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return (long) root.data + calculateTotalTreeSum(root.left) + calculateTotalTreeSum(root.right);
+    }
+
+    // logic: https://www.youtube.com/watch?v=8WL9lUp8EvE
     private int maxProduct(TreeNode root) {
-        return maxProduct(root, 0);
+        totalTreeSum = calculateTotalTreeSum(root);
+        maxProductUtil(root);
+        return (int) result % ((int) 1e9 + 7);
     }
 
     public static void main(String[] args) {
