@@ -8,7 +8,7 @@
  * Time Complexity: O(n)
  * Space Complexity: O(1)
  */
-package stack;
+package stack.parentheses;
 
 public class MinimumNumberOfSwapsToMakeTheStringBalanced {
 

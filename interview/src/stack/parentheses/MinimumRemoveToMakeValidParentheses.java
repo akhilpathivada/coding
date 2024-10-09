@@ -8,7 +8,7 @@
  * Time Complexity : O(N)
  * Space Complexity : O(N)
  */
-package stack;
+package stack.parentheses;
 
 import java.util.Stack;
 
