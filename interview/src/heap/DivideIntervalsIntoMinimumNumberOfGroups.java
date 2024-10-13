@@ -5,26 +5,26 @@
  * https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/
  *
  */
-package greedy;
+package heap;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class DivideIntervalsIntoMinimumNumberOfGroups {
 
     private int minGroups(int[][] intervals) {
-        final int n = intervals.length;
-        final int[] startTimes = new int[n];
-        final int[] endTimes = new int[n];
-        for (int i = 0; i < n; ++i) {
-            startTimes[i] = intervals[i][0];
-            endTimes[i] = intervals[i][1];
+        final PriorityQueue<Integer> groupEndTimes = new PriorityQueue<>();
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]); // Sort intervals by their start times
+        for (int[] interval : intervals) {
+            int start = interval[0];
+            int end = interval[1];
+            if (!groupEndTimes.isEmpty() && start > groupEndTimes.peek()) { // If the earliest group's end time is
+                // before the current interval's start, the interval can join the group, so remove the group's end time.
+                groupEndTimes.poll();
+            }
+            groupEndTimes.offer(end); // Add the current interval's end time to the heap (new or existing group)
         }
-        Arrays.sort(startTimes);
-        Arrays.sort(endTimes);
-        System.out.println(Arrays.toString(startTimes));
-        System.out.println(Arrays.toString(endTimes));
-
-        return 1;
+        return groupEndTimes.size(); // The size of the heap indicates the number of groups required
     }
 
     public static void main(String[] args) {
