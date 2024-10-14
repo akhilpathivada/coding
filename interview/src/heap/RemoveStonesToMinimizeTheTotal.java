@@ -7,25 +7,19 @@
  */
 package heap;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class RemoveStonesToMinimizeTheTotal {
 
     private int minStoneSum(int[] piles, int k) {
         final PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
-        for (int pile : piles) {
-            maxHeap.add(pile);
-        }
+        Arrays.stream(piles).forEach(maxHeap::add);
         while (k-- > 0) {
             int pile = maxHeap.poll();
-            pile -= (pile / 2);
-            maxHeap.add(pile);
+            maxHeap.add(pile - pile / 2);
         }
-        int total = 0;
-        while (!maxHeap.isEmpty()) {
-            total += maxHeap.poll();
-        }
-        return total;
+        return maxHeap.stream().mapToInt(Integer::intValue).sum();
     }
 
     public static void main(String[] args) {
