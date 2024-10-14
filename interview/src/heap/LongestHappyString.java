@@ -23,15 +23,9 @@ public class LongestHappyString {
         }
     }
 
-    private void appendTwiceAndDecrement(StringBuilder sb, Pair pair) {
-        sb.append(pair.ch);
-        sb.append(pair.ch);
-        pair.count -= 2;
-    }
-
-    private void appendOnceAndDecrement(StringBuilder sb, Pair pair) {
-        sb.append(pair.ch);
-        pair.count -= 1;
+    private void appendCharacters(StringBuilder sb, Pair pair, int times) {
+        sb.append(String.valueOf(pair.ch).repeat(Math.max(0, times)));
+        pair.count -= times;
     }
 
     private String longestDiverseString(int a, int b, int c) {
@@ -48,17 +42,9 @@ public class LongestHappyString {
         }
         while (maxHeap.size() > 1) {
             Pair pair1 = maxHeap.poll();
-            if (pair1.count >= 2) {
-                appendTwiceAndDecrement(sb, pair1);
-            } else {
-                appendOnceAndDecrement(sb, pair1);
-            }
             Pair pair2 = maxHeap.poll();
-            if (pair2.count >= 2 && pair1.count < pair2.count) {
-                appendTwiceAndDecrement(sb, pair2);
-            } else {
-                appendOnceAndDecrement(sb, pair2);
-            }
+            appendCharacters(sb, pair1, pair1.count >= 2 ? 2 : 1);
+            appendCharacters(sb, pair2, pair2.count >= 2 && pair1.count < pair2.count ? 2 : 1);
             if (pair1.count > 0) {
                 maxHeap.add(pair1);
             }
@@ -68,11 +54,7 @@ public class LongestHappyString {
         }
         if (!maxHeap.isEmpty() && sb.charAt(sb.length() - 1) != maxHeap.peek().ch) {
             Pair pair = maxHeap.poll();
-            if (pair.count >= 2) {
-                appendTwiceAndDecrement(sb, pair);
-            } else {
-                appendOnceAndDecrement(sb, pair);
-            }
+            appendCharacters(sb, pair, pair.count >= 2 ? 2 : 1);
         }
         return sb.substring(2);
     }
