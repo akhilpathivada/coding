@@ -17,9 +17,9 @@ public class MaximalScoreAfterApplyingKOperations {
         long score = 0;
         Arrays.stream(nums).forEach(maxHeap::add);
         while (k-- > 0) {
-            int element = maxHeap.poll();
-            score += element;
-            maxHeap.add((int) Math.ceil(element / 3.0));
+            int largest = maxHeap.poll();
+            score += largest;
+            maxHeap.add((int) Math.ceil(largest / 3.0));
         }
         return score;
     }

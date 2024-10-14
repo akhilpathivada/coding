@@ -16,8 +16,8 @@ public class RemoveStonesToMinimizeTheTotal {
         final PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
         Arrays.stream(piles).forEach(maxHeap::add);
         while (k-- > 0) {
-            int pile = maxHeap.poll();
-            maxHeap.add(pile - pile / 2);
+            int largest = maxHeap.poll();
+            maxHeap.add(largest - largest / 2);
         }
         return maxHeap.stream().mapToInt(Integer::intValue).sum();
     }
