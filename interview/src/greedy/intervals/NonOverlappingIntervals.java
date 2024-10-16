@@ -1,56 +1,32 @@
 /**
  * https://leetcode.com/problems/non-overlapping-intervals/description/
  *
- * Time Complexity: O(N * log(N))
- * Space Complexity: O(N)
+ * Time Complexity: O(n * log(n))
+ * Space Complexity: O(n)
  *
  * */
 package greedy.intervals;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class NonOverlappingIntervals {
 
-    class Interval {
-        int start;
-        int end;
-
-        Interval(int s, int f) {
-            this.start = s;
-            this.end = f;
-        }
-    }
-
-    class myComparator implements Comparator<Interval> {
-        public int compare(Interval a, Interval b) {
-            return a.end - b.end;
-        }
-    }
-
     public int eraseOverlapIntervals(int[][] intervals) {
-
-        Interval[] arr = new Interval[intervals.length];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new Interval(intervals[i][0], intervals[i][1]);
-
-        }
-        Arrays.sort(arr, new myComparator());
-        int end = arr[0].end;
-        int count = 1;
-
-        for (int i = 1; i < intervals.length; i++) {
-            if (arr[i].start >= end) {
-                end = arr[i].end;
-                count++;
+        Arrays.sort(intervals, (a, b) -> a[1] - b[1]); // Sort intervals by their end time
+        int end = intervals[0][1]; // Initialize with the end of the first interval
+        int count = 0; // To count overlapping intervals
+        for (int i = 1; i < intervals.length; ++i) {
+            if (intervals[i][0] < end) { // If the current interval overlaps with the previous one, increment the count
+                ++count;
+            } else {
+                end = intervals[i][1]; // Update the end time to the current interval's end time
             }
         }
-        return intervals.length - count;
+        return count;
     }
 
     public static void main(String[] args) {
-        int[][] intervals = { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 1, 3 } };
+        int[][] intervals = {{1, 2}, {2, 3}, {3, 4}, {1, 3}};
         System.out.println(new NonOverlappingIntervals().eraseOverlapIntervals(intervals));
     }
 }
