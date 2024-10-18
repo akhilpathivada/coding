@@ -5,7 +5,7 @@
  * https://leetcode.com/problems/replace-question-marks-in-string-to-minimize-its-value/description/
  *
  */
-package heap;
+package strings.lexicographicalorder;
 
 import java.util.*;
 
@@ -47,12 +47,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
         Collections.sort(replacementCharacters); // Sort replacement characters to maintain lexicographical order
         StringBuilder result = new StringBuilder(); // Build the final string by replacing '?' with the chosen characters
         for (char ch : s.toCharArray()) {
-            if (ch == '?') {
-                result.append(replacementCharacters.remove(0));
-            } else {
-
-                result.append(ch);
-            }
+            result.append(ch == '?' ? replacementCharacters.remove(0) : ch);
         }
         return result.toString();
     }
