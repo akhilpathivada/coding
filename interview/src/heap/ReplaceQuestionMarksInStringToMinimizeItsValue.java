@@ -36,7 +36,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
         for (char ch = 'a'; ch <= 'z'; ++ch) { // Add all characters and their frequencies to the heap
             minHeap.add(new CharFrequency(ch, charFrequency[ch - 'a']));
         }
-        List<Character> replacementCharacters = new ArrayList<>(); // Fill in '?' with the characters that have the lowest frequency
+        List<Character> replacementCharacters = new ArrayList<>(); // Replace '?' with characters of lowest frequency
         for (char ch : s.toCharArray()) {
             if (ch == '?') {
                 char character = minHeap.poll().character; // The least frequent character
@@ -44,7 +44,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
                 minHeap.add(new CharFrequency(character, ++charFrequency[character - 'a']));
             }
         }
-        Collections.sort(replacementCharacters); // Sort, to maintain the lexicographical order
+        Collections.sort(replacementCharacters); // Sort replacement characters to maintain lexicographical order
         StringBuilder result = new StringBuilder(); // Build the final string by replacing '?' with the chosen characters
         for (char ch : s.toCharArray()) {
             if (ch == '?') {
