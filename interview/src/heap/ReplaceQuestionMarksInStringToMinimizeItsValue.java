@@ -15,7 +15,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
 
         private final char character;
 
-        private int frequency;
+        private final int frequency;
 
         private CharFrequency(char character, int frequency) {
             this.character = character;
