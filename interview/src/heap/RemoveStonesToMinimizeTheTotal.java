@@ -14,19 +14,19 @@ public class RemoveStonesToMinimizeTheTotal {
 
     public int minStoneSum(int[] piles, int k) {
         PriorityQueue<Integer> pilesQueue = buildPilesQueue(piles);
-        processPiles(k, pilesQueue);
+        processPiles(pilesQueue, k);
         return calculateRemainingStones(pilesQueue);
     }
 
     // Build a priority queue (max-heap) from the piles array
-    private PriorityQueue<Integer> buildPilesQueue(int[] piles) {
+    private PriorityQueue<Integer> buildPilesQueue(final int[] piles) {
         PriorityQueue<Integer> pilesQueue = new PriorityQueue<>((a, b) -> b - a);
         Arrays.stream(piles).forEach(pilesQueue::add);
         return pilesQueue;
     }
 
     // Process the piles by reducing the largest pile k times
-    private void processPiles(int k, PriorityQueue<Integer> pilesQueue) {
+    private void processPiles(final PriorityQueue<Integer> pilesQueue, int k) {
         while (k-- > 0) {
             int largest = pilesQueue.poll();
             pilesQueue.add(largest - largest / 2);
@@ -34,7 +34,7 @@ public class RemoveStonesToMinimizeTheTotal {
     }
 
     // Calculate the total number of stones remaining
-    private int calculateRemainingStones(PriorityQueue<Integer> pilesQueue) {
+    private int calculateRemainingStones(final PriorityQueue<Integer> pilesQueue) {
         return pilesQueue.stream().mapToInt(Integer::intValue).sum();
     }
 
