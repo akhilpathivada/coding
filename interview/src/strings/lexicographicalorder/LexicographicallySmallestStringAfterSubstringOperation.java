@@ -32,7 +32,7 @@ public class LexicographicallySmallestStringAfterSubstringOperation {
         return s.chars().allMatch(ch -> ch == 'a');
     }
 
-    private String smallestString(String s) {
+    public String smallestString(String s) {
         char[] chars = s.toCharArray();
         int n = s.length();
         if (containsOnlyA(s)) {

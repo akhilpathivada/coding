@@ -69,7 +69,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
         return charFrequencies;
     }
 
-    private String minimizeStringValue(String s) {
+    public String minimizeStringValue(String s) {
         int[] charFrequencies = calculateCharFrequencies(s);
         PriorityQueue<CharFrequency> replacementQueue = buildReplacementQueue(charFrequencies);
         List<Character> replacementCharacters = generateReplacementCharacters(replacementQueue, charFrequencies, s);
