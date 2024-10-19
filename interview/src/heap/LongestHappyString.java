@@ -54,8 +54,9 @@ public class LongestHappyString {
             reAddToQueue(first, charFrequencyQueue);
             reAddToQueue(second, charFrequencyQueue);
         }
-        // Append the last character if it's different from the previous
-        if (!charFrequencyQueue.isEmpty() && sb.charAt(sb.length() - 1) != charFrequencyQueue.peek().character) {
+        if (!charFrequencyQueue.isEmpty()
+                && sb.charAt(sb.length() - 1) != charFrequencyQueue.peek().character) {
+            // Append the last character if it's different from the previous
             CharFrequency pair = charFrequencyQueue.poll();
             appendCharacters(sb, pair, pair.frequency >= 2 ? 2 : 1);
         }
