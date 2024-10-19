@@ -59,7 +59,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
     }
 
     // Calculate the frequency of each character in the string, excluding '?'
-    private int[] calculateCharFrequencies(String s) {
+    private int[] calculateCharFrequencies(final String s) {
         int[] charFrequencies = new int[26];
         for (char ch : s.toCharArray()) {
             if (ch != '?') {

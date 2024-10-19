@@ -26,14 +26,13 @@ public class LexicographicallySmallestStringAfterSubstringOperation {
         int n = s.length();
         if (containsOnlyA(s)) {
             chars[n - 1] = 'z'; // If the string contains only 'a', change the last character to 'z'
-        } else {
-            int firstNonA = 0;
-            while (firstNonA < n && chars[firstNonA] == 'a') {
-                ++firstNonA;
-            }
-            return decrementCharacters(chars, firstNonA);
+            return new String(chars);
         }
-        return new String(chars);
+        int indexOfFirstNonA = 0;
+        while (indexOfFirstNonA < n && chars[indexOfFirstNonA] == 'a') { // Find the first non-'a' character
+            ++indexOfFirstNonA;
+        }
+        return decrementCharacters(chars, indexOfFirstNonA);
     }
 
     public static void main(String[] args) {
