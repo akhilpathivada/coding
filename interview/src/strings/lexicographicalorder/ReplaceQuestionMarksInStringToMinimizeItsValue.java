@@ -23,13 +23,35 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
         }
     }
 
-    // Build the final result string, replacing '?' with the least frequent characters
-    private String buildResultString(final String s, final List<Character> replacementCharacters) {
-        StringBuilder result = new StringBuilder(s.length());
+    public String minimizeStringValue(String s) {
+        int[] charFrequencies = calculateCharFrequencies(s);
+        PriorityQueue<CharFrequency> replacementQueue = buildReplacementQueue(charFrequencies);
+        List<Character> replacementCharacters = generateReplacementCharacters(s, replacementQueue, charFrequencies);
+        Collections.sort(replacementCharacters); // Sort replacement characters to maintain lexicographical order
+        return buildResultString(s, replacementCharacters);
+    }
+
+    // Calculate the frequency of each character in the string, excluding '?'
+    private int[] calculateCharFrequencies(final String s) {
+        int[] charFrequencies = new int[26];
         for (char ch : s.toCharArray()) {
-            result.append(ch == '?' ? replacementCharacters.remove(0) : ch);
+            if (ch != '?') {
+                charFrequencies[ch - 'a']++;
+            }
         }
-        return result.toString();
+        return charFrequencies;
+    }
+
+    // Build the priority queue (min-heap) for character replacement
+    private PriorityQueue<CharFrequency> buildReplacementQueue(final int[] charFrequencies) {
+        // Min-heap to prioritize characters with lower frequency and lexicographically smaller
+        PriorityQueue<CharFrequency> replacementQueue = new PriorityQueue<>(
+                (a, b) -> a.frequency == b.frequency ? a.character - b.character : a.frequency - b.frequency
+        );
+        for (char ch = 'a'; ch <= 'z'; ++ch) {
+            replacementQueue.add(new CharFrequency(ch, charFrequencies[ch - 'a']));
+        }
+        return replacementQueue;
     }
 
     // Generate a list of replacement characters based on character frequencies
@@ -46,35 +68,13 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
         return replacementCharacters;
     }
 
-    // Build the priority queue (min-heap) for character replacement
-    private PriorityQueue<CharFrequency> buildReplacementQueue(final int[] charFrequencies) {
-        // Min-heap to prioritize characters with lower frequency and lexicographically smaller
-        PriorityQueue<CharFrequency> replacementQueue = new PriorityQueue<>(
-                (a, b) -> a.frequency == b.frequency ? a.character - b.character : a.frequency - b.frequency
-        );
-        for (char ch = 'a'; ch <= 'z'; ++ch) {
-            replacementQueue.add(new CharFrequency(ch, charFrequencies[ch - 'a']));
-        }
-        return replacementQueue;
-    }
-
-    // Calculate the frequency of each character in the string, excluding '?'
-    private int[] calculateCharFrequencies(final String s) {
-        int[] charFrequencies = new int[26];
+    // Build the final result string, replacing '?' with the least frequent characters
+    private String buildResultString(final String s, final List<Character> replacementCharacters) {
+        StringBuilder result = new StringBuilder(s.length());
         for (char ch : s.toCharArray()) {
-            if (ch != '?') {
-                charFrequencies[ch - 'a']++;
-            }
+            result.append(ch == '?' ? replacementCharacters.remove(0) : ch);
         }
-        return charFrequencies;
-    }
-
-    public String minimizeStringValue(String s) {
-        int[] charFrequencies = calculateCharFrequencies(s);
-        PriorityQueue<CharFrequency> replacementQueue = buildReplacementQueue(charFrequencies);
-        List<Character> replacementCharacters = generateReplacementCharacters(s, replacementQueue, charFrequencies);
-        Collections.sort(replacementCharacters); // Sort replacement characters to maintain lexicographical order
-        return buildResultString(s, replacementCharacters);
+        return result.toString();
     }
 
     public static void main(String[] args) {
