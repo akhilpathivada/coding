@@ -45,7 +45,7 @@ public class SingleThreadedCPU {
         int currentTime = 0;
         int taskIndex = 0;
         while (result.size() < n) { // Process all tasks
-            taskIndex = processTasks(taskList, currentTime, taskQueue, taskIndex);
+            taskIndex = enqueueAvailableTasks(taskList, currentTime, taskQueue, taskIndex);
             currentTime = executeTask(taskQueue, taskList, taskIndex, result, currentTime);
         }
         return result.stream().mapToInt(i -> i).toArray();
@@ -64,9 +64,9 @@ public class SingleThreadedCPU {
         taskList.sort(Comparator.comparingInt(task -> task.enqueueTime));
     }
 
-    // Process tasks that are ready to be executed based on current time
-    private int processTasks(final List<Task> taskList, final int currentTime,
-                             final PriorityQueue<Task> taskQueue, int taskIndex) {
+    // Enqueue tasks that are available for execution based on current time
+    private int enqueueAvailableTasks(final List<Task> taskList, final int currentTime,
+                                      final PriorityQueue<Task> taskQueue, int taskIndex) {
         while (taskIndex < taskList.size() && taskList.get(taskIndex).enqueueTime <= currentTime) {
             taskQueue.offer(taskList.get(taskIndex++));
         }
