@@ -12,22 +12,36 @@ import java.util.PriorityQueue;
 
 public class MaximumScoreFromRemovingStones {
 
-    private int maximumScore(int a, int b, int c) {
-        final PriorityQueue<Integer> maxHeap = new PriorityQueue<>((x, y) -> y - x);
-        maxHeap.addAll(Arrays.asList(a, b, c));
+    public int maximumScore(int a, int b, int c) {
+        PriorityQueue<Integer> pilesQueue = buildPilesQueue(a, b, c);
+        return calculateScore(pilesQueue);
+    }
+
+    // Build a priority queue (max-heap) using the initial stone counts from the piles
+    private PriorityQueue<Integer> buildPilesQueue(final int a, final int b, final int c) {
+        PriorityQueue<Integer> pilesQueue = new PriorityQueue<>((x, y) -> y - x);
+        pilesQueue.addAll(Arrays.asList(a, b, c)); // Add the initial counts to the queue
+        return pilesQueue;
+    }
+
+    // Calculate the total score by removing stones from the two largest piles until one is empty
+    private int calculateScore(final PriorityQueue<Integer> pilesQueue) {
         int score = 0;
-        while (maxHeap.size() > 1) {
-            int remainingStonesInPile1 = maxHeap.poll() - 1;
-            int remainingStonesInPile2 = maxHeap.poll() - 1;
+        while (pilesQueue.size() > 1) {
+            int first = pilesQueue.poll() - 1;
+            int second = pilesQueue.poll() - 1;
+            reAddToQueue(first, pilesQueue);
+            reAddToQueue(second, pilesQueue);
             ++score;
-            if (remainingStonesInPile1 > 0) {
-                maxHeap.add(remainingStonesInPile1);
-            }
-            if (remainingStonesInPile2 > 0) {
-                maxHeap.add(remainingStonesInPile2);
-            }
         }
         return score;
+    }
+
+    // Re-add a pile back to the queue if there are stones remaining
+    private void reAddToQueue(final int pile, final PriorityQueue<Integer> pilesQueue) {
+        if (pile > 0) {
+            pilesQueue.add(pile);
+        }
     }
 
     public static void main(String[] args) {
