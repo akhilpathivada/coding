@@ -13,13 +13,24 @@ import java.util.PriorityQueue;
 public class MaximalScoreAfterApplyingKOperations {
 
     public long maxKelements(int[] nums, int k) {
-        final PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        PriorityQueue<Integer> elementsQueue = buildElementsQueue(nums);
+        return calculateScore(elementsQueue, k);
+    }
+
+    // Build a priority queue (max-heap) from the nums array
+    private PriorityQueue<Integer> buildElementsQueue(final int[] nums) {
+        PriorityQueue<Integer> elementsQueue = new PriorityQueue<>((a, b) -> b - a);
+        Arrays.stream(nums).forEach(elementsQueue::add);
+        return elementsQueue;
+    }
+
+    // Calculate the score using the max-heap
+    private long calculateScore(final PriorityQueue<Integer> elementsQueue, int k) {
         long score = 0;
-        Arrays.stream(nums).forEach(maxHeap::add);
         while (k-- > 0) {
-            int largest = maxHeap.poll();
+            int largest = elementsQueue.poll();
             score += largest;
-            maxHeap.add((int) Math.ceil(largest / 3.0));
+            elementsQueue.add((int) Math.ceil(largest / 3.0));
         }
         return score;
     }
