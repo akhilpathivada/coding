@@ -10,8 +10,7 @@ package strings.lexicographicalorder;
 public class LexicographicallySmallestStringAfterSubstringOperation {
 
     // Decrements non-'a' characters starting from the given index
-    private String decrementCharacters(final char[] chars, final int start) {
-        int n = chars.length;
+    private String decrementCharacters(final int start, final int n, final char[] chars) {
         for (int i = start; i < n && chars[i] != 'a'; ++i) {
             chars[i] = (char) (chars[i] - 1);
         }
@@ -19,7 +18,7 @@ public class LexicographicallySmallestStringAfterSubstringOperation {
     }
 
     // Find the index of first non-'a' character
-    private int findIndexOfFirstNonA(final char[] chars, final int n) {
+    private int findIndexOfFirstNonA(final int n, final char[] chars) {
         int indexOfFirstNonA = 0;
         while (indexOfFirstNonA < n && chars[indexOfFirstNonA] == 'a') { // Find the first non-'a' character
             ++indexOfFirstNonA;
@@ -39,8 +38,8 @@ public class LexicographicallySmallestStringAfterSubstringOperation {
             chars[n - 1] = 'z';  // If only 'a's, change the last character to 'z'
             return new String(chars);
         }
-        int indexOfFirstNonA = findIndexOfFirstNonA(chars, n);
-        return decrementCharacters(chars, indexOfFirstNonA); // Decrement characters after the first non-'a' character
+        int indexOfFirstNonA = findIndexOfFirstNonA(n, chars);
+        return decrementCharacters(indexOfFirstNonA, n, chars); // Decrement characters after the first non-'a' character
     }
 
     public static void main(String[] args) {

@@ -24,7 +24,7 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
     }
 
     // Build the final result string, replacing '?' with the least frequent characters
-    private String buildResultString(final List<Character> replacementCharacters, final String s) {
+    private String buildResultString(final String s, final List<Character> replacementCharacters) {
         StringBuilder result = new StringBuilder(s.length());
         for (char ch : s.toCharArray()) {
             result.append(ch == '?' ? replacementCharacters.remove(0) : ch);
@@ -33,8 +33,8 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
     }
 
     // Generate a list of replacement characters based on character frequencies
-    private List<Character> generateReplacementCharacters(final PriorityQueue<CharFrequency> replacementQueue,
-                                                          final int[] charFrequencies, final String s) {
+    private List<Character> generateReplacementCharacters(final String s, final PriorityQueue<CharFrequency> replacementQueue,
+                                                          final int[] charFrequencies) {
         List<Character> replacementCharacters = new ArrayList<>();
         for (char ch : s.toCharArray()) {
             if (ch == '?') { // Replace '?' with characters of lowest frequency
@@ -72,9 +72,9 @@ public class ReplaceQuestionMarksInStringToMinimizeItsValue {
     public String minimizeStringValue(String s) {
         int[] charFrequencies = calculateCharFrequencies(s);
         PriorityQueue<CharFrequency> replacementQueue = buildReplacementQueue(charFrequencies);
-        List<Character> replacementCharacters = generateReplacementCharacters(replacementQueue, charFrequencies, s);
+        List<Character> replacementCharacters = generateReplacementCharacters(s, replacementQueue, charFrequencies);
         Collections.sort(replacementCharacters); // Sort replacement characters to maintain lexicographical order
-        return buildResultString(replacementCharacters, s);
+        return buildResultString(s, replacementCharacters);
     }
 
     public static void main(String[] args) {
