@@ -28,33 +28,62 @@ public class SingleThreadedCPU {
         }
     }
 
-    private int[] getOrder(int[][] tasks) {
-        final int n = tasks.length;
-        final List<Task> taskList = new ArrayList<>();
-        final List<Integer> result = new ArrayList<>();
-        final PriorityQueue<Task> minHeap = new PriorityQueue<>((a, b) -> {
-            if (a.processingTime == b.processingTime) {
-                return Integer.compare(a.index, b.index);
-            }
-            return Integer.compare(a.processingTime, b.processingTime);
-        });
-        IntStream.range(0, n).forEach(i -> taskList.add(new Task(i, tasks[i][0], tasks[i][1]))); // Add tasks to list
-        taskList.sort((a, b) -> Integer.compare(a.enqueueTime, b.enqueueTime)); // Sort taskList based on `enqueueTime`
+    // Comparator to prioritize tasks by processing time, then by index if times are equal
+    private static final Comparator<Task> taskComparator = (a, b) -> {
+        if (a.processingTime == b.processingTime) {
+            return Integer.compare(a.index, b.index);
+        }
+        return Integer.compare(a.processingTime, b.processingTime);
+    };
+
+    public int[] getOrder(int[][] tasks) {
+        int n = tasks.length;
+        List<Task> taskList = buildTaskList(tasks);
+        sortTasksByEnqueueTime(taskList);
+        PriorityQueue<Task> taskQueue = new PriorityQueue<>(taskComparator);
+        List<Integer> result = new ArrayList<>();
         int currentTime = 0;
-        int index = 0; // Tracks the current task's index
-        while (result.size() < n) {
-            while (index < n && taskList.get(index).enqueueTime <= currentTime) {
-                minHeap.offer(taskList.get(index++));
-            }
-            if (minHeap.isEmpty()) {
-                currentTime = taskList.get(index).enqueueTime;
-            } else {
-                Task task = minHeap.poll();
-                currentTime += task.processingTime;
-                result.add(task.index);
-            }
+        int taskIndex = 0;
+        while (result.size() < n) { // Process all tasks
+            taskIndex = processTasks(taskList, currentTime, taskQueue, taskIndex);
+            currentTime = executeTask(taskQueue, taskList, taskIndex, result, currentTime);
         }
         return result.stream().mapToInt(i -> i).toArray();
+    }
+
+    // Build task list from input array
+    private List<Task> buildTaskList(final int[][] tasks) {
+        List<Task> taskList = new ArrayList<>();
+        IntStream.range(0, tasks.length)
+                .forEach(i -> taskList.add(new Task(i, tasks[i][0], tasks[i][1])));
+        return taskList;
+    }
+
+    // Sort task list based on enqueue time
+    private void sortTasksByEnqueueTime(final List<Task> taskList) {
+        taskList.sort(Comparator.comparingInt(task -> task.enqueueTime));
+    }
+
+    // Process tasks that are ready to be executed based on current time
+    private int processTasks(final List<Task> taskList, final int currentTime,
+                             final PriorityQueue<Task> taskQueue, int taskIndex) {
+        while (taskIndex < taskList.size() && taskList.get(taskIndex).enqueueTime <= currentTime) {
+            taskQueue.offer(taskList.get(taskIndex++));
+        }
+        return taskIndex;
+    }
+
+    // Execute the next task in the priority queue and update current time
+    private int executeTask(final PriorityQueue<Task> taskQueue, final List<Task> taskList, final int taskIndex,
+                            final List<Integer> result, int currentTime) {
+        if (taskQueue.isEmpty()) { // If the queue is empty, advance time to the next task's enqueue time
+            currentTime = taskList.get(taskIndex).enqueueTime;
+        } else { // Process the task with the shortest processing time
+            Task task = taskQueue.poll();
+            currentTime += task.processingTime;
+            result.add(task.index);
+        }
+        return currentTime;
     }
 
     public static void main(String[] args) {
