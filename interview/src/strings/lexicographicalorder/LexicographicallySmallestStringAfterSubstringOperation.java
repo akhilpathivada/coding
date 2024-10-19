@@ -34,7 +34,6 @@ public class LexicographicallySmallestStringAfterSubstringOperation {
         return indexOfFirstNonA;
     }
 
-
     // Decrements non-'a' characters starting from the given index
     private String decrementCharacters(final int start, final int n, final char[] chars) {
         for (int i = start; i < n && chars[i] != 'a'; ++i) {
